@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ *test
  * @author zalit
  */
 public class Admin extends Person {
