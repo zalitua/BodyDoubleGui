@@ -1,0 +1,3 @@
+ADM001,banks,robin,banks,robin@banks.com,chief_thief,accounting
+ADM002,sleep,sleepy,head,head@sleepy.com,34344343,BCIS
+ADM003,fight,Fight,Club,fight@club.com,fighter,Art

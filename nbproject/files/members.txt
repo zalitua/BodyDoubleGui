@@ -1,0 +1,4 @@
+MEM001,passw,bob,hope,bob@bob.com,33,345345,BCIS
+MEM002,freed,me,too,me,23,23344556,bcis
+MEM003,help!,Zali,Tuatara,xr@to.com,23,22184635,bcis
+MEM004,steve,Steve,Jobs,Jobs@apple.com,56,23453422,BFA
