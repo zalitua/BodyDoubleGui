@@ -138,6 +138,7 @@ public class AdminCorner extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         mangeRoomsButton = new javax.swing.JButton();
         optionsjSeparator = new javax.swing.JSeparator();
+        refreshButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,6 +203,11 @@ public class AdminCorner extends javax.swing.JFrame {
         sessionsJLabel.setText("Session ID");
 
         sessionIDJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SES007", "SES008", "SES006" }));
+        sessionIDJComboB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sessionIDJComboBActionPerformed(evt);
+            }
+        });
 
         editButton.setText("Edit Session");
 
@@ -218,6 +224,9 @@ public class AdminCorner extends javax.swing.JFrame {
                 mangeRoomsButtonActionPerformed(evt);
             }
         });
+
+        refreshButton.setText("Refresh Sessions");
+        refreshButton.setActionCommand("");
 
         javax.swing.GroupLayout southJPannelLayout = new javax.swing.GroupLayout(southJPannel);
         southJPannel.setLayout(southJPannelLayout);
@@ -249,6 +258,15 @@ public class AdminCorner extends javax.swing.JFrame {
                                     .addComponent(sessionsJLabel))))
                         .addGroup(southJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(southJPannelLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(editButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(mangeRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(southJPannelLayout.createSequentialGroup()
                                 .addGroup(southJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(southJPannelLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -273,18 +291,14 @@ public class AdminCorner extends javax.swing.JFrame {
                                         .addGap(93, 93, 93)
                                         .addComponent(peopleJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addComponent(yearJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(yearjComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(southJPannelLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(editButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(mangeRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(southJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(southJPannelLayout.createSequentialGroup()
+                                        .addComponent(yearJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(yearjComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(southJPannelLayout.createSequentialGroup()
+                                        .addGap(87, 87, 87)
+                                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(southJPannelLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -320,7 +334,8 @@ public class AdminCorner extends javax.swing.JFrame {
                 .addGroup(southJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomjLabel)
                     .addComponent(roomJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roomJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(roomJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshButton))
                 .addGap(18, 18, 18)
                 .addGroup(southJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(maxPeopleJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,6 +388,11 @@ public class AdminCorner extends javax.swing.JFrame {
         
         registerSession(); //calling method
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void sessionIDJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sessionIDJComboBActionPerformed
+        // TODO add your handling code here:
+        //action to delete a session
+    }//GEN-LAST:event_sessionIDJComboBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,6 +447,7 @@ public class AdminCorner extends javax.swing.JFrame {
     private javax.swing.JSeparator optionsjSeparator;
     private javax.swing.JComboBox<String> peopleJComboB;
     private javax.swing.JLabel peopleJLabel;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JComboBox<String> roomJComboB;
     private javax.swing.JTextField roomJTextF;
     private javax.swing.JLabel roomjLabel;
