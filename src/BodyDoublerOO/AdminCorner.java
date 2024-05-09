@@ -127,7 +127,7 @@ public class AdminCorner extends javax.swing.JFrame {
         peopleJLabel = new javax.swing.JLabel();
         dayJComboB = new javax.swing.JComboBox<>();
         monthJComboB = new javax.swing.JComboBox<>();
-        yearjComboB = new javax.swing.JComboBox<>();
+        yearJComboB = new javax.swing.JComboBox<>();
         timeJComboB = new javax.swing.JComboBox<>();
         roomJComboB = new javax.swing.JComboBox<>();
         peopleJComboB = new javax.swing.JComboBox<>();
@@ -183,9 +183,9 @@ public class AdminCorner extends javax.swing.JFrame {
 
         dayJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        monthJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December" }));
+        monthJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
-        yearjComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2024", "2025", " " }));
+        yearJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2024", "2025", " " }));
 
         timeJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7:00 am", "7:15 am", "7:30 am", "7:45 am", "8:00 am", "8:15 am", "8:30 am", "8:45 am", "9:00 am", "9:15 am", "9:30 am", "9:45 am", "10:00 am", "10:15 am", "10:30 am", "10:45 am", "11:00 am", "11:15 am", "11:30 am", "11:45 am", "12:00 pm", "12:15 pm", "12:30 pm", "12:45 pm", "1:00 pm", "1:15 pm", "1:30 pm", "1:45 pm", "2:00 pm", "2:15 pm", "2:30 pm", "2:45 pm", "3:00 pm", "3:15 pm", "3:30 pm", "3:45 pm", "4:00 pm", "4:15 pm", "4:30 pm", "4:45 pm", "5:00 pm", "5:15 pm", "5:30 pm", "5:45 pm", "6:00 pm", "6:15 pm", "6:30 pm", "6:45 pm", "7:00 pm", "7:15 pm", "7:30 pm", "7:45 pm", "8:00 pm", "8:15 pm", "8:30 pm", "8:45 pm", "9:00 pm", " " }));
 
@@ -295,7 +295,7 @@ public class AdminCorner extends javax.swing.JFrame {
                                     .addGroup(southJPannelLayout.createSequentialGroup()
                                         .addComponent(yearJlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(yearjComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(yearJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(southJPannelLayout.createSequentialGroup()
                                         .addGap(87, 87, 87)
                                         .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -324,7 +324,7 @@ public class AdminCorner extends javax.swing.JFrame {
                     .addComponent(yearJlabel)
                     .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(monthJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearjComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(yearJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(southJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chooseTimeJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,6 +385,13 @@ public class AdminCorner extends javax.swing.JFrame {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
        String selectDay= (String) dayJComboB.getSelectedItem();
+       String selectMonth = (String) monthJComboB.getSelectedItem();
+       String selectYear =(String)yearJComboB.getSelectedItem();
+       String selectTime =(String) timeJComboB.getSelectedItem();
+       String noOfPeople ="0";
+       String selectPeople= (String) peopleJComboB.getSelectedItem();
+       
+       String selectDate = selectDay+" "+selectYear+" "+selectYear;
         
         registerSession(); //calling method
     }//GEN-LAST:event_createButtonActionPerformed
@@ -458,7 +465,7 @@ public class AdminCorner extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> timeJComboB;
     private javax.swing.JLabel timejLabel;
     private javax.swing.JLabel welcomeL;
+    private javax.swing.JComboBox<String> yearJComboB;
     private javax.swing.JLabel yearJlabel;
-    private javax.swing.JComboBox<String> yearjComboB;
     // End of variables declaration//GEN-END:variables
 }
