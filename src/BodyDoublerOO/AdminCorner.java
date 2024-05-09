@@ -155,7 +155,7 @@ public class AdminCorner extends javax.swing.JFrame {
         insturctjTextA.setEditable(false);
         insturctjTextA.setColumns(20);
         insturctjTextA.setRows(5);
-        insturctjTextA.setText("instuctions will go here");
+        insturctjTextA.setText("If you would like to edit or delete a session please choose the session ID  of the session you want to change and then press the button that performs the action you want to do\n\nIf you want to create a new sesssion, please use the drop down option and then press 'create session'");
         instructjScrollPane.setViewportView(insturctjTextA);
 
         dateJLabel.setText("Date:");
@@ -314,7 +314,7 @@ public class AdminCorner extends javax.swing.JFrame {
                     .addComponent(editButton)
                     .addComponent(deleteButton)
                     .addComponent(mangeRoomsButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 12, Short.MAX_VALUE)
                 .addComponent(optionsjSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(southJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -364,9 +364,9 @@ public class AdminCorner extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(instructjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(instructjScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(southJPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())

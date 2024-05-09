@@ -39,9 +39,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="welcomeL" min="-2" pref="45" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="142" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="115" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="instructjScrollPane" min="-2" pref="41" max="-2" attributes="0"/>
+              <Component id="instructjScrollPane" min="-2" pref="68" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="southJPannel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -82,7 +82,7 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="instuctions will go here"/>
+            <Property name="text" type="java.lang.String" value="If you would like to edit or delete a session please choose the session ID  of the session you want to change and then press the button that performs the action you want to do&#xa;&#xa;If you want to create a new sesssion, please use the drop down option and then press &apos;create session&apos;"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -201,7 +201,7 @@
                       <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="mangeRoomsButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" pref="12" max="32767" attributes="0"/>
                   <Component id="optionsjSeparator" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
