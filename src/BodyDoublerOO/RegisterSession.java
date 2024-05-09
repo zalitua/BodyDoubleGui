@@ -13,6 +13,7 @@ import java.util.Scanner;
 /**
  *
  * @author GVE Rouse
+ * test Git
  */
 public class RegisterSession {
 
