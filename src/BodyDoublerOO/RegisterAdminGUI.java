@@ -44,6 +44,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         createAccountJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 420));
 
         welcomeAdminJL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeAdminJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,7 +67,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         lNameJTextF.setText("last name");
 
         emailJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        emailJL.setText("email address:");
+        emailJL.setText("Email address:");
 
         emailJTextF.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         emailJTextF.setText("exampleemail@autuni.ac.nz");
@@ -101,10 +102,9 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                     .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(adminInstructJL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(mainJPannelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGap(73, 73, 73)
+                            .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(mainJPannelLayout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
                                     .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(mainJPannelLayout.createSequentialGroup()
                                             .addComponent(roleJL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,7 +113,8 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                                         .addGroup(mainJPannelLayout.createSequentialGroup()
                                             .addComponent(fNameJL, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(adminFNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(adminFNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(pWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(mainJPannelLayout.createSequentialGroup()
                                             .addGap(62, 62, 62)
@@ -124,22 +125,17 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                                             .addGap(16, 16, 16)
                                             .addComponent(departmentJL, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(departmentJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(35, 35, 35))
+                                            .addComponent(departmentJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(adminPWJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(mainJPannelLayout.createSequentialGroup()
-                                    .addComponent(emailJL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(emailJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(181, 181, 181))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainJPannelLayout.createSequentialGroup()
-                                    .addComponent(pWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(2, 2, 2)
-                                    .addComponent(adminPWJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(emailJL)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(emailJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(35, 35, 35)))
                     .addGroup(mainJPannelLayout.createSequentialGroup()
-                        .addGap(150, 150, 150)
+                        .addGap(174, 174, 174)
                         .addComponent(createAccountJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         mainJPannelLayout.setVerticalGroup(
             mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,13 +151,13 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                     .addComponent(lNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailJL)
-                    .addComponent(emailJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pWJL)
                     .addComponent(adminPWJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emailJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailJL))
+                .addGap(38, 38, 38)
                 .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roleJL)
                     .addComponent(departmentJL)
@@ -169,7 +165,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                     .addComponent(departmentJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addComponent(createAccountJButton)
-                .addGap(0, 187, Short.MAX_VALUE))
+                .addGap(0, 80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,7 +178,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(mainJPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 186, Short.MAX_VALUE))
         );
 
         pack();

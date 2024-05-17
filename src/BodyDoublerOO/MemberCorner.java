@@ -8,12 +8,12 @@ package BodyDoublerOO;
  *
  * @author GVE Rouse
  */
-public class MemberSessionSelection extends javax.swing.JFrame {
+public class MemberCorner extends javax.swing.JFrame {
 
     /**
      * Creates new form MemberSessionSelection
      */
-    public MemberSessionSelection() {
+    public MemberCorner() {
         initComponents();
     }
 
@@ -158,20 +158,21 @@ public class MemberSessionSelection extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MemberSessionSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberCorner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MemberSessionSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberCorner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MemberSessionSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberCorner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MemberSessionSelection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MemberCorner.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MemberSessionSelection().setVisible(true);
+                new MemberCorner().setVisible(true);
             }
         });
     }
