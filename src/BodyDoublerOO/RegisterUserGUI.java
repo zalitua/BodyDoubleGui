@@ -116,7 +116,7 @@ public class RegisterUserGUI extends javax.swing.JFrame {
         topJPannel.setLayout(topJPannelLayout);
         topJPannelLayout.setHorizontalGroup(
             topJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(memberRegWelcomJL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(memberRegWelcomJL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
             .addGroup(topJPannelLayout.createSequentialGroup()
                 .addGroup(topJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topJPannelLayout.createSequentialGroup()

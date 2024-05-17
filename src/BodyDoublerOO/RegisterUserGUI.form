@@ -41,7 +41,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="memberRegWelcomJL" alignment="1" pref="800" max="32767" attributes="0"/>
+              <Component id="memberRegWelcomJL" alignment="1" pref="640" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
