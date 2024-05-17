@@ -35,6 +35,7 @@ public class MemberSessionSelection extends javax.swing.JFrame {
         joinSessionJButton = new javax.swing.JButton();
         leaveSessionJButton = new javax.swing.JButton();
         memberInstructionJL = new javax.swing.JLabel();
+        leaveSessionJL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,9 +67,12 @@ public class MemberSessionSelection extends javax.swing.JFrame {
         });
 
         memberInstructionJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        memberInstructionJL.setText("Start by selecting the session ID of the session you would like to choose.\nIf you would like to join that session, click the 'join session' button\nIf you would like to withdraw from that session, click the 'Leave session' button.");
+        memberInstructionJL.setText("To join a session select the ID of the one you would like to join and click 'Join Session'");
         memberInstructionJL.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         memberInstructionJL.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        leaveSessionJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        leaveSessionJL.setText("To withdraw from a session you are already enrolled in, select the session ID, and click 'Leave Session'");
 
         javax.swing.GroupLayout mainPannelLayout = new javax.swing.GroupLayout(mainPannel);
         mainPannel.setLayout(mainPannelLayout);
@@ -88,20 +92,25 @@ public class MemberSessionSelection extends javax.swing.JFrame {
                         .addGap(150, 150, 150))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPannelLayout.createSequentialGroup()
                         .addComponent(memberInstructionJL, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(mainPannelLayout.createSequentialGroup()
+                        .addComponent(leaveSessionJL, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         mainPannelLayout.setVerticalGroup(
             mainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPannelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(memberInstructionJL, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(memberInstructionJL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leaveSessionJL)
+                .addGap(78, 78, 78)
                 .addGroup(mainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leaveSessionJButton)
                     .addComponent(joinSessionJButton)
                     .addComponent(sessionIDJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sessionIDJL))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,6 +179,7 @@ public class MemberSessionSelection extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton joinSessionJButton;
     private javax.swing.JButton leaveSessionJButton;
+    private javax.swing.JLabel leaveSessionJL;
     private javax.swing.JPanel mainPannel;
     private javax.swing.JLabel memberInstructionJL;
     private javax.swing.JComboBox<String> sessionIDJComboBox;
