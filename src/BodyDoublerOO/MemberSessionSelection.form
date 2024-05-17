@@ -92,6 +92,10 @@
                           <Component id="memberInstructionJL" pref="0" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="leaveSessionJL" min="-2" pref="750" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -100,15 +104,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="memberInstructionJL" min="-2" pref="85" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="memberInstructionJL" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="leaveSessionJL" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="leaveSessionJButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="joinSessionJButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="sessionIDJComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="sessionIDJL" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="31" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -163,9 +169,17 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Georgia" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Start by selecting the session ID of the session you would like to choose.&#xa;If you would like to join that session, click the &apos;join session&apos; button&#xa;If you would like to withdraw from that session, click the &apos;Leave session&apos; button."/>
+            <Property name="text" type="java.lang.String" value="To join a session select the ID of the one you would like to join and click &apos;Join Session&apos;"/>
             <Property name="verticalAlignment" type="int" value="1"/>
             <Property name="verticalTextPosition" type="int" value="1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="leaveSessionJL">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Georgia" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="To withdraw from a session you are already enrolled in, select the session ID, and click &apos;Leave Session&apos;"/>
           </Properties>
         </Component>
       </SubComponents>
