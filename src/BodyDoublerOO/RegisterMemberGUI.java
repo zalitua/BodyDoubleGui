@@ -8,12 +8,12 @@ package BodyDoublerOO;
  *
  * @author GVE Rouse
  */
-public class RegisterUserGUI extends javax.swing.JFrame {
+public class RegisterMemberGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form RegisterUserGUI
      */
-    public RegisterUserGUI() {
+    public RegisterMemberGUI() {
         initComponents();
     }
 
@@ -47,12 +47,13 @@ public class RegisterUserGUI extends javax.swing.JFrame {
         createUserJButon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 420));
 
         memberRegWelcomJL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         memberRegWelcomJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         memberRegWelcomJL.setText("Welcome to the Member Registration Corner");
 
-        instructJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        instructJL.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         instructJL.setText("To create your user account please fill in the follwoing infomation");
 
         firstNameJTextF.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
@@ -116,7 +117,7 @@ public class RegisterUserGUI extends javax.swing.JFrame {
         topJPannel.setLayout(topJPannelLayout);
         topJPannelLayout.setHorizontalGroup(
             topJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(memberRegWelcomJL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addComponent(memberRegWelcomJL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(topJPannelLayout.createSequentialGroup()
                 .addGroup(topJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topJPannelLayout.createSequentialGroup()
@@ -143,8 +144,12 @@ public class RegisterUserGUI extends javax.swing.JFrame {
             .addGroup(topJPannelLayout.createSequentialGroup()
                 .addGroup(topJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(topJPannelLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(createUserJButon, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topJPannelLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(topJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(instructJL, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(topJPannelLayout.createSequentialGroup()
                                 .addComponent(firstNameJL, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -152,11 +157,7 @@ public class RegisterUserGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lNameJL, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(instructJL, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(topJPannelLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(createUserJButon, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         topJPannelLayout.setVerticalGroup(
@@ -191,9 +192,9 @@ public class RegisterUserGUI extends javax.swing.JFrame {
                 .addGroup(topJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(degreeJL)
                     .addComponent(degreeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(createUserJButon)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -241,20 +242,21 @@ public class RegisterUserGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterUserGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterMemberGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterUserGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterMemberGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterUserGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterMemberGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterUserGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisterMemberGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterUserGUI().setVisible(true);
+                new RegisterMemberGUI().setVisible(true);
             }
         });
     }
