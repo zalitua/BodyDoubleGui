@@ -17,6 +17,9 @@ public class Admin extends Person {
 
     private String role;
     private String department;
+    
+//    public Admin(){
+//    }
 
     public Admin(String userID, String password, String firstName, String lastName,
             String email, String role, String department) {
@@ -40,7 +43,7 @@ public class Admin extends Person {
     public void setDepartment(String department) {
         this.department = department;
     }
-
+    
     @Override
     public String toString() {
         return "User ID: " + this.getUserID() + "\nFirst name: " + this.getFirstName() + "\nLast name: " + this.getLastName()

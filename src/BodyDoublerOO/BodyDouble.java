@@ -21,6 +21,20 @@ public class BodyDouble {
     private final Connection conn;
     private Statement statement;
     
+    public static void main(String[] args) {
+//        BodyDouble bd = new BodyDouble();
+//        bd.createAdminTable();
+//        bd.createMemberTable();
+//        bd.createSessionTable();
+//        bd.createRoomTable();
+        
+        AdminManager am = new AdminManager();
+        //String adminID = "ADM" + am.getNextNumber();
+//        Admin admin = new Admin("ADM000","password","John","Candy","john@candy.com","Actor","Computer Science");
+//        am.addEntry();
+        am.displayAll();
+    }
+    
     public BodyDouble() {
         dbManager = new DBManager();
         conn = dbManager.getConnection();
