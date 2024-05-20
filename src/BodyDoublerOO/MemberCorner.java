@@ -4,6 +4,9 @@
  */
 package BodyDoublerOO;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author GVE Rouse
@@ -11,10 +14,90 @@ package BodyDoublerOO;
 public class MemberCorner extends javax.swing.JFrame {
 
     /**
-     * Creates new form MemberSessionSelection
+     * Creates new form AdminCorner
      */
     public MemberCorner() {
         initComponents();
+    }
+    
+     public void registerSession() {
+        Scanner scan = new Scanner(System.in);
+        String path = "./nbproject/files/roombooking.txt";
+        ReadFile rf = new ReadFile();
+        String noOfPeople = "0";
+        
+        Sequencer seq = new Sequencer();
+        String nextNumber = seq.getNextNumber(path);
+        String sessonID = "SES" + nextNumber;
+        
+        ArrayList<Room> list = rf.readRoomFile("./nbproject/files/rooms.txt");
+        for (Room room : list){
+            System.out.print(room.getRoom() + " ");
+        }
+        System.out.println("");
+        
+        String room = "";
+        while (room.isEmpty()) {
+            System.out.println("Please enter the room you would like to create a session for ");
+            room = scan.nextLine().trim();
+            if(room.equalsIgnoreCase("x"))
+            {
+                System.exit(0);
+            }
+            if (room.isEmpty()) {
+                System.out.println("That is invalid input");
+            }
+        }
+
+        String date = "";
+        while (date.isEmpty()) {
+            System.out.println("Please enter the date you would like to create a session for ");
+            date = scan.nextLine().trim();
+           if(date.equalsIgnoreCase("x"))
+            {
+                System.exit(0);
+            }
+            if (date.isEmpty()) {
+                System.out.println("That is invalid input");
+            }
+        }
+
+        String time = "";
+        while (time.isEmpty()) {
+            System.out.println("Please enter the time you would like to create a session for ");
+            time = scan.nextLine().trim();
+            
+            if(time.equalsIgnoreCase("x"))
+            {
+                System.exit(0);
+            }
+            if (time.isEmpty()) {
+                System.out.println("That is invalid input");
+            }
+        }
+        
+        String maxNoOfPeople = "";
+        while (maxNoOfPeople.isEmpty()) {
+            System.out.println("What is the max number of people able to book this room?");
+            maxNoOfPeople = scan.nextLine().trim();
+            if(maxNoOfPeople.equalsIgnoreCase("x"))
+            {
+                System.exit(0);
+            }
+            if (maxNoOfPeople.isEmpty()) {
+                System.out.println("That is invalid input");
+            }
+        }
+
+        Session session = new Session(sessonID, date, time, room,
+                noOfPeople, maxNoOfPeople);
+        Session.writeRoomBooking(session);
+    }
+
+    public void displaySessions(ArrayList<Session> list) {
+        for (Session session : list) {
+            System.out.println(session.toString());
+        }
     }
 
     /**
@@ -26,120 +109,132 @@ public class MemberCorner extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        welcomeMemberJL = new javax.swing.JLabel();
-        sessionsJScrollP = new javax.swing.JScrollPane();
-        sessionsJTextArea = new javax.swing.JTextArea();
-        mainPannel = new javax.swing.JPanel();
-        sessionIDJL = new javax.swing.JLabel();
-        sessionIDJComboBox = new javax.swing.JComboBox<>();
-        joinSessionJButton = new javax.swing.JButton();
-        leaveSessionJButton = new javax.swing.JButton();
-        memberInstructionJL = new javax.swing.JLabel();
-        leaveSessionJL = new javax.swing.JLabel();
+        welcomeL = new javax.swing.JLabel();
+        memberInstuctJL = new javax.swing.JLabel();
+        sessionsJLabel = new javax.swing.JLabel();
+        sessionIDJComboB = new javax.swing.JComboBox<>();
+        joinButton = new javax.swing.JButton();
+        adminSessionJScroll = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        sessionJTable = new javax.swing.JTable();
+        leaveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        welcomeMemberJL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
-        welcomeMemberJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeMemberJL.setText("Welcome to the Member's area");
+        welcomeL.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        welcomeL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeL.setText("Welcome to the Memer Corner");
 
-        sessionsJTextArea.setColumns(20);
-        sessionsJTextArea.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        sessionsJTextArea.setRows(5);
-        sessionsJTextArea.setText("Session will go here");
-        sessionsJScrollP.setViewportView(sessionsJTextArea);
+        memberInstuctJL.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        memberInstuctJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        memberInstuctJL.setText("Select the session you want to join or leave and click the button\n");
 
-        sessionIDJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        sessionIDJL.setText("Session ID: ");
+        sessionsJLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        sessionsJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sessionsJLabel.setText("Session ID");
 
-        sessionIDJComboBox.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        sessionIDJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SES001", "SES002", "SES003" }));
-
-        joinSessionJButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        joinSessionJButton.setText("Join Session");
-
-        leaveSessionJButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        leaveSessionJButton.setText("Leave session");
-        leaveSessionJButton.addActionListener(new java.awt.event.ActionListener() {
+        sessionIDJComboB.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        sessionIDJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SES007", "SES008", "SES006" }));
+        sessionIDJComboB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                leaveSessionJButtonActionPerformed(evt);
+                sessionIDJComboBActionPerformed(evt);
             }
         });
 
-        memberInstructionJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        memberInstructionJL.setText("To join a session select the ID of the one you would like to join and click 'Join Session'");
-        memberInstructionJL.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        memberInstructionJL.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        joinButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        joinButton.setText("Join Session");
+        joinButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                joinButtonActionPerformed(evt);
+            }
+        });
 
-        leaveSessionJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        leaveSessionJL.setText("To withdraw from a session you are already enrolled in, select the session ID, and click 'Leave Session'");
+        sessionJTable.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        sessionJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Session ID", "Date", "Time", "Location", "Max people", "Current Number of People"
+            }
+        ));
+        jScrollPane2.setViewportView(sessionJTable);
 
-        javax.swing.GroupLayout mainPannelLayout = new javax.swing.GroupLayout(mainPannel);
-        mainPannel.setLayout(mainPannelLayout);
-        mainPannelLayout.setHorizontalGroup(
-            mainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPannelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(mainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPannelLayout.createSequentialGroup()
-                        .addComponent(sessionIDJL)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sessionIDJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(joinSessionJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(leaveSessionJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPannelLayout.createSequentialGroup()
-                        .addComponent(memberInstructionJL, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(mainPannelLayout.createSequentialGroup()
-                        .addComponent(leaveSessionJL, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        mainPannelLayout.setVerticalGroup(
-            mainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainPannelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(memberInstructionJL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(leaveSessionJL)
-                .addGap(78, 78, 78)
-                .addGroup(mainPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(leaveSessionJButton)
-                    .addComponent(joinSessionJButton)
-                    .addComponent(sessionIDJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sessionIDJL))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
+        adminSessionJScroll.setViewportView(jScrollPane2);
+
+        leaveButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        leaveButton.setText("Leave Session");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(welcomeMemberJL, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(sessionsJScrollP)
-            .addComponent(mainPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(welcomeL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(adminSessionJScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(memberInstuctJL, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(sessionsJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(joinButton)
+                        .addGap(20, 20, 20)))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(leaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(welcomeMemberJL)
+                .addContainerGap()
+                .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(sessionsJScrollP, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(adminSessionJScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(memberInstuctJL)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sessionsJLabel))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(joinButton)
+                    .addComponent(leaveButton))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void leaveSessionJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveSessionJButtonActionPerformed
+    private void sessionIDJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sessionIDJComboBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_leaveSessionJButtonActionPerformed
+        //action to delete a session
+    }//GEN-LAST:event_sessionIDJComboBActionPerformed
+
+    private void joinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_joinButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,15 +273,14 @@ public class MemberCorner extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton joinSessionJButton;
-    private javax.swing.JButton leaveSessionJButton;
-    private javax.swing.JLabel leaveSessionJL;
-    private javax.swing.JPanel mainPannel;
-    private javax.swing.JLabel memberInstructionJL;
-    private javax.swing.JComboBox<String> sessionIDJComboBox;
-    private javax.swing.JLabel sessionIDJL;
-    private javax.swing.JScrollPane sessionsJScrollP;
-    private javax.swing.JTextArea sessionsJTextArea;
-    private javax.swing.JLabel welcomeMemberJL;
+    private javax.swing.JScrollPane adminSessionJScroll;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton joinButton;
+    private javax.swing.JButton leaveButton;
+    private javax.swing.JLabel memberInstuctJL;
+    private javax.swing.JComboBox<String> sessionIDJComboB;
+    private javax.swing.JTable sessionJTable;
+    private javax.swing.JLabel sessionsJLabel;
+    private javax.swing.JLabel welcomeL;
     // End of variables declaration//GEN-END:variables
 }
