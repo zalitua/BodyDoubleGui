@@ -4,8 +4,11 @@
  */
 package BodyDoublerOO;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -16,89 +19,34 @@ public class AdminCorner extends javax.swing.JFrame {
     /**
      * Creates new form AdminCorner
      */
+    AdminManager ma = new AdminManager();
     public AdminCorner() {
         initComponents();
+         
+        populateTable();
     }
     
-     public void registerSession() {
-        Scanner scan = new Scanner(System.in);
-        String path = "./nbproject/files/roombooking.txt";
-        ReadFile rf = new ReadFile();
-        String noOfPeople = "0";
+    private void populateTable()
+    {
+        List<Admin> admins = ma.readAll();
+        DefaultTableModel model = (DefaultTableModel) sessionJTable.getModel();
+        model.setRowCount(0);
         
-        Sequencer seq = new Sequencer();
-        String nextNumber = seq.getNextNumber(path);
-        String sessonID = "SES" + nextNumber;
-        
-        ArrayList<Room> list = rf.readRoomFile("./nbproject/files/rooms.txt");
-        for (Room room : list){
-            System.out.print(room.getRoom() + " ");
-        }
-        System.out.println("");
-        
-        String room = "";
-        while (room.isEmpty()) {
-            System.out.println("Please enter the room you would like to create a session for ");
-            room = scan.nextLine().trim();
-            if(room.equalsIgnoreCase("x"))
-            {
-                System.exit(0);
-            }
-            if (room.isEmpty()) {
-                System.out.println("That is invalid input");
-            }
-        }
-
-        String date = "";
-        while (date.isEmpty()) {
-            System.out.println("Please enter the date you would like to create a session for ");
-            date = scan.nextLine().trim();
-           if(date.equalsIgnoreCase("x"))
-            {
-                System.exit(0);
-            }
-            if (date.isEmpty()) {
-                System.out.println("That is invalid input");
-            }
-        }
-
-        String time = "";
-        while (time.isEmpty()) {
-            System.out.println("Please enter the time you would like to create a session for ");
-            time = scan.nextLine().trim();
-            
-            if(time.equalsIgnoreCase("x"))
-            {
-                System.exit(0);
-            }
-            if (time.isEmpty()) {
-                System.out.println("That is invalid input");
-            }
-        }
-        
-        String maxNoOfPeople = "";
-        while (maxNoOfPeople.isEmpty()) {
-            System.out.println("What is the max number of people able to book this room?");
-            maxNoOfPeople = scan.nextLine().trim();
-            if(maxNoOfPeople.equalsIgnoreCase("x"))
-            {
-                System.exit(0);
-            }
-            if (maxNoOfPeople.isEmpty()) {
-                System.out.println("That is invalid input");
-            }
-        }
-
-        Session session = new Session(sessonID, date, time, room,
-                noOfPeople, maxNoOfPeople);
-        Session.writeRoomBooking(session);
-    }
-
-    public void displaySessions(ArrayList<Session> list) {
-        for (Session session : list) {
-            System.out.println(session.toString());
+        for(Admin admin: admins)
+        {
+            model.addRow(new Object[]{
+                admin.getUserID(),
+                admin.getPassword(),
+                admin.getFirstName(),
+                admin.getLastName(),
+                admin.getEmail(),
+                admin.getRole(),
+                admin.getDepartment()
+            });
         }
     }
+    
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -164,14 +112,10 @@ public class AdminCorner extends javax.swing.JFrame {
         sessionJTable.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         sessionJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Session ID", "Date", "Time", "Location", "Max people", "Current Number of People"
+                "User ID", "Password", "First Name", "Last Name", "Email", "Role", "Department"
             }
         ));
         jScrollPane2.setViewportView(sessionJTable);
@@ -223,7 +167,7 @@ public class AdminCorner extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(190, 190, 190)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
