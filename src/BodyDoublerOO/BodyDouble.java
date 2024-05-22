@@ -29,7 +29,8 @@ public class BodyDouble {
 //        bd.createRoomTable();
         
         AdminManager am = new AdminManager();
-        //String adminID = "ADM" + am.getNextNumber();
+        String adminID = am.generateNextID();
+        System.out.println(adminID);
 //        Admin admin = new Admin("ADM000","password","John","Candy","john@candy.com","Actor","Computer Science");
 //        am.addEntry();
         am.displayAll();
