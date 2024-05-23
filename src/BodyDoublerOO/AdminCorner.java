@@ -73,7 +73,7 @@ public class AdminCorner extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(780, 440));
 
-        welcomeL.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        welcomeL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeL.setText("Welcome to the Admin Corner");
 
@@ -81,7 +81,7 @@ public class AdminCorner extends javax.swing.JFrame {
         editDeleteInstructJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editDeleteInstructJLabel.setText("To delete or edit a session, pick the session ID and then click the buttion you want to apply");
 
-        sessionsJLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        sessionsJLabel.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         sessionsJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sessionsJLabel.setText("Session ID");
 

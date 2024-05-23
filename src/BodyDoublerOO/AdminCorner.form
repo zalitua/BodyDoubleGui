@@ -105,7 +105,7 @@
     <Component class="javax.swing.JLabel" name="welcomeL">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="18" style="1"/>
+          <Font name="Georgia" size="22" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Welcome to the Admin Corner"/>
@@ -123,7 +123,7 @@
     <Component class="javax.swing.JLabel" name="sessionsJLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="14" style="1"/>
+          <Font name="Georgia" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Session ID"/>
