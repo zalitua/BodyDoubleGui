@@ -26,6 +26,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+
         createAccountJButton = new javax.swing.JButton();
         roleJL = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox<>();
@@ -50,7 +51,9 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         newIDJL = new javax.swing.JLabel();
         newPWJL = new javax.swing.JLabel();
 
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
 
         createAccountJButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         createAccountJButton.setText("Create Account");
@@ -105,12 +108,14 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
             }
         });
 
+
         welcomeAdminJL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeAdminJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeAdminJL.setText("Welcome to Admin Registration");
 
         adminInstructJL.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         adminInstructJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         adminInstructJL.setText("To create your admin account please fill in the boxes below:");
 
         yourEmailJL1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
@@ -173,12 +178,14 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                     .addComponent(recordInfoJL)
                     .addComponent(doneButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -194,6 +201,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                 .addComponent(welcomeAdminJL, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
             .addGroup(layout.createSequentialGroup()
                 .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,10 +235,12 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                         .addComponent(createAccountJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)))
                 .addGap(0, 0, Short.MAX_VALUE))
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+
                 .addComponent(welcomeAdminJL, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(adminInstructJL)
@@ -265,10 +275,12 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(yourEmailJL1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void departmentJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departmentJComboBoxActionPerformed
         // TODO add your handling code here:
@@ -296,6 +308,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_doneButtonActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -334,6 +347,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JLabel adminInstructJL;
     private javax.swing.JButton createAccountJButton;
     private javax.swing.JComboBox<String> departmentJComboBox;
@@ -357,5 +371,6 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     private javax.swing.JLabel yourEmailJL1;
     private javax.swing.JLabel yourIDJL;
     private javax.swing.JLabel yourPWJL;
+
     // End of variables declaration//GEN-END:variables
 }
