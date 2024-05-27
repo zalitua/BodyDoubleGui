@@ -32,6 +32,9 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         am.addEntry();
         newIDJL.setText(adminID);
         newPW.setText(passwordIn);
+    }
+    
+    public void showPasswordPanel() {
         passwordPanel.setVisible(true);
     }
 
@@ -106,7 +109,11 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         emailJL.setText("Email address:");
 
         email.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        email.setText("exampleemail@autuni.ac.nz");
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
 
         pWJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         pWJL.setText("Please enter a password:");
@@ -117,13 +124,11 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         fNameJL.setText("First name:");
 
         firstName.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        firstName.setText("First name");
 
         lNameJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         lNameJL.setText("Last name:");
 
         lastName.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        lastName.setText("Last name");
         lastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lastNameActionPerformed(evt);
@@ -329,6 +334,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     private void createAccountJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountJButtonMouseClicked
         // TODO add your handling code here:
         createAdmin();
+        showPasswordPanel();
         
     }//GEN-LAST:event_createAccountJButtonMouseClicked
 
@@ -340,6 +346,10 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_doneButtonMouseClicked
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
 
 
     /**

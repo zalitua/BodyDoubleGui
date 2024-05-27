@@ -29,12 +29,17 @@ public class BodyDouble {
 //        bd.createSessionTable();
 //        bd.createRoomTable();
 
-        AdminManager am = new AdminManager();
-//        String adminID = am.generateNextID();
-//        System.out.println(adminID);
-        Admin admin = new Admin("ADM000","password","John","Candy","john@candy.com","Actor","Computer Science");
-        am.addEntry();
-        am.displayAll();
+//        AdminManager am = new AdminManager();
+//        Admin admin = new Admin("ADM000","password","John","Candy","john@candy.com","Actor","Computer Science");
+        
+//        am.addEntry();
+//        am.displayAll();
+//        BodyDouble bd = new BodyDouble();
+//        bd.createMemberTable();
+        MemberManager mm = new MemberManager();
+//        mm.member = new Member("MEM000","password","John","Candy","john@candy.com", 25, 24342534, "BCIS");
+//        mm.addEntry();
+        mm.displayAll();
     }
 
     public BodyDouble() {
@@ -61,7 +66,7 @@ public class BodyDouble {
         this.checkExists("MEMBER");
         this.dbManager.updateDB("CREATE TABLE MEMBER (MEMBERID VARCHAR(6), "
                 + "PASSWORD VARCHAR(8), FIRSTNAME VARCHAR(20), LASTNAME VARCHAR(20), "
-                + "EMAIL VARCHAR(40), STUDENTID INT, DEGREESPROGRAM VARCHAR(4), AGE INT)");
+                + "EMAIL VARCHAR(40), STUDENTID INT, DEGREEPROGRAM VARCHAR(4), AGE INT)");
         System.out.println("Memeber table created");
     }
 

@@ -15,31 +15,31 @@ import java.io.IOException;
  */
 public class Member extends Person {
 
-    private String studentID;
-    private String age;
+    private int studentID;
+    private int age;
     private String degreeProgram;
 
     public Member(String userID, String password, String firstName,
-            String lastName, String email, String age, String studentID, String degreeProgram) {
+            String lastName, String email, int age, int studentID, String degreeProgram) {
         super(userID,  password, firstName, lastName, email);
         this.age = age;
         this.studentID = studentID;
         this.degreeProgram = degreeProgram;
     }
 
-    public String getStudentID() {
+    public int getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(String studetID) {
+    public void setStudentID(int studetID) {
         this.studentID = studetID;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

@@ -22,16 +22,22 @@ public class MemberManager {
     public Member member;
 
     public MemberManager() {
-        this.member = new Member("", "", "", "", "", "", "", "");
-        this.dbManager = new DBManager();
+        this.member = new Member("", "", "", "", "", 0, 0, "");
+        dbManager = new DBManager();
+    }
+    
+    public static void main(String[] args) {
+        MemberManager mm = new MemberManager();
+        mm.member = new Member("MEM000","password","John","Candy","john@candy.com", 25, 24342534, "BCIS");
+        mm.addEntry();
     }
 
     public void addEntry() {
 
-        String entry = "INSERT INTO ADMIN VALUES ('" + member.getUserID() + "' ,'"
+        String entry = "INSERT INTO MEMBER VALUES ('" + member.getUserID() + "' ,'"
                 + member.getPassword() + "' ,'" + member.getFirstName() + "' ,'"
-                + member.getLastName() + "' ,'" + member.getEmail() + "' ,'"
-                + member.getAge() + "' ,'" + member.getStudentID() + "' ,'" + member.getDegreeProgram() + "')";
+                + member.getLastName() + "' ,'" + member.getEmail() + "' ,"
+                + member.getStudentID() + " ,'" + member.getDegreeProgram() + "' ," + member.getAge() + ")";
         this.dbManager.updateDB(entry);
         System.out.println("Entry made!");
     }
@@ -47,16 +53,23 @@ public class MemberManager {
                 String firstName = rs.getString("FIRSTNAME");
                 String lastName = rs.getString("LASTNAME");
                 String email = rs.getString("EMAIL");
-                String age = rs.getString("AGE");
-                String studentID = rs.getString("STUDENTID");
-                String degreesProgram = rs.getString("DEGREESPROGRAM");
-                Member member1 = new Member(memberID, password, firstName, lastName, email, age, studentID, degreesProgram);
+                int age = rs.getInt("AGE");
+                int studentID = rs.getInt("STUDENTID");
+                String degreeProgram = rs.getString("DEGREEPROGRAM");
+                Member member1 = new Member(memberID, password, firstName, lastName, email, age, studentID, degreeProgram);
                 members.add(member1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return members;
+    }
+    
+    public void displayAll() {
+        List<Member> members = readAll();
+        for (Member member : members) {
+            System.out.println(member.toString());
+        }
     }
     
     public String generateNextID(){
