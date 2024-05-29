@@ -4,9 +4,7 @@
  */
 package BodyDoublerOO;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,19 +23,19 @@ import java.util.List;
 public class AdminManager {
 
     private final DBManager dbManager;
-    private final Connection conn;
-    private Statement statement;
+//    private final Connection conn;
+//    private Statement statement;
     public Admin admin;
 
     public AdminManager() {
         admin = new Admin("", "", "", "", "", "", "");
         dbManager = new DBManager();
-        conn = dbManager.getConnection();
-        try {
-            statement = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        conn = dbManager.getConnection();
+//        try {
+//            statement = conn.createStatement();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public void addEntry() {
@@ -46,10 +44,6 @@ public class AdminManager {
                 + admin.getPassword() + "' ,'" + admin.getFirstName() + "' ,'"
                 + admin.getLastName() + "' ,'" + admin.getEmail() + "' ,'"
                 + admin.getRole() + "' ,'" + admin.getDepartment() + "')";
-//        String entry = "INSERT INTO ADMIN VALUES ('" + admin.userID + "' ,'" 
-//                + admin.password + "' ,'" + admin.firstName + "' ,'" 
-//                + admin.lastName + "' ,'" + admin.email + "' ,'" 
-//                + admin.getRole() + "' ,'" + admin.getDepartment() + "')";
         this.dbManager.updateDB(entry);
         System.out.println("Entry made!");
     }
@@ -67,8 +61,8 @@ public class AdminManager {
                 String email = rs.getString("EMAIL");
                 String role = rs.getString("ROLE");
                 String department = rs.getString("DEPARTMENT");
-                Admin admin = new Admin(adminID, password, firstName, lastName, email, role, department);
-                admins.add(admin);
+                Admin admin1 = new Admin(adminID, password, firstName, lastName, email, role, department);
+                admins.add(admin1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,30 +76,19 @@ public class AdminManager {
             System.out.println(admin.toString());
         }
     }
-
-    public String getNextNumber() {
-        int number = 000;
-        String nextNumber = "";
-        SortedSet<String> idSet = new TreeSet<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT ADMINID FROM ADMIN");
-
-        try {
-            while (rs.next()) {
-                String entry = rs.getString("ADMINID");
-                idSet.add(entry);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (idSet.isEmpty()) {
-            nextNumber = "001";
-        } else {
-            number = Integer.parseInt(idSet.last().substring(3));
-            number++;
-            nextNumber = String.format("%03d", number);
-        }
-        return nextNumber;
+    
+    public String generateNextID(){
+        Sequencer seq = new Sequencer();
+        String num = seq.generateNextNumber("ADMIN", "ADMINID");
+        return "ADM" + num;
     }
 
+//    public void createAdminTable() {
+//
+//        this.checkExists("ADMIN");
+//        this.dbManager.updateDB("CREATE TABLE ADMIN (ADMINID VARCHAR(6), "
+//                + "PASSWORD VARCHAR(8), FIRSTNAME VARCHAR(20), LASTNAME VARCHAR(20), "
+//                + "EMAIL VARCHAR(40), ROLE VARCHAR(20), DEPARTMENT VARCHAR(30))");
+//        System.out.println("Admin table created!");
+//    }
 }

@@ -17,24 +17,31 @@ import java.util.logging.Logger;
  * @author zalit
  */
 public class BodyDouble {
+
     private final DBManager dbManager;
     private final Connection conn;
     private Statement statement;
-    
+
     public static void main(String[] args) {
 //        BodyDouble bd = new BodyDouble();
 //        bd.createAdminTable();
 //        bd.createMemberTable();
 //        bd.createSessionTable();
 //        bd.createRoomTable();
-        
-        AdminManager am = new AdminManager();
-        //String adminID = "ADM" + am.getNextNumber();
+
+//        AdminManager am = new AdminManager();
 //        Admin admin = new Admin("ADM000","password","John","Candy","john@candy.com","Actor","Computer Science");
+        
 //        am.addEntry();
-        am.displayAll();
+//        am.displayAll();
+//        BodyDouble bd = new BodyDouble();
+//        bd.createMemberTable();
+        MemberManager mm = new MemberManager();
+//        mm.member = new Member("MEM000","password","John","Candy","john@candy.com", 25, 24342534, "BCIS");
+//        mm.addEntry();
+        mm.displayAll();
     }
-    
+
     public BodyDouble() {
         dbManager = new DBManager();
         conn = dbManager.getConnection();
@@ -44,45 +51,41 @@ public class BodyDouble {
             Logger.getLogger(BodyDouble.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void createAdminTable() {
-        try {
-            this.checkExists("ADMIN");
-            this.statement = conn.createStatement();
-            this.statement.executeUpdate("CREATE TABLE ADMIN (ADMINID VARCHAR(6), "
-                    + "PASSWORD VARCHAR(8), FIRSTNAME VARCHAR(20), LASTNAME VARCHAR(20), "
-                    + "EMAIL VARCHAR(40), ROLE VARCHAR(20), DEPARTMENT VARCHAR(30))");
-            System.out.println("Admin table created!");
-        } catch (SQLException ex) {
-            Logger.getLogger(BodyDouble.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        this.checkExists("ADMIN");
+        this.dbManager.updateDB("CREATE TABLE ADMIN (ADMINID VARCHAR(6), "
+                + "PASSWORD VARCHAR(8), FIRSTNAME VARCHAR(20), LASTNAME VARCHAR(20), "
+                + "EMAIL VARCHAR(40), ROLE VARCHAR(20), DEPARTMENT VARCHAR(30))");
+        System.out.println("Admin table created!");
     }
-    
+
     public void createMemberTable() {
-        
+
         this.checkExists("MEMBER");
         this.dbManager.updateDB("CREATE TABLE MEMBER (MEMBERID VARCHAR(6), "
                 + "PASSWORD VARCHAR(8), FIRSTNAME VARCHAR(20), LASTNAME VARCHAR(20), "
-                + "EMAIL VARCHAR(40), STUDENTID INT, DEGREESPROGRAM VARCHAR(4), AGE INT)");
+                + "EMAIL VARCHAR(40), STUDENTID INT, DEGREEPROGRAM VARCHAR(4), AGE INT)");
         System.out.println("Memeber table created");
     }
-    
+
     public void createSessionTable() {
-        
+
         this.checkExists("SESSION");
         this.dbManager.updateDB("CREATE TABLE SESSION (SESSIONID VARCHAR(6), "
                 + "DATE DATE, TIME TIME, ROOM VARCHAR(20), "
                 + "MAXPEOPLE INT, ACTUALPEOPLE INT)");
         System.out.println("Session table created");
     }
-    
+
     public void createRoomTable() {
-        
+
         this.checkExists("ROOM");
         this.dbManager.updateDB("CREATE TABLE ROOM (ROOMID VARCHAR(6), ROOMNAME VARCHAR(20)");
         System.out.println("Room table created");
     }
-    
+
     public void checkExists(String table) {
         if (this.conn != null) {
             try {
@@ -90,7 +93,7 @@ public class BodyDouble {
                 String[] types = {"TABLE"};
                 statement = this.conn.createStatement();
                 ResultSet rs = dbmd.getTables(null, null, null, types);
-                
+
                 while (rs.next()) {
                     String tableName = rs.getString("TABLE_NAME");
                     System.out.println(tableName);
@@ -106,8 +109,8 @@ public class BodyDouble {
             }
         }
     }
-    
-    public void closeConnection(){
+
+    public void closeConnection() {
         this.dbManager.closeConnections();
     }
 //    public ResultSet getWeekSpecial() {
@@ -120,7 +123,7 @@ public class BodyDouble {
 //        return (rs);
 //        
 //    }
-    
+
 //    public void createWeekSpecialTable(ResultSet rs) {
 //        
 //        try {
@@ -143,6 +146,4 @@ public class BodyDouble {
 //        }
 //        
 //    }
-    
-    
 }

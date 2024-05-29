@@ -7,8 +7,12 @@ package BodyDoublerOO;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,33 +20,34 @@ import java.util.TreeSet;
  */
 public class Sequencer  {
     
-    public String getNextNumber (String path){
+    private final DBManager dbManager;
+    
+    public Sequencer(){
+        this.dbManager = new DBManager();
+    }
+    
+    public String generateNextNumber(String table, String column) {
         int number = 000;
         String nextNumber = "";
         SortedSet<String> idSet = new TreeSet<>();
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(path));
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                String[] id = line.split(",");
-                idSet.add(id[0]);
-            }
+        ResultSet rs = this.dbManager.queryDB("SELECT " + column + " FROM " + table);
 
-        } catch (IOException e) {
-            System.out.println("Sorry, there was a problem reading the file.");
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    System.out.println("Sorry, there was a problem reading the file.");
-                }
+        try {
+            while (rs.next()) {
+                String entry = rs.getString("ADMINID");
+                idSet.add(entry);
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        number = Integer.parseInt(idSet.last().substring(3));
-        number++;
-        nextNumber = String.format("%03d",number);
+
+        if (idSet.isEmpty()) {
+            nextNumber = "001";
+        } else {
+            number = Integer.parseInt(idSet.last().substring(3));
+            number++;
+            nextNumber = String.format("%03d", number);
+        }
         return nextNumber;
     }
 }

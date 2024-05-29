@@ -15,6 +15,27 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
      */
     public RegisterAdminGUI() {
         initComponents();
+        
+        passwordPanel.setVisible(false);
+    }
+    
+    public void createAdmin(){
+        String firstNameIn = firstName.getText();
+        String lastNameIn = lastName.getText();
+        String emailIn = email.getText();
+        String passwordIn = password.getText();
+        String roleIn = (String) roleJComboBox.getSelectedItem();
+        String departmentIn = (String) departmentJComboBox.getSelectedItem();
+        AdminManager am = new AdminManager();
+        String adminID = am.generateNextID();
+        am.admin = new Admin(adminID, passwordIn, firstNameIn, lastNameIn, emailIn, roleIn, departmentIn);
+        am.addEntry();
+        newIDJL.setText(adminID);
+        newPW.setText(passwordIn);
+    }
+    
+    public void showPasswordPanel() {
+        passwordPanel.setVisible(true);
     }
 
     /**
@@ -26,25 +47,93 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainJPannel = new javax.swing.JPanel();
-        welcomeAdminJL = new javax.swing.JLabel();
-        adminInstructJL = new javax.swing.JLabel();
-        fNameJL = new javax.swing.JLabel();
-        adminFNameJTextF = new javax.swing.JTextField();
-        lNameJL = new javax.swing.JLabel();
-        lNameJTextF = new javax.swing.JTextField();
-        emailJL = new javax.swing.JLabel();
-        emailJTextF = new javax.swing.JTextField();
-        pWJL = new javax.swing.JLabel();
-        adminPWJTextF = new javax.swing.JTextField();
-        departmentJL = new javax.swing.JLabel();
+        createAccountJButton = new javax.swing.JButton();
         roleJL = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox<>();
         departmentJComboBox = new javax.swing.JComboBox<>();
-        createAccountJButton = new javax.swing.JButton();
+        departmentJL = new javax.swing.JLabel();
+        emailJL = new javax.swing.JLabel();
+        email = new javax.swing.JTextField();
+        pWJL = new javax.swing.JLabel();
+        password = new javax.swing.JTextField();
+        fNameJL = new javax.swing.JLabel();
+        firstName = new javax.swing.JTextField();
+        lNameJL = new javax.swing.JLabel();
+        lastName = new javax.swing.JTextField();
+        welcomeAdminJL = new javax.swing.JLabel();
+        adminInstructJL = new javax.swing.JLabel();
+        yourEmailJL1 = new javax.swing.JLabel();
+        passwordPanel = new javax.swing.JPanel();
+        recordInfoJL = new javax.swing.JLabel();
+        doneButton = new javax.swing.JButton();
+        yourPWJL = new javax.swing.JLabel();
+        yourIDJL = new javax.swing.JLabel();
+        newIDJL = new javax.swing.JLabel();
+        newPWJL = new javax.swing.JLabel();
+        departmentJL1 = new javax.swing.JLabel();
+        roleJL1 = new javax.swing.JLabel();
+        roleJComboBox1 = new javax.swing.JComboBox<>();
+        departmentJComboBox1 = new javax.swing.JComboBox<>();
+        createAccountJButton1 = new javax.swing.JButton();
+        newPW = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 420));
+        setName("AdminRegFrame"); // NOI18N
+
+        createAccountJButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        createAccountJButton.setText("Create Account");
+        createAccountJButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createAccountJButtonMouseClicked(evt);
+            }
+        });
+
+        roleJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        roleJL.setText("Role:");
+
+        roleJComboBox.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Staff", "Other" }));
+
+        departmentJComboBox.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        departmentJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Faculty", "Estates", "AUTSA" }));
+        departmentJComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departmentJComboBoxActionPerformed(evt);
+            }
+        });
+
+        departmentJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        departmentJL.setText("Department:");
+
+        emailJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        emailJL.setText("Email address:");
+
+        email.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
+
+        pWJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        pWJL.setText("Please enter a password:");
+
+        password.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+
+        fNameJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        fNameJL.setText("First name:");
+
+        firstName.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+
+        lNameJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        lNameJL.setText("Last name:");
+
+        lastName.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        lastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastNameActionPerformed(evt);
+            }
+        });
 
         welcomeAdminJL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeAdminJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -52,137 +141,216 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
 
         adminInstructJL.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         adminInstructJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        adminInstructJL.setText("To create your admin account please fill in the boxes below");
+        adminInstructJL.setText("To create your admin account please fill in the boxes below:");
 
-        fNameJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        fNameJL.setText("First name:");
+        yourEmailJL1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
 
-        adminFNameJTextF.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
-        adminFNameJTextF.setText("First name");
+        recordInfoJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        recordInfoJL.setText("Please record your user ID and password.");
 
-        lNameJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        lNameJL.setText("Last name:");
+        doneButton.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        doneButton.setText("Done");
+        doneButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                doneButtonMouseClicked(evt);
+            }
+        });
+        doneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doneButtonActionPerformed(evt);
+            }
+        });
 
-        lNameJTextF.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
-        lNameJTextF.setText("last name");
+        yourPWJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        yourPWJL.setText("Your password is:");
 
-        emailJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        emailJL.setText("Email address:");
+        yourIDJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        yourIDJL.setText("Your user ID is:");
 
-        emailJTextF.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        emailJTextF.setText("exampleemail@autuni.ac.nz");
+        newIDJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        newIDJL.setText("default");
 
-        pWJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        pWJL.setText("Please enter a password:");
+        newPWJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
 
-        adminPWJTextF.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        departmentJL1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        departmentJL1.setText("Department:");
 
-        departmentJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        departmentJL.setText("Department:");
+        roleJL1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        roleJL1.setText("Role:");
 
-        roleJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        roleJL.setText("Role:");
+        roleJComboBox1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        roleJComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Staff", "Other" }));
 
-        roleJComboBox.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Staff", "Other" }));
+        departmentJComboBox1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        departmentJComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Faculty", "Estates", "AUTSA" }));
 
-        departmentJComboBox.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        departmentJComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Faculty", "Estates", "AUTSA" }));
+        createAccountJButton1.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        createAccountJButton1.setText("Create Account");
 
-        createAccountJButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        createAccountJButton.setText("Create Account");
+        newPW.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        newPW.setText("default");
 
-        javax.swing.GroupLayout mainJPannelLayout = new javax.swing.GroupLayout(mainJPannel);
-        mainJPannel.setLayout(mainJPannelLayout);
-        mainJPannelLayout.setHorizontalGroup(
-            mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(welcomeAdminJL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(mainJPannelLayout.createSequentialGroup()
-                .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(adminInstructJL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(mainJPannelLayout.createSequentialGroup()
-                            .addGap(73, 73, 73)
-                            .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(mainJPannelLayout.createSequentialGroup()
-                                    .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(mainJPannelLayout.createSequentialGroup()
-                                            .addComponent(roleJL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(mainJPannelLayout.createSequentialGroup()
-                                            .addComponent(fNameJL, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(adminFNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(pWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(mainJPannelLayout.createSequentialGroup()
-                                            .addGap(62, 62, 62)
-                                            .addComponent(lNameJL, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(1, 1, 1)
-                                            .addComponent(lNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(mainJPannelLayout.createSequentialGroup()
-                                            .addGap(16, 16, 16)
-                                            .addComponent(departmentJL, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(departmentJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(adminPWJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(mainJPannelLayout.createSequentialGroup()
-                                    .addComponent(emailJL)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(emailJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(35, 35, 35)))
-                    .addGroup(mainJPannelLayout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(createAccountJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+        javax.swing.GroupLayout passwordPanelLayout = new javax.swing.GroupLayout(passwordPanel);
+        passwordPanel.setLayout(passwordPanelLayout);
+        passwordPanelLayout.setHorizontalGroup(
+            passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passwordPanelLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addGroup(passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(passwordPanelLayout.createSequentialGroup()
+                        .addComponent(recordInfoJL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(doneButton))
+                    .addGroup(passwordPanelLayout.createSequentialGroup()
+                        .addComponent(yourIDJL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newIDJL, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(yourPWJL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newPW)
+                        .addGap(28, 28, 28)
+                        .addComponent(newPWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
-        mainJPannelLayout.setVerticalGroup(
-            mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainJPannelLayout.createSequentialGroup()
-                .addComponent(welcomeAdminJL, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(adminInstructJL)
+        passwordPanelLayout.setVerticalGroup(
+            passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(passwordPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(yourIDJL)
+                    .addComponent(yourPWJL)
+                    .addComponent(newIDJL)
+                    .addComponent(newPWJL)
+                    .addComponent(newPW))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fNameJL)
-                    .addComponent(adminFNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lNameJL)
-                    .addComponent(lNameJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pWJL)
-                    .addComponent(adminPWJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailJTextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailJL))
-                .addGap(38, 38, 38)
-                .addGroup(mainJPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roleJL)
-                    .addComponent(departmentJL)
-                    .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(departmentJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(createAccountJButton)
-                .addGap(0, 80, Short.MAX_VALUE))
+                .addGroup(passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(recordInfoJL)
+                    .addComponent(doneButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainJPannel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(passwordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(roleJL, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(departmentJL, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(password))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(departmentJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(emailJL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lNameJL, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fNameJL, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(adminInstructJL, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(yourEmailJL1)
+                        .addGap(126, 126, 126))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(welcomeAdminJL, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(createAccountJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(194, 194, 194))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(mainJPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 186, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(welcomeAdminJL)
+                .addGap(16, 16, 16)
+                .addComponent(adminInstructJL)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fNameJL)
+                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lNameJL)
+                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailJL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roleJL)
+                    .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(departmentJL)
+                    .addComponent(departmentJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pWJL)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(createAccountJButton)
+                .addGap(12, 12, 12)
+                .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(yourEmailJL1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
+    private void departmentJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departmentJComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_departmentJComboBoxActionPerformed
+
+    private void lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastNameActionPerformed
+
+    private void createAccountJButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountJButtonMouseClicked
+        // TODO add your handling code here:
+        createAdmin();
+        showPasswordPanel();
+        
+    }//GEN-LAST:event_createAccountJButtonMouseClicked
+
+    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doneButtonActionPerformed
+
+    private void doneButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneButtonMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_doneButtonMouseClicked
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -221,21 +389,34 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField adminFNameJTextF;
     private javax.swing.JLabel adminInstructJL;
-    private javax.swing.JTextField adminPWJTextF;
     private javax.swing.JButton createAccountJButton;
+    private javax.swing.JButton createAccountJButton1;
     private javax.swing.JComboBox<String> departmentJComboBox;
+    private javax.swing.JComboBox<String> departmentJComboBox1;
     private javax.swing.JLabel departmentJL;
+    private javax.swing.JLabel departmentJL1;
+    private javax.swing.JButton doneButton;
+    private javax.swing.JTextField email;
     private javax.swing.JLabel emailJL;
-    private javax.swing.JTextField emailJTextF;
     private javax.swing.JLabel fNameJL;
+    private javax.swing.JTextField firstName;
     private javax.swing.JLabel lNameJL;
-    private javax.swing.JTextField lNameJTextF;
-    private javax.swing.JPanel mainJPannel;
+    private javax.swing.JTextField lastName;
+    private javax.swing.JLabel newIDJL;
+    private javax.swing.JLabel newPW;
+    private javax.swing.JLabel newPWJL;
     private javax.swing.JLabel pWJL;
+    private javax.swing.JTextField password;
+    private javax.swing.JPanel passwordPanel;
+    private javax.swing.JLabel recordInfoJL;
     private javax.swing.JComboBox<String> roleJComboBox;
+    private javax.swing.JComboBox<String> roleJComboBox1;
     private javax.swing.JLabel roleJL;
+    private javax.swing.JLabel roleJL1;
     private javax.swing.JLabel welcomeAdminJL;
+    private javax.swing.JLabel yourEmailJL1;
+    private javax.swing.JLabel yourIDJL;
+    private javax.swing.JLabel yourPWJL;
     // End of variables declaration//GEN-END:variables
 }
