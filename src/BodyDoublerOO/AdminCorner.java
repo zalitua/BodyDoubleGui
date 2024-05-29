@@ -61,7 +61,7 @@ public class AdminCorner extends javax.swing.JFrame {
         editDeleteInstructJLabel = new javax.swing.JLabel();
         sessionsJLabel = new javax.swing.JLabel();
         sessionIDJComboB = new javax.swing.JComboBox<>();
-        editButton = new javax.swing.JButton();
+        editSessionButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         adminSessionJScroll = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -73,7 +73,7 @@ public class AdminCorner extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(780, 440));
 
-        welcomeL.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        welcomeL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeL.setText("Welcome to the Admin Corner");
 
@@ -81,7 +81,7 @@ public class AdminCorner extends javax.swing.JFrame {
         editDeleteInstructJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editDeleteInstructJLabel.setText("To delete or edit a session, pick the session ID and then click the buttion you want to apply");
 
-        sessionsJLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        sessionsJLabel.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         sessionsJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sessionsJLabel.setText("Session ID");
 
@@ -93,11 +93,11 @@ public class AdminCorner extends javax.swing.JFrame {
             }
         });
 
-        editButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        editButton.setText("Edit Session");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
+        editSessionButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        editSessionButton.setText("Edit Session");
+        editSessionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
+                editSessionButtonActionPerformed(evt);
             }
         });
 
@@ -135,6 +135,11 @@ public class AdminCorner extends javax.swing.JFrame {
 
         addButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         addButton.setText("Add Session");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,7 +168,7 @@ public class AdminCorner extends javax.swing.JFrame {
                         .addGap(118, 118, 118)
                         .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(editButton)
+                        .addComponent(editSessionButton)
                         .addGap(42, 42, 42)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -189,7 +194,7 @@ public class AdminCorner extends javax.swing.JFrame {
                     .addComponent(sessionsJLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(editButton)
+                    .addComponent(editSessionButton)
                     .addComponent(deleteButton)
                     .addComponent(addButton))
                 .addGap(18, 18, 18)
@@ -211,13 +216,21 @@ public class AdminCorner extends javax.swing.JFrame {
         //action to delete a session
     }//GEN-LAST:event_sessionIDJComboBActionPerformed
 
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editButtonActionPerformed
+    private void editSessionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSessionButtonActionPerformed
+        // open to EditSessionGUI
+        EditSessionGUI edit = new EditSessionGUI();
+        edit.setVisible(true);
+    }//GEN-LAST:event_editSessionButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // open to AddEsssionGUI
+        AddSessionGUI add = new AddSessionGUI();
+        add.setVisible(true);
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,8 +271,8 @@ public class AdminCorner extends javax.swing.JFrame {
     private javax.swing.JButton addButton;
     private javax.swing.JScrollPane adminSessionJScroll;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JButton editButton;
     private javax.swing.JLabel editDeleteInstructJLabel;
+    private javax.swing.JButton editSessionButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane2;
