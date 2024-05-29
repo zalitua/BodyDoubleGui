@@ -23,19 +23,11 @@ import java.util.List;
 public class AdminManager {
 
     private final DBManager dbManager;
-//    private final Connection conn;
-//    private Statement statement;
     public Admin admin;
 
     public AdminManager() {
         admin = new Admin("", "", "", "", "", "", "");
         dbManager = new DBManager();
-//        conn = dbManager.getConnection();
-//        try {
-//            statement = conn.createStatement();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     public void addEntry() {

@@ -29,7 +29,7 @@ public class SessionManager {
     
     public void addEntry() {
 
-        String entry = "INSERT INTO ADMIN VALUES ('" + session.getSessionID() + "' ,'"
+        String entry = "INSERT INTO SESSION VALUES ('" + session.getSessionID() + "' ,'"
                 + session.getDateOfSession() + "' ,'" + session.getTimeOfSession() + "' ,'"
                 + session.getLocationOfSession() + "' ,'" + session.getMaxNoOfPeople()
                 + "' ,'" + session.getNoOfPeople() + "')";
