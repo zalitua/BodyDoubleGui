@@ -19,7 +19,7 @@ public class AdminCorner extends javax.swing.JFrame {
     /**
      * Creates new form AdminCorner
      */
-    AdminManager ma = new AdminManager();
+    SessionManager sM = new SessionManager();
     public AdminCorner() {
         initComponents();
          
@@ -28,20 +28,19 @@ public class AdminCorner extends javax.swing.JFrame {
     
     private void populateTable()
     {
-        List<Admin> admins = ma.readAll();
+        List<Session> session = sM.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionJTable.getModel();
         model.setRowCount(0);
         
-        for(Admin admin: admins)
+        for(Session sessions: session)
         {
             model.addRow(new Object[]{
-                admin.getUserID(),
-                admin.getPassword(),
-                admin.getFirstName(),
-                admin.getLastName(),
-                admin.getEmail(),
-                admin.getRole(),
-                admin.getDepartment()
+               sessions.getSessionID(),
+                sessions.getDateOfSession(),
+                sessions.getTimeOfSession(),
+                sessions.getLocationOfSession(),
+                sessions.getNoOfPeople(),
+                sessions.getMaxNoOfPeople()
             });
         }
     }
