@@ -4,6 +4,8 @@
  */
 package BodyDoublerOO;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author GVE Rouse
@@ -81,6 +83,11 @@ public class AddSessionGUI extends javax.swing.JFrame {
 
         dayJComboB.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         dayJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        dayJComboB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dayJComboBActionPerformed(evt);
+            }
+        });
 
         monthJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         monthJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -130,6 +137,11 @@ public class AddSessionGUI extends javax.swing.JFrame {
         confirmButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         confirmButton.setText("Create Session");
         confirmButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        confirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,6 +228,33 @@ public class AddSessionGUI extends javax.swing.JFrame {
     private void yearComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearComboBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_yearComboBActionPerformed
+
+    private void dayJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayJComboBActionPerformed
+        // append the day to date element
+    }//GEN-LAST:event_dayJComboBActionPerformed
+
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
+        String day = (String) dayJComboB.getSelectedItem();
+        String month = (String) monthJComboB.getSelectedItem();
+        String year = (String) yearComboB.getSelectedItem();
+        //concatinate them
+        String date = day+"/"+month+"/"+year;
+        
+        String time = (String) timeJComboB.getSelectedItem();
+        String room = (String) roomJComboB.getSelectedItem();
+        
+        int maxP = (int) maxPartJComboB.getSelectedItem();
+        
+        //new session object
+        Session createSession= new Session("",date,time,room,0,maxP);
+        //instance of SessionManager
+        SessionManager sManager = new SessionManager();
+        //set session details for sessionmanager object
+        sManager.session= createSession;
+        sManager.addEntry();
+        //conf message
+       // JOptionPane.showMessageDialog(this, "Session created successfully");
+    }//GEN-LAST:event_confirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
