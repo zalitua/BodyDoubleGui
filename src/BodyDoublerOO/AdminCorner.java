@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author GVE Rouse
@@ -20,32 +19,40 @@ public class AdminCorner extends javax.swing.JFrame {
      * Creates new form AdminCorner
      */
     SessionManager sM = new SessionManager();
+
     public AdminCorner() {
         initComponents();
-         
+
         populateTable();
+        populateSessionComboBox();
     }
-    
-    private void populateTable()
-    {
+
+    private void populateTable() {
         List<Session> session = sM.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionJTable.getModel();
         model.setRowCount(0);
-        
-        for(Session sessions: session)
-        {
-            model.addRow(new Object[]{
-               sessions.getSessionID(),
-                sessions.getDateOfSession(),
-                sessions.getTimeOfSession(),
-                sessions.getLocationOfSession(),
-                sessions.getNoOfPeople(),
-                sessions.getMaxNoOfPeople()
-            });
+
+        if (session != null) {
+            for (Session sessions : session) {
+                model.addRow(new Object[]{
+                    sessions.getSessionID(),
+                    sessions.getDateOfSession(),
+                    sessions.getTimeOfSession(),
+                    sessions.getLocationOfSession(),
+                    sessions.getNoOfPeople(),
+                    sessions.getMaxNoOfPeople()
+                });
+            }
         }
     }
-    
-     
+
+    public void populateSessionComboBox() {
+        List<String> sessionIDs = sM.getSessionIDs();
+        sessionIDJComboB.removeAllItems(); //to prevent duplicates
+        for (String id : sessionIDs) {
+            sessionIDJComboB.addItem(id);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,8 +72,8 @@ public class AdminCorner extends javax.swing.JFrame {
         adminSessionJScroll = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         sessionJTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addRoomButton = new javax.swing.JButton();
+        deleteRoomButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,21 +121,21 @@ public class AdminCorner extends javax.swing.JFrame {
 
             },
             new String [] {
-                "User ID", "Password", "First Name", "Last Name", "Email", "Role", "Department"
+                "Session ID", "Date", "Time", "Location", "People", "Max People"
             }
         ));
         jScrollPane2.setViewportView(sessionJTable);
 
         adminSessionJScroll.setViewportView(jScrollPane2);
 
-        jButton1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        jButton1.setText("Add Room");
+        addRoomButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        addRoomButton.setText("Add Room");
 
-        jButton2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        jButton2.setText("Delete Room");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deleteRoomButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        deleteRoomButton.setText("Delete Room");
+        deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deleteRoomButtonActionPerformed(evt);
             }
         });
 
@@ -173,9 +180,9 @@ public class AdminCorner extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(190, 190, 190)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -198,8 +205,8 @@ public class AdminCorner extends javax.swing.JFrame {
                     .addComponent(addButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(addRoomButton)
+                    .addComponent(deleteRoomButton))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
@@ -211,8 +218,8 @@ public class AdminCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void sessionIDJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sessionIDJComboBActionPerformed
-        // TODO add your handling code here:
         //action to delete a session
+
     }//GEN-LAST:event_sessionIDJComboBActionPerformed
 
     private void editSessionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSessionButtonActionPerformed
@@ -221,9 +228,9 @@ public class AdminCorner extends javax.swing.JFrame {
         edit.setVisible(true);
     }//GEN-LAST:event_editSessionButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void deleteRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRoomButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_deleteRoomButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // open to AddEsssionGUI
@@ -268,12 +275,12 @@ public class AdminCorner extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton addRoomButton;
     private javax.swing.JScrollPane adminSessionJScroll;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton deleteRoomButton;
     private javax.swing.JLabel editDeleteInstructJLabel;
     private javax.swing.JButton editSessionButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> sessionIDJComboB;
     private javax.swing.JTable sessionJTable;

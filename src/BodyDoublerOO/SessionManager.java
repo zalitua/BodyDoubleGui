@@ -18,7 +18,13 @@ import java.util.logging.Logger;
  * @author zalit
  */
 public class SessionManager {
-    
+
+//    public static void main(String[] args) {
+//        SessionManager sess = new SessionManager();
+//        Session nwAdd = new Session("SES001", "05/06/24", "10 am", "WZ404", "2", "5");
+//        sess.session = nwAdd;
+//        sess.addEntry();
+//    }
     private final DBManager dbManager;
     public Session session;
 
@@ -26,10 +32,10 @@ public class SessionManager {
         this.session = new Session("", "", "", "", "", "");
         this.dbManager = new DBManager();
     }
-    
+
     public void addEntry() {
 
-        String entry = "INSERT INTO ADMIN VALUES ('" + session.getSessionID() + "' ,'"
+        String entry = "INSERT INTO SESSION VALUES ('" + session.getSessionID() + "' ,'"
                 + session.getDateOfSession() + "' ,'" + session.getTimeOfSession() + "' ,'"
                 + session.getLocationOfSession() + "' ,'" + session.getMaxNoOfPeople()
                 + "' ,'" + session.getNoOfPeople() + "')";
@@ -57,18 +63,33 @@ public class SessionManager {
         }
         return sessions;
     }
-    
+
     public void displayAll() {
         List<Session> sessions = readAll();
         for (Session session : sessions) {
             System.out.println(session.toString());
         }
     }
-    
-    public String generateNextID(){
+
+    public String generateNextID() {
         Sequencer seq = new Sequencer();
         String num = seq.generateNextNumber("SESSION", "SESSIONID");
         return "SES" + num;
+    }
+
+    public List<String> getSessionIDs() {
+        List<String> sessionIDs = new ArrayList<>();
+        ResultSet rs = this.dbManager.queryDB("SELECT SESSIONID FROM SESSION");
+
+        try {
+            while (rs.next()) {
+                sessionIDs.add(rs.getString("SESSIONID"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sessionIDs;
+
     }
 
 }

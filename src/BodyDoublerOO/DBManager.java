@@ -92,6 +92,10 @@ public final class DBManager {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        finally{
+            closeResources(statement, null);
+        }
     }
 
     public void showTables() {
@@ -164,6 +168,16 @@ public final class DBManager {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void closeResources(Statement statement, ResultSet resultSet) {
+        try
+        {
+            if(resultSet!=null) resultSet.close();
+            if(statement!= null) statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

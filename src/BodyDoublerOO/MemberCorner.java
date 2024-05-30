@@ -5,7 +5,9 @@
 package BodyDoublerOO;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,9 +18,43 @@ public class MemberCorner extends javax.swing.JFrame {
     /**
      * Creates new form AdminCorner
      */
+    SessionManager sM = new SessionManager();
     public MemberCorner() {
         initComponents();
+        populateTable();
+        populateSessionComboBox();
     }
+    
+    
+    private void populateTable()
+    {
+        List<Session> session = sM.readAll();
+        DefaultTableModel model = (DefaultTableModel) sessionJTable.getModel();
+        model.setRowCount(0);
+        
+        if (session != null) {
+            for (Session sessions : session) {
+                model.addRow(new Object[]{
+                    sessions.getSessionID(),
+                    sessions.getDateOfSession(),
+                    sessions.getTimeOfSession(),
+                    sessions.getLocationOfSession(),
+                    sessions.getNoOfPeople(),
+                    sessions.getMaxNoOfPeople()
+                });
+            }
+        }
+    }
+    //to populate the session ID drop down box
+    public void populateSessionComboBox()
+        {
+            List <String> sessionIDs = sM.getSessionIDs();
+            sessionIDJComboB.removeAllItems(); //to prevent duplicates
+            for( String id : sessionIDs)
+            {
+                sessionIDJComboB.addItem(id);
+            }
+        }
     
      public void registerSession() {
         Scanner scan = new Scanner(System.in);
