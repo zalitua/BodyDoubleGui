@@ -26,20 +26,20 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        welcomeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        mainTextArea = new javax.swing.JTextArea();
+        LogInLabel = new javax.swing.JLabel();
+        IDLabel = new javax.swing.JLabel();
+        PwdLabel = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        registerLabel = new javax.swing.JLabel();
+        LogInButton = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
+        selectLabel = new javax.swing.JLabel();
+        adminRadioButton = new javax.swing.JRadioButton();
+        memberRadioButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connection Maker");
@@ -47,26 +47,26 @@ public class MainPage extends javax.swing.JFrame {
         setFocusCycleRoot(false);
         setPreferredSize(new java.awt.Dimension(640, 420));
 
-        jLabel1.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
-        jLabel1.setText("Welcome to Connection Maker!");
+        welcomeLabel.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
+        welcomeLabel.setText("Welcome to Connection Maker!");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(3);
-        jTextArea1.setText("It's purpose is to help people connect that are interested in body doubling. Body doubling is often popular with neurodivergent people, and essentially involves two or more people getting together to study. It can help with motivation and maintaining focus.");
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(jTextArea1);
+        mainTextArea.setEditable(false);
+        mainTextArea.setColumns(20);
+        mainTextArea.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setRows(3);
+        mainTextArea.setText("The purpose of Connection Maker is to help people connect that are interested in body doubling. Body doubling is often popular with neurodivergent people and involves two or more people getting together to study. It can help with motivation and maintaining focus.");
+        mainTextArea.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(mainTextArea);
 
-        jLabel2.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        jLabel2.setText("Returning users, please log in:");
+        LogInLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        LogInLabel.setText("Returning users, please log in:");
 
-        jLabel3.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel3.setText("User ID:");
+        IDLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        IDLabel.setText("User ID:");
 
-        jLabel4.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel4.setText("Password:");
+        PwdLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        PwdLabel.setText("Password:");
 
         jTextField1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,33 +77,33 @@ public class MainPage extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        jLabel5.setText("If you are a new user please register:");
+        registerLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        registerLabel.setText("If you are a new user please register:");
 
-        jButton1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        jButton1.setText("Log in");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LogInButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        LogInButton.setText("Log in");
+        LogInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LogInButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        jButton2.setText("Register");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        registerButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        registerButton.setText("Register");
+        registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                registerButtonMouseClicked(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel6.setText("Please select:");
+        selectLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        selectLabel.setText("Please select:");
 
-        jRadioButton1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jRadioButton1.setText("Administrator");
+        adminRadioButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        adminRadioButton.setText("Administrator");
 
-        jRadioButton2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jRadioButton2.setText("Member");
+        memberRadioButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        memberRadioButton.setText("Member");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,74 +113,77 @@ public class MainPage extends javax.swing.JFrame {
                 .addGap(196, 196, 196)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(adminRadioButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton2)
+                                .addComponent(memberRadioButton)
                                 .addGap(79, 79, 79)
-                                .addComponent(jButton2))
-                            .addComponent(jLabel6))
+                                .addComponent(registerButton))
+                            .addComponent(selectLabel))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(LogInButton)
                         .addGap(274, 274, 274))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(IDLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel4)
+                        .addComponent(PwdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(149, 149, 149))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(200, 200, 200)
+                                .addComponent(LogInLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(177, 177, 177)
+                                .addComponent(registerLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(142, 142, 142)
+                                .addComponent(welcomeLabel)))
+                        .addGap(0, 141, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(LogInLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(IDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PwdLabel)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(LogInButton)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(registerLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(adminRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2))
-                    .addComponent(jButton2))
+                        .addComponent(memberRadioButton))
+                    .addComponent(registerButton))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
@@ -191,15 +194,15 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LogInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LogInButtonActionPerformed
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         // TODO add your handling code here:
         this.setVisible(true);
         new RegisterAdminGUI().setVisible(true);
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_registerButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -237,19 +240,19 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel IDLabel;
+    private javax.swing.JButton LogInButton;
+    private javax.swing.JLabel LogInLabel;
+    private javax.swing.JLabel PwdLabel;
+    private javax.swing.JRadioButton adminRadioButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextArea mainTextArea;
+    private javax.swing.JRadioButton memberRadioButton;
+    private javax.swing.JButton registerButton;
+    private javax.swing.JLabel registerLabel;
+    private javax.swing.JLabel selectLabel;
+    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
