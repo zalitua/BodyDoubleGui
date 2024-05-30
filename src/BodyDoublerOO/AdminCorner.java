@@ -214,7 +214,7 @@ public class AdminCorner extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
+        String sessionID = (String) sessionIDJComboB.getSelectedItem();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void sessionIDJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sessionIDJComboBActionPerformed
