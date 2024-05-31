@@ -42,6 +42,11 @@ public class SessionManager {
         this.dbManager.updateDB(entry);
         System.out.println("Entry made!");
     }
+    
+    public void deleteEntry(String sessionID) {
+        String entry = "DELETE FROM SESSION WHERE SESSIONID = '" + sessionID + "'";
+        this.dbManager.updateDB(entry);
+    }
 
     public List<Session> readAll() {
 

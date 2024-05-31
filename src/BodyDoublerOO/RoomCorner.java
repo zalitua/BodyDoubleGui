@@ -22,7 +22,7 @@ public class RoomCorner extends javax.swing.JFrame {
         initComponents();
         
         populateTable();
-        populateSessionComboBox();
+        populateRoomComboBox();
     }
     
     public void createRoom(){
@@ -54,8 +54,8 @@ public class RoomCorner extends javax.swing.JFrame {
         }
     }
 
-    public void populateSessionComboBox() {
-        List<String> roomIDs = rm.roomIDList();
+    public void populateRoomComboBox() {
+        List<String> roomIDs = rm.roomList("ROOMID");
         roomComboBox.removeAllItems(); //to prevent duplicates
         for (String id : roomIDs) {
             roomComboBox.addItem(id);
@@ -81,7 +81,7 @@ public class RoomCorner extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         roomsTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         roomLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         roomLabel.setText("Room name:");
@@ -201,13 +201,13 @@ public class RoomCorner extends javax.swing.JFrame {
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         createRoom();
         populateTable();
-        populateSessionComboBox();
+        populateRoomComboBox();
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void addButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButton1MouseClicked
         deleteRoom();
         populateTable();
-        populateSessionComboBox();
+        populateRoomComboBox();
     }//GEN-LAST:event_addButton1MouseClicked
 
     /**

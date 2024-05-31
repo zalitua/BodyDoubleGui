@@ -4,6 +4,9 @@
  */
 package BodyDoublerOO;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author GVE Rouse
@@ -13,13 +16,19 @@ public class AddSessionGUI extends javax.swing.JFrame {
     /**
      * Creates new form EditSessionGUI
      */
+    
+    SessionManager sm = new SessionManager();
+    
     public AddSessionGUI() {
         initComponents();
+        
+        populateTable();
+        populateRoomComboBox();
     }
     
     public void createSession(){
-        SessionManager sm = new SessionManager();
-        String date = (String) dayJComboB.getSelectedItem() + monthJComboB.getSelectedItem() + yearComboB.getSelectedItem();
+        
+        String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
         String room = (String) roomJComboB.getSelectedItem();
         int maxP = Integer.parseInt((String) maxPartJComboB.getSelectedItem());
@@ -27,6 +36,35 @@ public class AddSessionGUI extends javax.swing.JFrame {
         sm.session = new Session(sessionID, date, time, room, 0, maxP);
         sm.addEntry();
     }
+    
+    private void populateTable() {
+        List<Session> session = sm.readAll();
+        DefaultTableModel model = (DefaultTableModel) sessionTable.getModel();
+        model.setRowCount(0);
+
+        if (session != null) {
+            for (Session sessions : session) {
+                model.addRow(new Object[]{
+                    sessions.getSessionID(),
+                    sessions.getDateOfSession(),
+                    sessions.getTimeOfSession(),
+                    sessions.getLocationOfSession(),
+                    sessions.getNoOfPeople(),
+                    sessions.getMaxNoOfPeople()
+                });
+            }
+        }
+    }
+    
+    public void populateRoomComboBox() {
+        RoomManager rm = new RoomManager();
+        List<String> roomNames = rm.roomList("ROOMNAME");
+        roomJComboB.removeAllItems(); //to prevent duplicates
+        for (String name : roomNames) {
+            roomJComboB.addItem(name);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +77,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
 
         welcomeEditJL = new javax.swing.JLabel();
         sessionJScrollP = new javax.swing.JScrollPane();
-        sessionsTable = new javax.swing.JTable();
+        sessionTable = new javax.swing.JTable();
         dateJL = new javax.swing.JLabel();
         dayJL = new javax.swing.JLabel();
         dayJComboB = new javax.swing.JComboBox<>();
@@ -55,32 +93,32 @@ public class AddSessionGUI extends javax.swing.JFrame {
         maxPartJComboB = new javax.swing.JComboBox<>();
         confirmButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         welcomeEditJL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeEditJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeEditJL.setText("Add Session");
 
-        sessionsTable.setModel(new javax.swing.table.DefaultTableModel(
+        sessionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"SES000", "31/03/2024", "8:00 am", "WZ401", "3", "0"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"", "", "", "", "0"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Session ID", "Date", "Time", "Location", "Max People", "Current People"
+                "Date", "Time", "Location", "Max People", "Current People"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        sessionJScrollP.setViewportView(sessionsTable);
+        sessionJScrollP.setViewportView(sessionTable);
 
         dateJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         dateJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -235,6 +273,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
 
     private void confirmButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseClicked
         createSession();
+        populateTable();
     }//GEN-LAST:event_confirmButtonMouseClicked
 
     /**
@@ -285,7 +324,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> roomJComboB;
     private javax.swing.JLabel roomJL;
     private javax.swing.JScrollPane sessionJScrollP;
-    private javax.swing.JTable sessionsTable;
+    private javax.swing.JTable sessionTable;
     private javax.swing.JComboBox<String> timeJComboB;
     private javax.swing.JLabel timeJL;
     private javax.swing.JLabel welcomeEditJL;

@@ -81,13 +81,13 @@ public class RoomManager {
         return "ROM" + num;
     }
     
-    public List<String> roomIDList() {
+    public List<String> roomList(String column) {
         List<String> rooms = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT ROOMID FROM ROOM");
+        ResultSet rs = this.dbManager.queryDB("SELECT " + column + " FROM ROOM");
 
         try {
             while (rs.next()) {
-                rooms.add(rs.getString("ROOMID"));
+                rooms.add(rs.getString(column));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RoomManager.class.getName()).log(Level.SEVERE, null, ex);

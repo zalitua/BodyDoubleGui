@@ -117,6 +117,11 @@ public class AdminCorner extends javax.swing.JFrame {
 
         manageRoomsButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         manageRoomsButton.setText("Manage Rooms");
+        manageRoomsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manageRoomsButtonMouseClicked(evt);
+            }
+        });
         manageRoomsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageRoomsButtonActionPerformed(evt);
@@ -216,6 +221,11 @@ public class AdminCorner extends javax.swing.JFrame {
         AddSessionGUI add = new AddSessionGUI();
         add.setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void manageRoomsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageRoomsButtonMouseClicked
+        RoomCorner rc = new RoomCorner();
+        rc.setVisible(true);
+    }//GEN-LAST:event_manageRoomsButtonMouseClicked
 
     /**
      * @param args the command line arguments
