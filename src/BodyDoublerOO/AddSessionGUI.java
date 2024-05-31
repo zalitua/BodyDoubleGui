@@ -16,6 +16,17 @@ public class AddSessionGUI extends javax.swing.JFrame {
     public AddSessionGUI() {
         initComponents();
     }
+    
+    public void createSession(){
+        SessionManager sm = new SessionManager();
+        String date = (String) dayJComboB.getSelectedItem() + monthJComboB.getSelectedItem() + yearComboB.getSelectedItem();
+        String time = (String) timeJComboB.getSelectedItem();
+        String room = (String) roomJComboB.getSelectedItem();
+        int maxP = Integer.parseInt((String) maxPartJComboB.getSelectedItem());
+        String sessionID = sm.generateNextID();
+        sm.session = new Session(sessionID, date, time, room, 0, maxP);
+        sm.addEntry();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,7 +63,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
 
         sessionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
+                {"SES000", "31/03/2024", "8:00 am", "WZ401", "3", "0"},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
@@ -130,6 +141,11 @@ public class AddSessionGUI extends javax.swing.JFrame {
         confirmButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         confirmButton.setText("Create Session");
         confirmButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        confirmButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                confirmButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,6 +232,10 @@ public class AddSessionGUI extends javax.swing.JFrame {
     private void yearComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearComboBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_yearComboBActionPerformed
+
+    private void confirmButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseClicked
+        createSession();
+    }//GEN-LAST:event_confirmButtonMouseClicked
 
     /**
      * @param args the command line arguments

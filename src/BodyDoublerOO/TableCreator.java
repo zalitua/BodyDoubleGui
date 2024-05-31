@@ -16,39 +16,38 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class BodyDouble {
+public class TableCreator {
 
     private final DBManager dbManager;
     private final Connection conn;
     private Statement statement;
 
     public static void main(String[] args) {
-//        BodyDouble bd = new BodyDouble();
+        TableCreator bd = new TableCreator();
 //        bd.createAdminTable();
 //        bd.createMemberTable();
-//        bd.createSessionTable();
-//        bd.createRoomTable();
+        bd.createSessionTable();
 
-//        AdminManager am = new AdminManager();
-//        Admin admin = new Admin("ADM000","password","John","Candy","john@candy.com","Actor","Computer Science");
+        //bd.createRoomTable();
         
-//        am.addEntry();
-//        am.displayAll();
-//        BodyDouble bd = new BodyDouble();
-//        bd.createMemberTable();
-        MemberManager mm = new MemberManager();
+        //MemberManager mm = new MemberManager();
 //        mm.member = new Member("MEM000","password","John","Candy","john@candy.com", 25, 24342534, "BCIS");
 //        mm.addEntry();
-        mm.displayAll();
+        //mm.displayAll();
+        
+        //RoomManager rm =new RoomManager();
+        //rm.room = new Room("ROM000", "WZ401");
+        //rm.addEntry();
+        //rm.displayAll();
     }
 
-    public BodyDouble() {
+    public TableCreator() {
         dbManager = new DBManager();
         conn = dbManager.getConnection();
         try {
             statement = conn.createStatement();
         } catch (SQLException ex) {
-            Logger.getLogger(BodyDouble.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TableCreator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -74,7 +73,7 @@ public class BodyDouble {
 
         this.checkExists("SESSION");
         this.dbManager.updateDB("CREATE TABLE SESSION (SESSIONID VARCHAR(6), "
-                + "DATE DATE, TIME TIME, ROOM VARCHAR(20), "
+                + "DATE VARCHAR(20), TIME VARCHAR(20), ROOM VARCHAR(20), "
                 + "MAXPEOPLE INT, ACTUALPEOPLE INT)");
         System.out.println("Session table created");
     }
@@ -82,7 +81,7 @@ public class BodyDouble {
     public void createRoomTable() {
 
         this.checkExists("ROOM");
-        this.dbManager.updateDB("CREATE TABLE ROOM (ROOMID VARCHAR(6), ROOMNAME VARCHAR(20)");
+        this.dbManager.updateDB("CREATE TABLE ROOM (ROOMID VARCHAR(6), ROOMNAME VARCHAR(20))");
         System.out.println("Room table created");
     }
 
@@ -105,7 +104,7 @@ public class BodyDouble {
                 }
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(BodyDouble.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TableCreator.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -113,37 +112,4 @@ public class BodyDouble {
     public void closeConnection() {
         this.dbManager.closeConnections();
     }
-//    public ResultSet getWeekSpecial() {
-//        ResultSet rs = null;
-//        try {
-//            rs = this.statement.executeQuery("SELECT TITLE, PRICE, DISCOUNT FROM BOOK, PROMOTION WHERE BOOK.CATEGORY=PROMOTION.CATEGORY");
-//        } catch (SQLException ex) {
-//            Logger.getLogger(BodyDouble.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return (rs);
-//        
-//    }
-
-//    public void createWeekSpecialTable(ResultSet rs) {
-//        
-//        try {
-//            this.checkExists("WEEKSPECIAL");
-//            this.statement = conn.createStatement();
-//            this.statement.executeUpdate("CREATE TABLE WEEKSPECIAL (TITLE VARCHAR(50), SPECIALPRICE FLOAT)");
-//            System.out.println("Table WEEKSPECIAL created!");
-//            while (rs.next()) {
-//                String title = rs.getString("TITLE");
-//                float price = rs.getFloat("PRICE");
-//                int discount = rs.getInt("DISCOUNT");
-//                float newPrice = price - (100 - discount) / 100;
-//                this.statement.addBatch("INSERT INTO WEEKSPECIAL VALUES ('" + title + "', " + newPrice + ")");
-//            }
-//            this.statement.executeBatch();
-//            System.out.println("Data inserted!");
-//            rs.close();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(BodyDouble.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//    }
 }
