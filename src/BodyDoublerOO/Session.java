@@ -20,10 +20,10 @@ public class Session {
     private String timeOfSession;
     private String locationOfSession;
     private String sessionID;
-    private String noOfPeople;
-    private String maxNoOfPeople;
+    private int noOfPeople;
+    private int maxNoOfPeople;
     
-    public Session(String sessionID, String dateOfSession, String timeOfSession, String locationOfSession, String noOfPeople, String maxNoOfPeople) {
+    public Session(String sessionID, String dateOfSession, String timeOfSession, String locationOfSession, int noOfPeople, int maxNoOfPeople) {
         
         this.sessionID = sessionID;
         this.dateOfSession = dateOfSession;
@@ -65,19 +65,19 @@ public class Session {
         this.sessionID = sessionID;
     }
 
-    public String getNoOfPeople() {
+    public int getNoOfPeople() {
         return noOfPeople;
     }
 
-    public String getMaxNoOfPeople() {
+    public int getMaxNoOfPeople() {
         return maxNoOfPeople;
     }
 
-    public void setMaxNoOfPeople(String maxNoOfPeople) {
+    public void setMaxNoOfPeople(int maxNoOfPeople) {
         this.maxNoOfPeople = maxNoOfPeople;
     }
 
-    public void setNoOfPeople(String noOfPeople) {
+    public void setNoOfPeople(int noOfPeople) {
         this.noOfPeople = noOfPeople;
     }
 

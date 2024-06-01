@@ -18,14 +18,14 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class Sequencer  {
-    
+public class Sequencer {
+
     private final DBManager dbManager;
-    
-    public Sequencer(){
+
+    public Sequencer() {
         this.dbManager = new DBManager();
     }
-    
+
     public String generateNextNumber(String table, String column) {
         int number = 000;
         String nextNumber = "";
@@ -34,11 +34,21 @@ public class Sequencer  {
 
         try {
             while (rs.next()) {
-                String entry = rs.getString("ADMINID");
+                String entry = rs.getString(column);
                 idSet.add(entry);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Sequencer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (rs != null) {
+
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Sequencer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
 
         if (idSet.isEmpty()) {

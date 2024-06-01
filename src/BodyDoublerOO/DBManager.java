@@ -33,7 +33,8 @@ public final class DBManager {
         DBManager dbManager = new DBManager();
         System.out.println(dbManager.getConnection());
         //dbManager.showColumns("MEMBER");
-        dbManager.printSqlTable("SELECT * FROM MEMBER");
+        //dbManager.printSqlTable("SELECT * FROM ROOM");
+        dbManager.showTables();
     }
 
     public Connection getConnection() {

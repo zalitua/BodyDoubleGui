@@ -29,7 +29,7 @@ public class SessionManager {
     public Session session;
 
     public SessionManager() {
-        this.session = new Session("", "", "", "", "", "");
+        this.session = new Session("", "", "", "", 0, 0);
         this.dbManager = new DBManager();
     }
 
@@ -37,10 +37,15 @@ public class SessionManager {
 
         String entry = "INSERT INTO SESSION VALUES ('" + session.getSessionID() + "' ,'"
                 + session.getDateOfSession() + "' ,'" + session.getTimeOfSession() + "' ,'"
-                + session.getLocationOfSession() + "' ,'" + session.getMaxNoOfPeople()
-                + "' ,'" + session.getNoOfPeople() + "')";
+                + session.getLocationOfSession() + "' ," + session.getMaxNoOfPeople()
+                + " ," + session.getNoOfPeople() + ")";
         this.dbManager.updateDB(entry);
         System.out.println("Entry made!");
+    }
+    
+    public void deleteEntry(String sessionID) {
+        String entry = "DELETE FROM SESSION WHERE SESSIONID = '" + sessionID + "'";
+        this.dbManager.updateDB(entry);
     }
 
     public List<Session> readAll() {
@@ -53,8 +58,8 @@ public class SessionManager {
                 String date = rs.getString("DATE");
                 String time = rs.getString("TIME");
                 String room = rs.getString("ROOM");
-                String maxPeople = rs.getString("MAXPEOPLE");
-                String actualPeople = rs.getString("ACTUALPEOPLE");
+                int maxPeople = rs.getInt("MAXPEOPLE");
+                int actualPeople = rs.getInt("ACTUALPEOPLE");
                 Session session1 = new Session(sessionID, date, time, room, maxPeople, actualPeople);
                 sessions.add(session1);
             }

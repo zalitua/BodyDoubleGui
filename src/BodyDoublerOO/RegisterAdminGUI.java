@@ -87,6 +87,11 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
                 createAccountJButtonMouseClicked(evt);
             }
         });
+        createAccountJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAccountJButtonActionPerformed(evt);
+            }
+        });
 
         roleJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         roleJL.setText("Role:");
@@ -350,6 +355,10 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
+
+    private void createAccountJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createAccountJButtonActionPerformed
 
 
     /**
