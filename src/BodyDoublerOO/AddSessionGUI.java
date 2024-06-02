@@ -28,7 +28,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         populateRoomComboBox();
     }
     
-    public void createSession(){
+    private void createSession(){
         
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
@@ -58,7 +58,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         }
     }
     
-    public void populateRoomComboBox() {
+    private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
         List<String> roomNames = rm.roomList("ROOMNAME");
         roomJComboB.removeAllItems(); //to prevent duplicates

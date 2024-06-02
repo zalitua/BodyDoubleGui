@@ -27,6 +27,10 @@ public class SessionManager {
 //    }
     private final DBManager dbManager;
     public Session session;
+    public DBManager getDBManger()
+    {
+        return this.dbManager;
+    }
 
     public SessionManager() {
         this.session = new Session("", "", "", "", 0, 0);
@@ -96,5 +100,7 @@ public class SessionManager {
         return sessionIDs;
 
     }
+    
+    
 
 }
