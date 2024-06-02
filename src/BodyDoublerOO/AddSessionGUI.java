@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author GVE Rouse
  */
-public class AddSessionGUI extends javax.swing.JFrame {
+public final class AddSessionGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form EditSessionGUI
@@ -317,6 +317,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AddSessionGUI().setVisible(true);
             }
