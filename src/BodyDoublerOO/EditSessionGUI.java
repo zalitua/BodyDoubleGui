@@ -26,6 +26,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
         populateRoomComboBox();
         populateSessionComboBox();
     }
+    //doesn't actaully edit the entries when used in this class
     
     public void createSession(){
         
