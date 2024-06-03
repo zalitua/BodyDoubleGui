@@ -1,4 +1,4 @@
-/*
+q/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -18,7 +18,7 @@ public class AdminCorner extends javax.swing.JFrame {
     /**
      * Creates new form AdminCorner
      */
-    SessionManager sM = new SessionManager();
+    
 
     public AdminCorner() {
         initComponents();
@@ -28,6 +28,7 @@ public class AdminCorner extends javax.swing.JFrame {
     }
 
     private void populateTable() {
+        SessionManager sM = new SessionManager();
         List<Session> session = sM.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionJTable.getModel();
         model.setRowCount(0);
@@ -47,6 +48,7 @@ public class AdminCorner extends javax.swing.JFrame {
     }
 
     public void populateSessionComboBox() {
+        SessionManager sM = new SessionManager();
         List<String> sessionIDs = sM.getSessionIDs();
         sessionIDJComboB.removeAllItems(); //to prevent duplicates
         for (String id : sessionIDs) {
