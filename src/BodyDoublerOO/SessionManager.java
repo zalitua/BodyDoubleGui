@@ -25,16 +25,16 @@ public class SessionManager {
 //        sess.session = nwAdd;
 //        sess.addEntry();
 //    }
-    private final DBManager dbManager;
+    // private final DBManager dbManager;
     public Session session;
-    public DBManager getDBManger()
-    {
-        return this.dbManager;
-    }
+//    public DBManager getDBManger()
+//    {
+//        return this.dbManager;
+//    }
 
     public SessionManager() {
         this.session = new Session("", "", "", "", 0, 0);
-        this.dbManager = new DBManager();
+        //this.dbManager = new DBManager();
     }
 
     public void addEntry() {
@@ -43,20 +43,28 @@ public class SessionManager {
                 + session.getDateOfSession() + "' ,'" + session.getTimeOfSession() + "' ,'"
                 + session.getLocationOfSession() + "' ," + session.getMaxNoOfPeople()
                 + " ," + session.getNoOfPeople() + ")";
-        this.dbManager.updateDB(entry);
+        //this.dbManager.updateDB(entry);
+        executeUpdate(entry);
         System.out.println("Entry made!");
     }
-    
+
     public void deleteEntry(String sessionID) {
         String entry = "DELETE FROM SESSION WHERE SESSIONID = '" + sessionID + "'";
-        this.dbManager.updateDB(entry);
+        // this.dbManager.updateDB(entry);
+        executeUpdate(entry);
     }
 
     public List<Session> readAll() {
 
         List<Session> sessions = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT * FROM SESSION");
+        ResultSet rs = null;
+        Statement stmt = null;
+
+//ResultSet rs = this.dbManager.queryDB("SELECT * FROM SESSION")
         try {
+            Connection conn = DBManagerAlt.getConnection();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM SESSION");
             while (rs.next()) {
                 String sessionID = rs.getString("SESSIONID");
                 String date = rs.getString("DATE");
@@ -88,9 +96,15 @@ public class SessionManager {
 
     public List<String> getSessionIDs() {
         List<String> sessionIDs = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT SESSIONID FROM SESSION");
+        ResultSet rs = null;
+        Statement stmt = null;
 
+        //ResultSet rs = this.dbManager.queryDB("SELECT SESSIONID FROM SESSION");
         try {
+            Connection conn = DBManagerAlt.getConnection();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT SESSIONID FROM SESSION");
+
             while (rs.next()) {
                 sessionIDs.add(rs.getString("SESSIONID"));
             }
@@ -100,7 +114,24 @@ public class SessionManager {
         return sessionIDs;
 
     }
-    
-    
 
+    //uses an instance of the DB
+    void executeUpdate(String sql) {
+        Statement stmt = null;
+        try {
+            Connection conn = DBManagerAlt.getConnection();
+            stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 }

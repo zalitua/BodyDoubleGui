@@ -256,7 +256,7 @@ public class MemberCorner extends javax.swing.JFrame {
     if (selectedSessionID != null) { // Check if a session is selected
         String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE + 1 WHERE SESSIONID = '" + selectedSessionID + "'";
         System.out.println("Executing query: " + updateSessionDB); // Debug print
-        sM.getDBManger().updateDB(updateSessionDB);
+        sM.executeUpdate(updateSessionDB);
     }
         
     }
@@ -266,7 +266,7 @@ public class MemberCorner extends javax.swing.JFrame {
     if (selectedSessionID != null) { // Check if a session is selected
         String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE - 1 WHERE SESSIONID = '" + selectedSessionID + "'";
         System.out.println("Executing query: " + updateSessionDB); // Debug print
-        sM.getDBManger().updateDB(updateSessionDB);
+        sM.executeUpdate(updateSessionDB);
     }
         
     }
