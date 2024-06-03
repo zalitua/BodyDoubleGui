@@ -316,6 +316,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_monthJComboBActionPerformed
 
     private void confirmButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseClicked
+        deleteSession();
         createSession();
         populateTable();
         populateSessionComboBox();
