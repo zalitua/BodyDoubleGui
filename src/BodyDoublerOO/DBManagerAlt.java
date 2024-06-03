@@ -50,23 +50,20 @@ public final class DBManagerAlt {
         return connInstance;
     }
     
-    @Override //override clone method to prevent clonning
-    public Object clone() throws CloneNotSupportedException {
-        throw new CloneNotSupportedException();
-    }
+    
 
-    //Establish connection
-    public void establishConnection() {
-        //Establish a connection to Database
-        if (connInstance == null) {
-            try {
-                connInstance = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-            } catch (SQLException ex) {
-                Logger.getLogger(DBManagerAlt.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-    }
+//    //Establish connection
+//    public void establishConnection() {
+//        //Establish a connection to Database
+//        if (connInstance == null) {
+//            try {
+//                connInstance = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(DBManagerAlt.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//
+//    }
 
     public void closeConnections() {
         if (connInstance != null) {
@@ -194,14 +191,19 @@ public final class DBManagerAlt {
         }
     }
 
-    private void closeResources(Statement statement, ResultSet resultSet) {
+    void closeResources(Statement stmt, ResultSet rs) {
         try
         {
-            if(resultSet!=null) resultSet.close();
-            if(statement!= null) statement.close();
+            if(rs!=null) rs.close();
+            if(stmt!= null) stmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(DBManagerAlt.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    @Override //override clone method to prevent clonning
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
     }
 
 }
