@@ -116,7 +116,7 @@ public class SessionManager {
     }
 
     //uses an instance of the DB
-    private void executeUpdate(String sql) {
+    void executeUpdate(String sql) {
         Statement stmt = null;
         try {
             Connection conn = DBManagerAlt.getConnection();
