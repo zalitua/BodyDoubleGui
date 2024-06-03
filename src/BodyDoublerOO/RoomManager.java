@@ -15,14 +15,15 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class RoomManager {
+public class RoomManager extends TableManager {
 
-    private final DBManager dbManager;
+    //private final DBManager dbManager;
     public Room room;
 
     public RoomManager() {
+        super();
         this.room = new Room("", "");
-        this.dbManager = new DBManager();
+        //this.dbManager = new DBManager();
     }
 
     public void addEntry() {
@@ -32,10 +33,7 @@ public class RoomManager {
         System.out.println("Entry made!");
     }
 
-    public void deleteEntry(String roomID) {
-        String entry = "DELETE FROM ROOM WHERE ROOMID = '" + roomID + "'";
-        this.dbManager.updateDB(entry);
-    }
+    
 
     public List<Room> readAll() {
 
@@ -81,19 +79,6 @@ public class RoomManager {
         return "ROM" + num;
     }
     
-    public List<String> roomList(String column) {
-        List<String> rooms = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT " + column + " FROM ROOM");
-
-        try {
-            while (rs.next()) {
-                rooms.add(rs.getString(column));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(RoomManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return rooms;
-
-    }
+    
 
 }

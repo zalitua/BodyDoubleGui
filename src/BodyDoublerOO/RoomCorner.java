@@ -36,7 +36,7 @@ public class RoomCorner extends javax.swing.JFrame {
     public void deleteRoom(){
         //RoomManager rm = new RoomManager();
         String roomID = (String) roomComboBox.getSelectedItem();
-        rm.deleteEntry(roomID);
+        rm.deleteEntry("ROOM", "ROOMID", roomID);
     }
     
     private void populateTable() {
@@ -55,7 +55,7 @@ public class RoomCorner extends javax.swing.JFrame {
     }
 
     public void populateRoomComboBox() {
-        List<String> roomIDs = rm.roomList("ROOMID");
+        List<String> roomIDs = rm.IDList("ROOM", "ROOMID");
         roomComboBox.removeAllItems(); //to prevent duplicates
         for (String id : roomIDs) {
             roomComboBox.addItem(id);
