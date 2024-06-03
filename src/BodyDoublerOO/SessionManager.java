@@ -114,6 +114,49 @@ public class SessionManager {
         return sessionIDs;
 
     }
+    
+    public Session getSession(String sessionID) {
+    Session session = null;
+    ResultSet rs = null;
+    Statement stmt = null;
+
+    try {
+        Connection conn = DBManagerAlt.getConnection();
+        stmt = conn.createStatement();
+        rs = stmt.executeQuery("SELECT * FROM SESSION WHERE SESSIONID = '" + sessionID + "'");
+        
+        if (rs.next()) {
+            String date = rs.getString("DATE");
+            String time = rs.getString("TIME");
+            String room = rs.getString("ROOM");
+            int maxPeople = rs.getInt("MAXPEOPLE");
+            int actualPeople = rs.getInt("ACTUALPEOPLE");
+            
+            session = new Session(sessionID, date, time, room, maxPeople, actualPeople);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        // Close resources
+        if (stmt != null) {
+            try {
+                stmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    return session;
+}
+
 
     //uses an instance of the DB
     void executeUpdate(String sql) {

@@ -55,8 +55,6 @@ public class MemberCorner extends javax.swing.JFrame {
         }
     }
 
-   
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -251,23 +249,34 @@ public class MemberCorner extends javax.swing.JFrame {
     private javax.swing.JLabel welcomeL;
     // End of variables declaration//GEN-END:variables
 
+   //needs work, adds to session 003 when another session has actually been selected 
     private void joinSession() {
         String selectedSessionID = (String) sessionIDJComboB.getSelectedItem(); // Get selected session ID
-    if (selectedSessionID != null) { // Check if a session is selected
-        String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE + 1 WHERE SESSIONID = '" + selectedSessionID + "'";
-        System.out.println("Executing query: " + updateSessionDB); // Debug print
-        sM.executeUpdate(updateSessionDB);
+        if (selectedSessionID != null) { // Check if a session is selected
+            String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE + 1 WHERE SESSIONID = '" + selectedSessionID + "'";
+            System.out.println("Executing query: " + updateSessionDB); // Debug print
+            sM.executeUpdate(updateSessionDB);
+        }
+
     }
-        
-    }
-    
+
+    //needs work
     private void leaveSession() {
         String selectedSessionID = (String) sessionIDJComboB.getSelectedItem(); // Get selected session ID
-    if (selectedSessionID != null) { // Check if a session is selected
-        String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE - 1 WHERE SESSIONID = '" + selectedSessionID + "'";
-        System.out.println("Executing query: " + updateSessionDB); // Debug print
-        sM.executeUpdate(updateSessionDB);
-    }
-        
+        if (selectedSessionID != null) { // Check if a session is selected
+            Session ses = sM.getSession(selectedSessionID);
+            if (ses != null) { //check session exists 
+                if (ses.getNoOfPeople() >= 0) { //checks there are acually people in the session already
+                    String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE - 1 WHERE SESSIONID = '" + selectedSessionID + "'";
+                    System.out.println("Executing query: " + updateSessionDB); // Debug print
+                    sM.executeUpdate(updateSessionDB);
+                } else {
+                    System.out.println("This session is already empty");
+                }
+            } else {
+                System.out.println("Session doesn't exist");
+            }
+        }
+
     }
 }
