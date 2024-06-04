@@ -60,7 +60,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     
     private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
-        List<String> roomNames = rm.roomList("ROOMNAME");
+        List<String> roomNames = rm.IDList("ROOM", "ROOMNAME");
         roomJComboB.removeAllItems(); //to prevent duplicates
         for (String name : roomNames) {
             roomJComboB.addItem(name);

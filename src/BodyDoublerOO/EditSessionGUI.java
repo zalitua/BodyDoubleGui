@@ -28,7 +28,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
     }
     //doesn't actaully edit the entries when used in this class
     
-    public void createSession(){
+    private void createSession(){
         
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
@@ -39,9 +39,9 @@ public class EditSessionGUI extends javax.swing.JFrame {
         sm.addEntry();
     }
     
-    public void deleteSession(){
+    private void deleteSession(){
         String sessionID = (String) sessionComboBox.getSelectedItem();
-        sm.deleteEntry(sessionID);
+        sm.deleteEntry("SESSION", "SESSIONID", sessionID);
     }
     
     private void populateTable() {
@@ -63,17 +63,17 @@ public class EditSessionGUI extends javax.swing.JFrame {
         }
     }
     
-    public void populateRoomComboBox() {
+    private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
-        List<String> roomNames = rm.roomList("ROOMNAME");
+        List<String> roomNames = rm.IDList("ROOM", "ROOMNAME");
         roomJComboB.removeAllItems(); //to prevent duplicates
         for (String name : roomNames) {
             roomJComboB.addItem(name);
         }
     }
     
-    public void populateSessionComboBox() {
-        List<String> sessionIDs = sm.getSessionIDs();
+    private void populateSessionComboBox() {
+        List<String> sessionIDs = sm.IDList("SESSION", "SESSIONID");
         sessionComboBox.removeAllItems(); //to prevent duplicates
         for (String id : sessionIDs) {
             sessionComboBox.addItem(id);

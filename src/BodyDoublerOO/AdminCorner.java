@@ -1,12 +1,10 @@
-q/*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package BodyDoublerOO;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +22,6 @@ public class AdminCorner extends javax.swing.JFrame {
         initComponents();
 
         populateTable();
-        populateSessionComboBox();
     }
 
     private void populateTable() {
@@ -47,15 +44,6 @@ public class AdminCorner extends javax.swing.JFrame {
         }
     }
 
-    public void populateSessionComboBox() {
-        SessionManager sM = new SessionManager();
-        List<String> sessionIDs = sM.getSessionIDs();
-        sessionIDJComboB.removeAllItems(); //to prevent duplicates
-        for (String id : sessionIDs) {
-            sessionIDJComboB.addItem(id);
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,7 +55,6 @@ public class AdminCorner extends javax.swing.JFrame {
 
         welcomeL = new javax.swing.JLabel();
         addLabel = new javax.swing.JLabel();
-        sessionIDJComboB = new javax.swing.JComboBox<>();
         editButton = new javax.swing.JButton();
         adminSessionJScroll = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -76,6 +63,9 @@ public class AdminCorner extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         editLabel = new javax.swing.JLabel();
         manageLabel = new javax.swing.JLabel();
+        exitButton1 = new javax.swing.JButton();
+        returnButton = new javax.swing.JButton();
+        returnLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(780, 440));
@@ -87,14 +77,6 @@ public class AdminCorner extends javax.swing.JFrame {
         addLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         addLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addLabel.setText("Add a session:");
-
-        sessionIDJComboB.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        sessionIDJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SES007", "SES008", "SES006" }));
-        sessionIDJComboB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sessionIDJComboBActionPerformed(evt);
-            }
-        });
 
         editButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         editButton.setText("Edit");
@@ -146,38 +128,57 @@ public class AdminCorner extends javax.swing.JFrame {
         manageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageLabel.setText("View and manage room:");
 
+        exitButton1.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        exitButton1.setText("Exit App");
+
+        returnButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        returnButton.setText("Return");
+        returnButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                returnButtonMouseClicked(evt);
+            }
+        });
+
+        returnLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        returnLabel.setText("Return to Main Page:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(adminSessionJScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(addLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(editLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(201, 201, 201))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(manageLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(returnLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(manageRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(200, 200, 200))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(returnButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(exitButton1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(adminSessionJScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(addLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(201, 201, 201))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(manageLabel)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(26, 26, 26)
-                            .addComponent(editLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                            .addComponent(manageRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(200, 200, 200)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,20 +196,19 @@ public class AdminCorner extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(manageLabel)
-                    .addComponent(manageRoomsButton)
-                    .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(manageRoomsButton))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(returnButton)
+                    .addComponent(returnLabel)
+                    .addComponent(exitButton1))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
-
-    private void sessionIDJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sessionIDJComboBActionPerformed
-        //action to delete a session
-
-    }//GEN-LAST:event_sessionIDJComboBActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // open to EditSessionGUI
@@ -230,6 +230,10 @@ public class AdminCorner extends javax.swing.JFrame {
         RoomCorner rc = new RoomCorner();
         rc.setVisible(true);
     }//GEN-LAST:event_manageRoomsButtonMouseClicked
+
+    private void returnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnButtonMouseClicked
+        dispose();
+    }//GEN-LAST:event_returnButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -272,10 +276,12 @@ public class AdminCorner extends javax.swing.JFrame {
     private javax.swing.JScrollPane adminSessionJScroll;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel editLabel;
+    private javax.swing.JButton exitButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel manageLabel;
     private javax.swing.JButton manageRoomsButton;
-    private javax.swing.JComboBox<String> sessionIDJComboB;
+    private javax.swing.JButton returnButton;
+    private javax.swing.JLabel returnLabel;
     private javax.swing.JTable sessionJTable;
     private javax.swing.JLabel welcomeL;
     // End of variables declaration//GEN-END:variables
