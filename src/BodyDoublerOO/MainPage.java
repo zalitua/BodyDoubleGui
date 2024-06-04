@@ -26,14 +26,15 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        userButtonGroup = new javax.swing.ButtonGroup();
         welcomeLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         mainTextArea = new javax.swing.JTextArea();
         LogInLabel = new javax.swing.JLabel();
         IDLabel = new javax.swing.JLabel();
         PwdLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        IDTextField = new javax.swing.JTextField();
+        PwdTextField = new javax.swing.JTextField();
         registerLabel = new javax.swing.JLabel();
         LogInButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
@@ -68,20 +69,25 @@ public class MainPage extends javax.swing.JFrame {
         PwdLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         PwdLabel.setText("Password:");
 
-        jTextField1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        IDTextField.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        IDTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                IDTextFieldActionPerformed(evt);
             }
         });
 
-        jTextField2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        PwdTextField.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
 
         registerLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         registerLabel.setText("If you are a new user please register:");
 
         LogInButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         LogInButton.setText("Log in");
+        LogInButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogInButtonMouseClicked(evt);
+            }
+        });
         LogInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogInButtonActionPerformed(evt);
@@ -99,9 +105,11 @@ public class MainPage extends javax.swing.JFrame {
         selectLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         selectLabel.setText("Please select:");
 
+        userButtonGroup.add(adminRadioButton);
         adminRadioButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         adminRadioButton.setText("Administrator");
 
+        userButtonGroup.add(memberRadioButton);
         memberRadioButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         memberRadioButton.setText("Member");
 
@@ -132,11 +140,11 @@ public class MainPage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(IDLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addComponent(PwdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PwdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(149, 149, 149))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,8 +177,8 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PwdLabel)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PwdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(LogInButton)
                 .addGap(18, 18, 18)
@@ -190,9 +198,9 @@ public class MainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void IDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_IDTextFieldActionPerformed
 
     private void LogInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInButtonActionPerformed
         // TODO add your handling code here:
@@ -200,9 +208,23 @@ public class MainPage extends javax.swing.JFrame {
 
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         // TODO add your handling code here:
-        this.setVisible(true);
-        new RegisterAdminGUI().setVisible(true);
+        if (adminRadioButton.isSelected() == true){
+            new RegisterAdminGUI().setVisible(true);
+        }
+        else if (memberRadioButton.isSelected() == true){
+            new RegisterAdminGUI().setVisible(true);
+        }
+        
+        
+//        this.setVisible(true);
+//        new RegisterAdminGUI().setVisible(true);
     }//GEN-LAST:event_registerButtonMouseClicked
+
+    private void LogInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInButtonMouseClicked
+        String IDInput = IDTextField.getText();
+        String PwdInput = PwdTextField.getText();
+        
+    }//GEN-LAST:event_LogInButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -241,18 +263,19 @@ public class MainPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDLabel;
+    private javax.swing.JTextField IDTextField;
     private javax.swing.JButton LogInButton;
     private javax.swing.JLabel LogInLabel;
     private javax.swing.JLabel PwdLabel;
+    private javax.swing.JTextField PwdTextField;
     private javax.swing.JRadioButton adminRadioButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextArea mainTextArea;
     private javax.swing.JRadioButton memberRadioButton;
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel registerLabel;
     private javax.swing.JLabel selectLabel;
+    private javax.swing.ButtonGroup userButtonGroup;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

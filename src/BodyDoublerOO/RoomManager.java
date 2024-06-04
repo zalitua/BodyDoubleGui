@@ -21,15 +21,14 @@ public class RoomManager extends TableManager {
     public Room room;
 
     public RoomManager() {
-        super();
         this.room = new Room("", "");
-        //this.dbManager = new DBManager();
     }
 
+    @Override
     public void addEntry() {
 
         String entry = "INSERT INTO ROOM VALUES ('" + room.getRoomID() + "' ,'" + room.getRoomName() + "')";
-        this.dbManager.updateDB(entry);
+        updateDB(entry);
         System.out.println("Entry made!");
     }
 
@@ -38,7 +37,7 @@ public class RoomManager extends TableManager {
     public List<Room> readAll() {
 
         List<Room> rooms = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT * FROM ROOM");
+        ResultSet rs = queryDB("SELECT * FROM ROOM");
         
         if (rs == null){
             System.out.println("No results!");
@@ -73,6 +72,7 @@ public class RoomManager extends TableManager {
         }
     }
 
+    @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();
         String num = seq.generateNextNumber("ROOM", "ROOMID");

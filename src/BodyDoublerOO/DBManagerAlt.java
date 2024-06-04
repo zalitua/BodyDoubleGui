@@ -23,20 +23,14 @@ public final class DBManagerAlt {
     private static final String PASSWORD = "zali"; //your DB password
     private static final String URL = "jdbc:derby:DoubleDb_Ebd; create=true";  //url of the DB host
 
+    private static DBManagerAlt instance;
     private static Connection connInstance;
 
-   //private constructor
+    // private constructor
     private DBManagerAlt() {
+        // Prevent instantiation
     }
-
-    public static void main(String[] args) {
-        Connection connect1 = DBManagerAlt.getConnection();
-        Connection connect2 = DBManagerAlt.getConnection();
-        System.out.println(connect1);
-        System.out.println(connect2);
-        //dbManager.showTables();
-    }
-
+    
     public static synchronized Connection getConnection() {
         if (connInstance == null) {
             try {
@@ -50,19 +44,8 @@ public final class DBManagerAlt {
         return connInstance;
     }
     
-    
-
-//    //Establish connection
-//    public void establishConnection() {
-//        //Establish a connection to Database
-//        if (connInstance == null) {
-//            try {
-//                connInstance = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(DBManagerAlt.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//
+//    public Connection getConnection() {
+//        return connInstance;
 //    }
 
     public void closeConnections() {
@@ -74,50 +57,13 @@ public final class DBManagerAlt {
             }
         }
     }
-
-    public ResultSet queryDB(String sql) {
-
-        //Connection connection = this.connInstance;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            statement = getConnection().createStatement();
-            resultSet = statement.executeQuery(sql);
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return resultSet;
+    
+    @Override //override clone method to prevent clonning
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
     }
-
-    public void updateDB(String sql) {
-
-        //Connection connection = this.conn;
-        Statement statement = null;
-        try {
-            statement = getConnection().createStatement();
-            statement.executeUpdate(sql);
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            //return 0;
-        }
-        //ResultSet resultSet = null;
-
-//        try {
-//            statement = connection.createStatement();
-//            statement.executeUpdate(sql);
-//
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-        
-        finally{
-            closeResources(statement, null);
-        }
-    }
-
+    
+    //code to check tables and data
     public void showTables() {
         Connection connection = this.connInstance;
 
@@ -191,19 +137,6 @@ public final class DBManagerAlt {
         }
     }
 
-    void closeResources(Statement stmt, ResultSet rs) {
-        try
-        {
-            if(rs!=null) rs.close();
-            if(stmt!= null) stmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DBManagerAlt.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @Override //override clone method to prevent clonning
-    public Object clone() throws CloneNotSupportedException {
-        throw new CloneNotSupportedException();
-    }
-
 }
+
+
