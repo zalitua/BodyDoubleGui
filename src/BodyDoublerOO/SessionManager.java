@@ -48,13 +48,12 @@ public class SessionManager extends TableManager {
 //        // this.dbManager.updateDB(entry);
 //        executeUpdate(entry);
 //    }
-
     public List<Session> readAll() {
 
         List<Session> sessions = new ArrayList<>();
         ResultSet rs = queryDB("SELECT * FROM SESSION");
-        
-        if (rs == null){
+
+        if (rs == null) {
             System.out.println("No results!");
             return sessions;
         }
@@ -89,105 +88,33 @@ public class SessionManager extends TableManager {
         return "SES" + num;
     }
 
-//    public List<String> getSessionIDs() {
-//        List<String> sessionIDs = new ArrayList<>();
-//        ResultSet rs = null;
-//        Statement stmt = null;
-//
-//        //ResultSet rs = this.dbManager.queryDB("SELECT SESSIONID FROM SESSION");
-//        try {
-//            Connection conn = DBManagerAlt.getConnection();
-//            stmt = conn.createStatement();
-//            rs = stmt.executeQuery("SELECT SESSIONID FROM SESSION");
-//
-//            while (rs.next()) {
-//                sessionIDs.add(rs.getString("SESSIONID"));
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return sessionIDs;
-//
-//    }
-
-
-        //ResultSet rs = this.dbManager.queryDB("SELECT SESSIONID FROM SESSION");
-        try {
-            Connection conn = DBManagerAlt.getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery("SELECT SESSIONID FROM SESSION");
-
-            while (rs.next()) {
-                sessionIDs.add(rs.getString("SESSIONID"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return sessionIDs;
-
-    }
-    
     public Session getSession(String sessionID) {
-    Session session = null;
-    ResultSet rs = null;
-    Statement stmt = null;
-
-    try {
-        Connection conn = DBManagerAlt.getConnection();
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery("SELECT * FROM SESSION WHERE SESSIONID = '" + sessionID + "'");
-        
-        if (rs.next()) {
-            String date = rs.getString("DATE");
-            String time = rs.getString("TIME");
-            String room = rs.getString("ROOM");
-            int maxPeople = rs.getInt("MAXPEOPLE");
-            int actualPeople = rs.getInt("ACTUALPEOPLE");
-            
-            session = new Session(sessionID, date, time, room, maxPeople, actualPeople);
-        }
-    } catch (SQLException ex) {
-        Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
-    } finally {
-        // Close resources
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-    
-    return session;
-}
-
-
-    //uses an instance of the DB
-    void executeUpdate(String sql) {
-        Statement stmt = null;
+        Session session = null;
+        ResultSet rs = queryDB("SELECT * FROM SESSION WHERE SESSIONID = '" + sessionID + "'");
         try {
-            Connection conn = DBManagerAlt.getConnection();
-            stmt = conn.createStatement();
-            stmt.executeUpdate(sql);
+            if (rs.next()) {
+                String date = rs.getString("DATE");
+                String time = rs.getString("TIME");
+                String room = rs.getString("ROOM");
+                int maxPeople = rs.getInt("MAXPEOPLE");
+                int actualPeople = rs.getInt("ACTUALPEOPLE");
+
+                session = new Session(sessionID, date, time, room, maxPeople, actualPeople);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (stmt != null) {
+            // Close resources
+            if (rs != null) {
                 try {
-                    stmt.close();
+                    rs.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
+
+        return session;
     }
 
 }

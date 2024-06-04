@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  * @author zalit
  */
 public class MemberManager {
+
     private final DBManager dbManager;
     public Member member;
 
@@ -25,10 +26,10 @@ public class MemberManager {
         this.member = new Member("", "", "", "", "", 0, 0, "");
         dbManager = new DBManager();
     }
-    
+
     public static void main(String[] args) {
         MemberManager mm = new MemberManager();
-        mm.member = new Member("MEM000","password","John","Candy","john@candy.com", 25, 24342534, "BCIS");
+        mm.member = new Member("MEM000", "password", "John", "Candy", "john@candy.com", 25, 24342534, "BCIS");
         mm.addEntry();
     }
 
@@ -61,18 +62,27 @@ public class MemberManager {
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return members;
     }
-    
+
     public void displayAll() {
         List<Member> members = readAll();
         for (Member member : members) {
             System.out.println(member.toString());
         }
     }
-    
-    public String generateNextID(){
+
+    public String generateNextID() {
         Sequencer seq = new Sequencer();
         String num = seq.generateNextNumber("MEMBER", "MEMBERID");
         return "MEM" + num;

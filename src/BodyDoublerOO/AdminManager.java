@@ -4,7 +4,6 @@
  */
 package BodyDoublerOO;
 
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -57,6 +56,15 @@ public class AdminManager extends TableManager {
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return admins;
     }
@@ -67,13 +75,11 @@ public class AdminManager extends TableManager {
             System.out.println(admin.toString());
         }
     }
-    
+
     @Override
-    public String generateNextID(){
+    public String generateNextID() {
         Sequencer seq = new Sequencer();
         String num = seq.generateNextNumber("ADMIN", "ADMINID");
         return "ADM" + num;
     }
 }
-
-
