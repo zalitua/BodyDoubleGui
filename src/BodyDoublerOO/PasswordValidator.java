@@ -18,17 +18,17 @@ import java.util.Scanner;
  */
 public class PasswordValidator {
 
-    public void writePasswordEntry(String userID, String password) {
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter("./nbproject/files/passwords.txt", true));
-            bw.append(userID + "," + password);
-            bw.newLine();
-            bw.close();
-        } catch (IOException e) {
-            System.out.println("Sorry, there was a problem writing to the file.");
-        }
-    }
+//    public void writePasswordEntry(String userID, String password) {
+//        BufferedWriter bw = null;
+//        try {
+//            bw = new BufferedWriter(new FileWriter("./nbproject/files/passwords.txt", true));
+//            bw.append(userID + "," + password);
+//            bw.newLine();
+//            bw.close();
+//        } catch (IOException e) {
+//            System.out.println("Sorry, there was a problem writing to the file.");
+//        }
+//    }
 
     public HashMap<String, String> readPasswordList() {
         HashMap<String, String> map = new HashMap<>();

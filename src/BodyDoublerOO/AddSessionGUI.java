@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author GVE Rouse
  */
-public class AddSessionGUI extends javax.swing.JFrame {
+public final class AddSessionGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form EditSessionGUI
@@ -28,7 +28,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
         populateRoomComboBox();
     }
     
-    public void createSession(){
+    private void createSession(){
         
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
@@ -58,7 +58,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
         }
     }
     
-    public void populateRoomComboBox() {
+    private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
         List<String> roomNames = rm.roomList("ROOMNAME");
         roomJComboB.removeAllItems(); //to prevent duplicates
@@ -82,7 +82,6 @@ public class AddSessionGUI extends javax.swing.JFrame {
         sessionTable = new javax.swing.JTable();
         dateJL = new javax.swing.JLabel();
         dayJL = new javax.swing.JLabel();
-        dayJComboB = new javax.swing.JComboBox<>();
         monthJL = new javax.swing.JLabel();
         monthJComboB = new javax.swing.JComboBox<>();
         yearJL = new javax.swing.JLabel();
@@ -94,6 +93,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
         maxPartJL = new javax.swing.JLabel();
         maxPartJComboB = new javax.swing.JComboBox<>();
         confirmButton = new javax.swing.JButton();
+        dayJComboB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -129,14 +129,6 @@ public class AddSessionGUI extends javax.swing.JFrame {
         dayJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         dayJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dayJL.setText("Day:");
-
-        dayJComboB.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        dayJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        dayJComboB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dayJComboBActionPerformed(evt);
-            }
-        });
 
         monthJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         monthJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -186,11 +178,17 @@ public class AddSessionGUI extends javax.swing.JFrame {
         confirmButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         confirmButton.setText("Create Session");
         confirmButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         confirmButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmButtonMouseClicked(evt);
+            }
+        });
 
+        dayJComboB.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        dayJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        dayJComboB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dayJComboBActionPerformed(evt);
             }
         });
 
@@ -219,8 +217,8 @@ public class AddSessionGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(maxPartJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(7, 7, 7)
                                         .addComponent(monthJL, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(monthJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,11 +245,11 @@ public class AddSessionGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dateJL)
                     .addComponent(dayJL)
-                    .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(monthJL)
                     .addComponent(monthJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(yearJL)
-                    .addComponent(yearComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(yearComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(timeJL)
@@ -286,6 +284,10 @@ public class AddSessionGUI extends javax.swing.JFrame {
         populateTable();
     }//GEN-LAST:event_confirmButtonMouseClicked
 
+    private void dayJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayJComboBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dayJComboBActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -317,6 +319,7 @@ public class AddSessionGUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AddSessionGUI().setVisible(true);
             }

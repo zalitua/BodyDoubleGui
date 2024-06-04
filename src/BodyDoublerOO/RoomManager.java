@@ -15,32 +15,29 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class RoomManager {
+public class RoomManager extends TableManager {
 
-    private final DBManager dbManager;
+    //private final DBManager dbManager;
     public Room room;
 
     public RoomManager() {
         this.room = new Room("", "");
-        this.dbManager = new DBManager();
     }
 
+    @Override
     public void addEntry() {
 
         String entry = "INSERT INTO ROOM VALUES ('" + room.getRoomID() + "' ,'" + room.getRoomName() + "')";
-        this.dbManager.updateDB(entry);
+        updateDB(entry);
         System.out.println("Entry made!");
     }
 
-    public void deleteEntry(String roomID) {
-        String entry = "DELETE FROM ROOM WHERE ROOMID = '" + roomID + "'";
-        this.dbManager.updateDB(entry);
-    }
+    
 
     public List<Room> readAll() {
 
         List<Room> rooms = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT * FROM ROOM");
+        ResultSet rs = queryDB("SELECT * FROM ROOM");
         
         if (rs == null){
             System.out.println("No results!");
@@ -75,25 +72,13 @@ public class RoomManager {
         }
     }
 
+    @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();
         String num = seq.generateNextNumber("ROOM", "ROOMID");
         return "ROM" + num;
     }
     
-    public List<String> roomList(String column) {
-        List<String> rooms = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT " + column + " FROM ROOM");
-
-        try {
-            while (rs.next()) {
-                rooms.add(rs.getString(column));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(RoomManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return rooms;
-
-    }
+    
 
 }
