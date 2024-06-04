@@ -18,28 +18,36 @@ public class RoomCorner extends javax.swing.JFrame {
      * Creates new form RoomCorner
      */
     RoomManager rm = new RoomManager();
-    
+
     public RoomCorner() {
         initComponents();
-        
+
         populateTable();
         populateRoomComboBox();
     }
-    
-    public void createRoom(){
+
+    public void createRoom() {
         //RoomManager rm = new RoomManager();
         String roomName = roomTF.getText();
-        String roomID = rm.generateNextID();
-        rm.room = new Room(roomID, roomName);
-        rm.addEntry();
+
+        if (roomName.isEmpty()) {
+            errorLabel.setText("Please enter a valid room");
+        } else {
+            errorLabel.setText(" ");
+            String roomID = rm.generateNextID();
+            rm.room = new Room(roomID, roomName);
+            rm.addEntry();
+
+        }
+
     }
-    
-    public void deleteRoom(){
+
+    public void deleteRoom() {
         //RoomManager rm = new RoomManager();
         String roomID = (String) roomComboBox.getSelectedItem();
         rm.deleteEntry("ROOM", "ROOMID", roomID);
     }
-    
+
     private void populateTable() {
         List<Room> rooms = rm.readAll();
         DefaultTableModel model = (DefaultTableModel) roomsTable.getModel();
@@ -84,9 +92,10 @@ public class RoomCorner extends javax.swing.JFrame {
         returnButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         returnLabel = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(501, 390));
+        setPreferredSize(new java.awt.Dimension(504, 406));
 
         roomLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         roomLabel.setText("Room name:");
@@ -169,39 +178,45 @@ public class RoomCorner extends javax.swing.JFrame {
         returnLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         returnLabel.setText("Return to Admin Corner:");
 
+        errorLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(87, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(returnLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(returnButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(roomLabel)
-                            .addComponent(roomLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(roomComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(roomTF, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addButton))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(welcomeLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(exitButton)
-                        .addGap(114, 114, 114)))
-                .addGap(83, 83, 83))
+                        .addGap(197, 197, 197))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(returnLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(roomLabel)
+                                    .addComponent(roomLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(roomComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(addButton1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(roomTF, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(addButton))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(welcomeLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,6 +230,8 @@ public class RoomCorner extends javax.swing.JFrame {
                     .addComponent(roomLabel)
                     .addComponent(roomTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomLabel1)
@@ -226,7 +243,7 @@ public class RoomCorner extends javax.swing.JFrame {
                     .addComponent(returnButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exitButton)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -294,6 +311,7 @@ public class RoomCorner extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton addButton1;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JButton exitButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton returnButton;
