@@ -19,19 +19,74 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     }
 
     public void createMember() {
+        boolean isValid = true;
         String firstNameIn = firstName.getText();
+        if (firstNameIn.isEmpty()) {
+            fNameErrorL.setText("Invalid name!");
+            isValid = false;
+        } else {
+            fNameErrorL.setText("");
+            isValid = true;
+        }
         String lastNameIn = lastName.getText();
+        if (lastNameIn.isEmpty()) {
+            lNameErrorL.setText("Invalid name!");
+            isValid = false;
+        } else {
+            lNameErrorL.setText("");
+            isValid = true;
+        }
+
         String emailIn = email.getText();
+        if (emailIn.isEmpty()) {
+            emailErrorL.setText("Invalid email");
+            isValid = false;
+        } else {
+            emailErrorL.setText("");
+            isValid = true;
+        }
+
         String passwordIn = password.getText();
-        int ageIn = Integer.parseInt(age.getText());
-        int studentIDIn = Integer.parseInt(studentID.getText());
+        if (passwordIn.isEmpty()) {
+            pwErrorL.setText("Invalid!");
+            isValid = false;
+        } else {
+            pwErrorL.setText("");
+            isValid = true;
+        }
+        //needs catch for non ints
+        int ageIn=0;
+        if (age.getText().isEmpty()) {
+            ageErrorL.setText("Invalid age!");
+            isValid = false;
+        } else {
+            ageErrorL.setText("");
+            isValid = true;
+            ageIn = Integer.parseInt(age.getText());
+        }
+        
+        //not robust enough. will still enter DB if ID works but others still have errors
+        int studentIDIn = 0;
+        if (studentID.getText().isEmpty()) {
+            idErrorL.setText("Invalid ID!");
+            isValid = false;
+        } else {
+            idErrorL.setText(" ");
+            isValid = true;
+            studentIDIn = Integer.parseInt(studentID.getText());
+        }
+
         String degreeProgramIn = (String) degreeJComboBox.getSelectedItem();
-        MemberManager mm = new MemberManager();
-        String memberID = mm.generateNextID();
-        mm.member = new Member(memberID, passwordIn, firstNameIn, lastNameIn, emailIn, ageIn, studentIDIn, degreeProgramIn);
-        mm.addEntry();
-        newIDJL.setText(memberID);
-        newPW.setText(passwordIn);
+        if (isValid) {
+            MemberManager mm = new MemberManager();
+            String memberID = mm.generateNextID();
+            mm.member = new Member(memberID, passwordIn, firstNameIn, lastNameIn, emailIn, ageIn, studentIDIn, degreeProgramIn);
+            mm.addEntry();
+            newIDJL.setText(memberID);
+            newPW.setText(passwordIn);
+
+        }
+
     }
 
     public void showPasswordPanel() {
@@ -77,6 +132,12 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
         departmentJComboBox1 = new javax.swing.JComboBox<>();
         createAccountJButton1 = new javax.swing.JButton();
         newPW = new javax.swing.JLabel();
+        fNameErrorL = new javax.swing.JLabel();
+        lNameErrorL = new javax.swing.JLabel();
+        emailErrorL = new javax.swing.JLabel();
+        ageErrorL = new javax.swing.JLabel();
+        idErrorL = new javax.swing.JLabel();
+        pwErrorL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,6 +297,24 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        fNameErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        fNameErrorL.setForeground(new java.awt.Color(255, 51, 51));
+
+        lNameErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        lNameErrorL.setForeground(new java.awt.Color(255, 51, 51));
+
+        emailErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        emailErrorL.setForeground(new java.awt.Color(255, 51, 51));
+
+        ageErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        ageErrorL.setForeground(new java.awt.Color(255, 51, 51));
+
+        idErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        idErrorL.setForeground(new java.awt.Color(255, 51, 51));
+
+        pwErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        pwErrorL.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -248,39 +327,55 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                 .addGap(128, 128, 128)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(firstNameJL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fNameErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lNameJL)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(askAgeJL, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ageErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(degreeJL, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(degreeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(enterPWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(password)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lNameErrorL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(pwErrorL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(studentIDJL, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(studentID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(studentID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(memberEmailJL)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lNameJL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(firstNameJL)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(askAgeJL, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(degreeJL, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(degreeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(enterPWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(password)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(emailErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(passwordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -305,23 +400,28 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(firstNameJL))
+                    .addComponent(firstNameJL)
+                    .addComponent(fNameErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lNameJL)
-                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lNameErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(memberEmailJL)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(askAgeJL)
-                    .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ageErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentIDJL)
-                    .addComponent(studentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idErrorL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(degreeJL)
@@ -329,12 +429,13 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterPWJL)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pwErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createMemberButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -408,6 +509,7 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField age;
+    private javax.swing.JLabel ageErrorL;
     private javax.swing.JLabel askAgeJL;
     private javax.swing.JButton createAccountJButton1;
     private javax.swing.JButton createMemberButton;
@@ -417,10 +519,14 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     private javax.swing.JLabel departmentJL1;
     private javax.swing.JButton doneButton;
     private javax.swing.JTextField email;
+    private javax.swing.JLabel emailErrorL;
     private javax.swing.JLabel enterPWJL;
+    private javax.swing.JLabel fNameErrorL;
     private javax.swing.JTextField firstName;
     private javax.swing.JLabel firstNameJL;
+    private javax.swing.JLabel idErrorL;
     private javax.swing.JLabel instructJL;
+    private javax.swing.JLabel lNameErrorL;
     private javax.swing.JLabel lNameJL;
     private javax.swing.JTextField lastName;
     private javax.swing.JLabel memberEmailJL;
@@ -430,6 +536,7 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     private javax.swing.JLabel newPWJL;
     private javax.swing.JPasswordField password;
     private javax.swing.JPanel passwordPanel;
+    private javax.swing.JLabel pwErrorL;
     private javax.swing.JLabel recordInfoJL;
     private javax.swing.JComboBox<String> roleJComboBox1;
     private javax.swing.JLabel roleJL1;
