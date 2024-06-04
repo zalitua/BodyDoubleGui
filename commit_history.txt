@@ -1,0 +1,711 @@
+commit fafe633400aa0477b9b64f2204185785984c057f
+Merge: 8f6d706 8053f00
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Tue Jun 4 14:43:14 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit 8f6d706555a8edca48d38fd4313412abfec5ac91
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Tue Jun 4 14:39:13 2024 +1200
+
+    changes to tablemanager etc
+
+commit 8053f00a86c51f59c490a768c4d3b0ab39b08f5f
+Merge: a67b841 6b34aba
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Tue Jun 4 14:33:04 2024 +1200
+
+    Merge branch 'GDev'
+
+commit 6b34aba4c3324bedc29780ef3602c0451abac2f8
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Tue Jun 4 14:32:48 2024 +1200
+
+    Update private.xml
+
+commit a67b8418bb50bd553c5d6568875256efc025ac7d
+Merge: 23ae3be d44c3c6
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Mon Jun 3 16:34:19 2024 +1200
+
+    Merge pull request #12 from zalitua/GDev
+    
+    Merge pull request #11 from zalitua/main
+
+commit d44c3c6e2c0fc702e661136cd35647c559964859
+Merge: e36efd1 23ae3be
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Mon Jun 3 16:32:16 2024 +1200
+
+    Merge pull request #11 from zalitua/main
+    
+    edit session fixed
+
+commit 23ae3be21e9b9c342c85c58b4b6604144594b2ca
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon Jun 3 16:30:31 2024 +1200
+
+    edit session fixed
+    
+    Edit session wasn't working. Is now. in MemberCorner leave and join buttons still need work.
+
+commit 9ac08679d8593a78010a611d6c0a6004a832c271
+Merge: 215607e e36efd1
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Mon Jun 3 15:19:25 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit 215607e70c6dcb2bb60945eff5536ccc78597750
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Mon Jun 3 15:18:26 2024 +1200
+
+    Create abstract TableManager
+    
+    test with RoomManager and RoomCorner
+
+commit e36efd1fb4932ff0d2eda618ad5f17a211b021f5
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon Jun 3 15:00:36 2024 +1200
+
+    MemberCorner working
+    
+    updated to work with the  DBManagerAlt
+
+commit f955d3723fddf5c03d34f19112703415393ac5a9
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon Jun 3 14:53:24 2024 +1200
+
+    SessionManager working
+    
+    SessionManager works with alt db, and AdminCorner can run just fine. Member Corner is still being edited
+
+commit 7d0961b9a7b72250e21255aa4fd5dea4c6e137f9
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon Jun 3 13:25:45 2024 +1200
+
+    Singleton version of the  DBManager
+
+commit 5f3ead4dcc01379741370cdbc3a90451a47948a2
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Sun Jun 2 20:34:19 2024 +1200
+
+    fixed add session
+    
+    the combo b for add session was missing code. Found error in edit session. It doesn't actually edit the session, will work on later
+
+commit 1f732fea9417e7c36d8378ce11222ac5b67bd226
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Sun Jun 2 16:58:52 2024 +1200
+
+    leave and join working
+    
+    still need some edits to make sure members can not join session that are already full
+
+commit d14bda2dc85812903ddbc506e91e6dc8819a0960
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Sun Jun 2 14:08:21 2024 +1200
+
+    removed old CL code
+
+commit fbdeef1e175f303648133f099440e63fec5aacba
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Sun Jun 2 14:04:01 2024 +1200
+
+    Update private.xml
+
+commit c827060d5ddf72376f578d1ea4b27af128954633
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Sun Jun 2 13:55:11 2024 +1200
+
+    update
+
+commit 4880c1c8901fa0b2a2af0088e3897a54444b630d
+Merge: c1cd46e 9a84231
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Sat Jun 1 16:35:49 2024 +1200
+
+    Merge branch 'ZDev'
+
+commit 9a8423164d739fa0338e892de6b8b4c00a37616d
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Sat Jun 1 16:31:00 2024 +1200
+
+    ?
+
+commit a6eb5e55ed302cb9e4a21639aef9d17104fc873a
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 31 20:08:44 2024 +1200
+
+    EditSession, RoomCorner, AdminCorner, AddSession
+    
+    all functions working
+
+commit 6d153b4e594b9bf6e7c569c1ccc6fdad3966d07f
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 31 14:54:16 2024 +1200
+
+    create roomGUI and functions, rebuild and debug session
+
+commit 33ce56f5ad44c876b9ce57e3176125a6584edcb4
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 31 10:20:45 2024 +1200
+
+    admin corner redesign
+
+commit c1cd46eef68d4aa2a039ae36bfa8abd1d8d35919
+Merge: 2f8dbd5 566cfe3
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 31 09:15:39 2024 +1200
+
+    Merge branch 'GDev'
+
+commit 566cfe35e3ff7773c90b7d69554eca6e0001f95c
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 31 09:11:44 2024 +1200
+
+    updates to add session
+
+commit 2f8dbd5c2cb346f8f9632bf5e73e99e51de91553
+Merge: 019caae dde3bb0
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 31 09:08:05 2024 +1200
+
+    Merge branch 'ZDev'
+
+commit dde3bb041029b97b8982924c6c998064110cc757
+Merge: 4df6bd8 e3045bc
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 31 09:06:50 2024 +1200
+
+    Merge branch 'ZDev' of https://github.com/zalitua/BodyDoubleGui into ZDev
+
+commit 4df6bd8abce47e418811072629217e35a33a0726
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 31 09:06:40 2024 +1200
+
+    mainpage
+
+commit 019caaec65f818e4bbb914e12c6b698982ae6f7b
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 30 13:55:39 2024 +1200
+
+    table read edit
+    
+    only reads/ displays table if table isn't empty in the database
+
+commit 8020d0a0be91437a5c383c0244597d4e4eeb8a65
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Wed May 29 22:38:24 2024 +1200
+
+    update admin corner
+    
+    updated to read sessions not admins in table
+
+commit 59307c782bf7b21fa35d624f9d5c1d92d4f725fb
+Merge: 2955b53 e3045bc
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Wed May 29 21:06:50 2024 +1200
+
+    Merge pull request #10 from zalitua/ZDev
+
+commit e3045bcbb55b9019aabe307a93552a5ca3603625
+Merge: 1c33edd 2955b53
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Wed May 29 20:59:34 2024 +1200
+
+    Merge branch 'main' into ZDev
+
+commit 7996288f99ef7cbad80d369ba50f684f6175507a
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Wed May 29 19:37:04 2024 +1200
+
+    minor stuff
+
+commit 1c33edd7acb67c54e13eadf370b1c7b8066e6fca
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Wed May 29 17:31:14 2024 +1200
+
+    Update private.xml
+
+commit 2955b530d52c554819b9eed7088bbedcbe1a0ea1
+Merge: 26901b1 859f032
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Tue May 28 21:59:09 2024 +1200
+
+    Merge branch 'GDev'
+
+commit 859f0320a0c94e0e7d72b52c0e74cb5ec7ccc64f
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Tue May 28 21:58:54 2024 +1200
+
+    edit and add session button
+
+commit 10fbd45b74a5893c15ac9ca3cc8e897d05e935ae
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Mon May 27 13:42:37 2024 +1200
+
+    functions for RegisterMember and debug
+
+commit cb76c5664cdb408f122898112783c4ba0e948f25
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Sun May 26 22:32:57 2024 +1200
+
+    changes to register pages and main page
+    
+    RegisterMember setup
+    RegisterAdmin show hidden pwd info and close on click
+    MainPage open another window on click
+
+commit 26901b1308367e4c76ab7ecc98ef744dab440e0a
+Merge: c304574 e1ccdfc
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Sat May 25 16:57:26 2024 +1200
+
+    Merge pull request #9 from zalitua/GDev
+    
+    update
+
+commit e1ccdfc3ac6ca4b5e9e731571693f9a44e73b4c9
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Sat May 25 16:46:34 2024 +1200
+
+    update
+
+commit cd5f36beaad96b46ba208209e271fa1d0bb4ecdb
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 24 18:58:55 2024 +1200
+
+    new files, redesign registerMember
+    
+    MemberManager, SessionManager, RoomManager
+    Simplify constructors
+    get rid of conn and statement
+
+commit d28b11b5c0ce3e8d911c076484106b75e38e589c
+Merge: 80cd3d9 4fefee0
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 24 11:54:32 2024 +1200
+
+    ?
+
+commit 80cd3d91efb4d80d94adeb812387442d811bb674
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 24 11:52:01 2024 +1200
+
+    Update private.xml
+
+commit 4fefee0cd8a6d4fd6f6703be1d0f6d4759667331
+Merge: 9abd64f 03454f5
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 24 11:37:17 2024 +1200
+
+    Merge branch 'ZDev'
+
+commit 03454f58c47de6f4a1b28b2d7c5bd60b316fe313
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 24 11:34:27 2024 +1200
+
+    admin changes
+
+commit c304574fe0ff40f07de06a2b3b08b0d9d8258d90
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 24 11:27:49 2024 +1200
+
+    font update
+
+commit 9abd64f93164cd5b028058880b695348cc791daa
+Merge: 3dfc98b 9d3a454
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Thu May 23 09:08:55 2024 +1200
+
+    Merge branch 'ZDev'
+
+commit 9d3a45418f18d4586f705bd0f9b2931531e53ccf
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Thu May 23 08:50:24 2024 +1200
+
+    Updates to RegisterAdminGUI
+    
+    take user input and write to database. remove panel. uodate design and add functionality
+
+commit 3dfc98ba2954b368bdc51bd2b299bd7c222ba4d9
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Wed May 22 19:18:43 2024 +1200
+
+    read admins from database
+
+commit ae4809435c78e4cce7d44436f3d978c79bce4360
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Tue May 21 22:55:53 2024 +1200
+
+    alter designs
+
+commit e04f9a47168175c4ea1396ea8a6f76704d0a4a07
+Merge: 44c6667 13c2aad
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Tue May 21 11:31:51 2024 +1200
+
+    Merge branch 'ZDev'
+
+commit 13c2aad5ee3d519f745fd24ba0c81f6be4e8d9cd
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Tue May 21 11:31:03 2024 +1200
+
+    Create AdminManager and database tables again
+    
+    Admin manager can add entries, read all entries, and display all enteries
+
+commit 44c666780a3feb82a9ae2a80380ce4998340c902
+Merge: 843f5e2 bb126a3
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Mon May 20 12:21:51 2024 +1200
+
+    Merge branch 'ZDev'
+
+commit bb126a30cbcb9def9eb2fd8589e926366a648f71
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Mon May 20 12:16:02 2024 +1200
+
+    Update private.xml
+
+commit 843f5e2e490433002cca3ab308d0db8cad03d758
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon May 20 12:08:34 2024 +1200
+
+    table added to member corner
+
+commit c94d436a7c9cc70fb5961de3825c857fb0e7d2b8
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon May 20 11:27:40 2024 +1200
+
+    edit and add session
+
+commit 82a91316e077f91cac394f2722a75c8ad581b986
+Merge: de17f3b 4f6d544
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon May 20 10:24:54 2024 +1200
+
+    Merge branch 'Gdev'
+
+commit 4f6d5448aa05a76637ae8adb7b8303ad5f72f4b4
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Mon May 20 10:24:32 2024 +1200
+
+    edit admin corner
+
+commit de17f3b2fc07dabf2e9653db8a5b0e9d7463a2e9
+Merge: c78b5e5 edfe099
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 15:45:37 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit c78b5e544896f4d247a2a0b1fa1bb2b3f3c4b033
+Merge: 4488b70 622ad83
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 15:45:26 2024 +1200
+
+    Merge branch 'Gdev'
+
+commit edfe099e3c1c29e3435a72bcc7006a14f9212de4
+Merge: cecbc4e 622ad83
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Fri May 17 15:33:05 2024 +1200
+
+    Merge pull request #8 from zalitua/Gdev
+    
+    updates for reg member, and admin
+
+commit 622ad83d74d84f33ca6879134f18f41e2fb4523c
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 15:32:09 2024 +1200
+
+    updates for reg member, and admin
+
+commit 4488b70f28c4419bc4a3d8fed4f1cbfb5fa924f9
+Merge: 5adcd56 cecbc4e
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 12:12:54 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit 5adcd56a64cc03509116cbf498836181fcd1aa0c
+Merge: 8713086 8ecd82e
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 12:12:31 2024 +1200
+
+    Merge branch 'Gdev'
+
+commit cecbc4e8c46f4178a1a313b20b97bf7b0b07d352
+Merge: 8713086 8ecd82e
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Fri May 17 12:11:49 2024 +1200
+
+    Merge pull request #7 from zalitua/Gdev
+    
+    edit session select
+
+commit 8ecd82eae4cde6e0aa5e88e344b73760acfcf520
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 12:11:03 2024 +1200
+
+    edit session select
+
+commit 8713086ce9b9299c9eb64b97fb9e3d359e5a298e
+Merge: 1e47873 3f9e2fb
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 12:03:03 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit 3f9e2fb5284d0ede3f6e96b42ae9f54e00bd6322
+Merge: fb4cb0c 0e577fb
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Fri May 17 12:01:59 2024 +1200
+
+    Merge pull request #6 from zalitua/Gdev
+    
+    Reg admin
+
+commit 0e577fb0b1402f92e86719092b0026de9aee19fd
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 12:01:15 2024 +1200
+
+    Reg admin
+
+commit 1e4787360fca2ec913bcc86d6a7b75297cae757e
+Merge: 7160f41 fb4cb0c
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 11:37:00 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit 7160f4171bafd9dc50148197bb6fc8149d54bebc
+Merge: b66e37a c54cb07
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 11:35:32 2024 +1200
+
+    Merge branch 'Gdev'
+
+commit fb4cb0ca0062881671b895c465ba6f1c641bec2a
+Merge: b66e37a c54cb07
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Fri May 17 11:32:51 2024 +1200
+
+    Merge pull request #5 from zalitua/Gdev
+    
+    member reg
+
+commit c54cb07d9760df16d4ae620417fbe78a863f85c1
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 11:32:10 2024 +1200
+
+    member reg
+
+commit b66e37acf83f08302a93df923f9dcc514570251a
+Merge: b369c64 032b67b
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 11:03:41 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit b369c643d07f204d217ab12973ddc1dfd0675562
+Merge: c299d54 59392ad
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 11:03:17 2024 +1200
+
+    Merge branch 'Gdev'
+
+commit 032b67b3d16f58751088ef7e353dd2d20c19066b
+Merge: c299d54 59392ad
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Fri May 17 11:01:35 2024 +1200
+
+    Merge pull request #4 from zalitua/Gdev
+    
+    member select session edit
+
+commit 59392ada7e541ece8cdacf11314d909473463388
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 11:00:21 2024 +1200
+
+    member select session edit
+
+commit c299d548114e60b5a0c34e295c42fc9faa2da8ea
+Merge: 19610f2 2881370
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 10:55:53 2024 +1200
+
+    Merge branch 'Gdev'
+
+commit 2881370b778ad83ea71596da8ae7761e4c11b2bc
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 10:55:24 2024 +1200
+
+    member reg
+
+commit 19610f2ed9535c87657f853f7ffb8f068031d2fc
+Merge: 8bdb2df 9c0dad3
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 10:01:42 2024 +1200
+
+    Merge branch 'Gdev'
+
+commit 9c0dad30150842b31ff076fdab270f602f2e5274
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 10:01:25 2024 +1200
+
+    member conrner
+
+commit 8bdb2df9890532e3e2052141dfddc9d8ad318661
+Merge: 5b3aa36 7db2af6
+Author: George <132239985+georgetech23@users.noreply.github.com>
+Date:   Fri May 17 09:33:00 2024 +1200
+
+    Merge pull request #3 from zalitua/Gdev
+    
+    Gdev
+
+commit 7db2af6edf9c622c7f42091efa19c8d2d4648b95
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 17 09:29:58 2024 +1200
+
+    admin corner edit
+
+commit 0a1aa7432f7563ba33e0bac2160a54da7995d9b4
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 10 23:29:15 2024 +1200
+
+    new branch after rebase
+
+commit f79cfcf7df44243ef4653690fe9b5dcd14a45573
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 10 17:16:32 2024 +1200
+
+    BodyDouble simplified
+    
+    using updateDB from DBManager
+
+commit e8b17ee77ddf43d38531f6b5e35aea50ce5fdaa4
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 10 16:41:32 2024 +1200
+
+    Tables created
+
+commit 5b3aa36b3bd43652d155e828f3d6944061f2fea1
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 10 15:16:39 2024 +1200
+
+    create imbedded database
+
+commit a8c178a71dce8c5f147966a9cc66c09654190cf3
+Merge: 217b295 c7008a5
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Fri May 10 11:44:16 2024 +1200
+
+    Merge branch 'main' of https://github.com/zalitua/BodyDoubleGui
+
+commit c7008a5bfb305160fee545e0ca3a1db7794100c1
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 10 11:31:53 2024 +1200
+
+    updates
+
+commit c76f2fa265c67df33ce484cd443edd41d05d0e35
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Fri May 10 09:20:13 2024 +1200
+
+    updated instructions
+
+commit 217b295c372bddc5f66ed1879bb1a0885897b956
+Merge: be6d9f3 210e325
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Thu May 9 21:53:35 2024 +1200
+
+    Merge branch 'ZDev'
+
+commit 4cd5f8b5aec210b0ad2e1c2659db48419096cd46
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 9 21:45:25 2024 +1200
+
+    update2
+
+commit 1b83c533cfd83f2682057535757aba5ec41ef73c
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 9 21:39:23 2024 +1200
+
+    update
+
+commit 210e325f157048968ec2dc95a58b5af5b3464b05
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Thu May 9 21:25:22 2024 +1200
+
+    MainPage GUI
+    
+    MainPage GUI and messing with databases
+
+commit 6f7de7ac71efb722bb3c3e24ec3f33c5bea22887
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 9 20:06:17 2024 +1200
+
+    made refresh button
+
+commit 09e6d121ad92d50be6ec5376164675aa93a90be6
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 9 16:17:52 2024 +1200
+
+    starting on create button
+
+commit 7027121677b3b60d84ed5feaafee852f7e5aca30
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 9 15:20:25 2024 +1200
+
+    Admin GUI no function
+
+commit be6d9f3ea5f437f597b2b6e1d0055b7944439134
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Thu May 2 18:55:13 2024 +1200
+
+    Update Admin.java
+    
+    should say test again again at top
+
+commit 60fe433641911f0b76552e5b9db67db887ab9942
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 2 15:48:57 2024 +1200
+
+    Update private.xml
+
+commit b0635cd967783953dd2c921eac75d167abd040a8
+Author: Georgia Rouse <rsh2777@autuni.ac.nz>
+Date:   Thu May 2 14:44:04 2024 +1200
+
+    linking NetBeans
+
+commit 401f7bccbf5af8dfd2cee4939031d69b3d78b994
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Thu May 2 10:52:29 2024 +1200
+
+    Update Admin.java
+    
+    test again
+
+commit ba5a2529afb782ccf27ddbbe12ef7174e0210d7d
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Thu May 2 10:26:36 2024 +1200
+
+    Update private.xml
+
+commit 2fea4c4d420efbc1ecdad3b74be5d9db7cdca858
+Author: zalitua <132309173+zalitua@users.noreply.github.com>
+Date:   Mon Apr 29 13:35:10 2024 +1200
+
+    Update Admin.java
+
+commit 24836681925469623c233fb45b6f421b6900a57c
+Author: Zali Rademaekers <qwf5520@autuni.ac.nz>
+Date:   Mon Apr 29 13:22:32 2024 +1200
+
+    Initial commit
