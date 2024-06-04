@@ -90,21 +90,5 @@ public class Session {
                 + "Number of people in this sesssion: " + this.getNoOfPeople() + "   " 
                 + "Maximum number of people: " + this.getMaxNoOfPeople();
     }
-
-    public String toStringToFile() {
-        return this.getSessionID() + "," + this.getDateOfSession() + "," + this.timeOfSession + "," + this.getLocationOfSession() + "," + this.getNoOfPeople() + "," + this.getMaxNoOfPeople();
-    }
-
-    public static void writeRoomBooking(Session session) {
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter("./nbproject/files/roombooking.txt", true));
-            bw.append(session.toStringToFile());
-            bw.newLine();
-            bw.close();
-        } catch (IOException e) {
-            System.out.println("Sorry, there was a problem writing to the file.");
-        }
-    }
 }
 

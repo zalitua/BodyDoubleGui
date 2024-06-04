@@ -49,31 +49,4 @@ public class Admin extends Person {
         return "User ID: " + this.getUserID() + "\nFirst name: " + this.getFirstName() + "\nLast name: " + this.getLastName()
                 + "\nEmail: " + this.getEmail() + "\nRole: " + this.getRole() + "\nDepartment: " + this.getDepartment();
     }
-
-    public String toStringToFile() {
-        return this.getUserID() + "," + this.getPassword() + "," + this.getFirstName() + "," + this.getLastName()
-                + "," + this.getEmail() + "," + this.getRole() + "," + this.getDepartment();
-
-    }
-
-    public void displayAdmins() {
-        String path = "./nbproject/files/admins.txt";
-        ReadFile rf = new ReadFile();
-        ArrayList<Admin> list = rf.readAdminFile(path);
-        for (Admin admin : list) {
-            System.out.println(admin.toStringToFile());
-        }
-    }
-
-    public void writeToFile(Admin admin) {
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter("./nbproject/files/admins.txt", true));
-            bw.append(admin.toStringToFile());
-            bw.newLine();
-            bw.close();
-        } catch (IOException e) {
-            System.out.println("Sorry, there was a problem writing to the file.");
-        }
-    }
 }
