@@ -24,7 +24,7 @@ public class MemberCorner extends javax.swing.JFrame {
         initComponents();
         populateTable();
         populateSessionComboBox();
-        joinSession();
+        //joinSession();
     }
 
     private void populateTable() {
@@ -48,7 +48,7 @@ public class MemberCorner extends javax.swing.JFrame {
 
     //to populate the session ID drop down box
     private void populateSessionComboBox() {
-        List<String> sessionIDs = sM.getSessionIDs();
+        List<String> sessionIDs = sM.IDList("SESSION", "SESSIONID");
         sessionIDJComboB.removeAllItems(); //to prevent duplicates
         for (String id : sessionIDs) {
             sessionIDJComboB.addItem(id);
@@ -73,22 +73,26 @@ public class MemberCorner extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         sessionJTable = new javax.swing.JTable();
         leaveButton = new javax.swing.JButton();
+        returnLabel = new javax.swing.JLabel();
+        returnButton = new javax.swing.JButton();
+        exitButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(802, 380));
 
-        welcomeL.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        welcomeL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeL.setText("Welcome to the Memer Corner");
+        welcomeL.setText("Welcome to the Member Corner");
 
         memberInstuctJL.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         memberInstuctJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         memberInstuctJL.setText("Select the session you want to join or leave and click the button\n");
 
-        sessionsJLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        sessionsJLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         sessionsJLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        sessionsJLabel.setText("Session ID");
+        sessionsJLabel.setText("Session ID:");
 
-        sessionIDJComboB.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        sessionIDJComboB.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         sessionIDJComboB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SES007", "SES008", "SES006" }));
         sessionIDJComboB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +100,7 @@ public class MemberCorner extends javax.swing.JFrame {
             }
         });
 
-        joinButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        joinButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         joinButton.setText("Join Session");
         joinButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +125,7 @@ public class MemberCorner extends javax.swing.JFrame {
 
         adminSessionJScroll.setViewportView(jScrollPane2);
 
-        leaveButton.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        leaveButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         leaveButton.setText("Leave Session");
         leaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,57 +133,75 @@ public class MemberCorner extends javax.swing.JFrame {
             }
         });
 
+        returnLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        returnLabel.setText("Return to Main Page:");
+
+        returnButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        returnButton.setText("Return");
+        returnButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                returnButtonMouseClicked(evt);
+            }
+        });
+
+        exitButton1.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        exitButton1.setText("Exit App");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(welcomeL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(adminSessionJScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(memberInstuctJL, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(sessionsJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(joinButton)
-                        .addGap(20, 20, 20)))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(memberInstuctJL, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(returnLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(returnButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(exitButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(adminSessionJScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(206, 206, 206)
+                                .addComponent(welcomeL))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(sessionsJLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(leaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(joinButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(leaveButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(welcomeL)
+                .addGap(37, 37, 37)
                 .addComponent(adminSessionJScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(memberInstuctJL)
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sessionIDJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sessionsJLabel))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sessionsJLabel)
                     .addComponent(joinButton)
                     .addComponent(leaveButton))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(returnButton)
+                    .addComponent(returnLabel)
+                    .addComponent(exitButton1))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,6 +222,10 @@ public class MemberCorner extends javax.swing.JFrame {
         leaveSession();
         populateTable();
     }//GEN-LAST:event_leaveButtonActionPerformed
+
+    private void returnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnButtonMouseClicked
+        dispose();
+    }//GEN-LAST:event_returnButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -239,10 +265,13 @@ public class MemberCorner extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane adminSessionJScroll;
+    private javax.swing.JButton exitButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton joinButton;
     private javax.swing.JButton leaveButton;
     private javax.swing.JLabel memberInstuctJL;
+    private javax.swing.JButton returnButton;
+    private javax.swing.JLabel returnLabel;
     private javax.swing.JComboBox<String> sessionIDJComboB;
     private javax.swing.JTable sessionJTable;
     private javax.swing.JLabel sessionsJLabel;
@@ -255,27 +284,21 @@ public class MemberCorner extends javax.swing.JFrame {
         if (selectedSessionID != null) { // Check if a session is selected
             String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE + 1 WHERE SESSIONID = '" + selectedSessionID + "'";
             System.out.println("Executing query: " + updateSessionDB); // Debug print
-            sM.executeUpdate(updateSessionDB);
+
+            sM.updateDB(updateSessionDB);
+
         }
 
     }
 
-    //needs work
+
     private void leaveSession() {
         String selectedSessionID = (String) sessionIDJComboB.getSelectedItem(); // Get selected session ID
         if (selectedSessionID != null) { // Check if a session is selected
-            Session ses = sM.getSession(selectedSessionID);
-            if (ses != null) { //check session exists 
-                if (ses.getNoOfPeople() >= 0) { //checks there are acually people in the session already
-                    String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE - 1 WHERE SESSIONID = '" + selectedSessionID + "'";
-                    System.out.println("Executing query: " + updateSessionDB); // Debug print
-                    sM.executeUpdate(updateSessionDB);
-                } else {
-                    System.out.println("This session is already empty");
-                }
-            } else {
-                System.out.println("Session doesn't exist");
-            }
+            String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE - 1 WHERE SESSIONID = '" + selectedSessionID + "'";
+            System.out.println("Executing query: " + updateSessionDB); // Debug print
+            sM.updateDB(updateSessionDB);
+
         }
 
     }
