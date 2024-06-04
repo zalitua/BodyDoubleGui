@@ -52,26 +52,9 @@ public class Member extends Person {
     }
     
     @Override
+    //for testing
     public String toString(){
         return "User ID: " + this.getUserID() + "\nFirst name: " + this.getFirstName() + "\nLast name: " + this.getLastName() 
                 + "\nEmail: " + this.getEmail() + "\nAge: " + this.getAge() + "\nStudentID: " + this.getStudentID() + "\nDegre Program: " + this.getDegreeProgram();
-    }
-    
-    public String toStringToFile() {
-        return this.getUserID() + "," + this.getPassword() + "," + this.getFirstName()+ "," + this.getLastName()
-                 + "," + this.getEmail() + "," + this.getAge()+ "," + this.getStudentID()+ "," + this.getDegreeProgram();
-        
-    }
-    
-    public void writeMemberToFile(Member member) {
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter("./nbproject/files/members.txt", true));
-            bw.append(member.toStringToFile());
-            bw.newLine();
-            bw.close();
-        } catch (IOException e) {
-            System.out.println("Sorry, there was a problem writing to the file.");
-        } 
     }
 }

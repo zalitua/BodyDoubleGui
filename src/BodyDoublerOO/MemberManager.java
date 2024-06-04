@@ -4,10 +4,8 @@
  */
 package BodyDoublerOO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,14 +15,12 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class MemberManager {
+public class MemberManager extends TableManager {
 
-    private final DBManager dbManager;
     public Member member;
 
     public MemberManager() {
         this.member = new Member("", "", "", "", "", 0, 0, "");
-        dbManager = new DBManager();
     }
 
     public static void main(String[] args) {
@@ -33,20 +29,21 @@ public class MemberManager {
         mm.addEntry();
     }
 
+    @Override
     public void addEntry() {
 
         String entry = "INSERT INTO MEMBER VALUES ('" + member.getUserID() + "' ,'"
                 + member.getPassword() + "' ,'" + member.getFirstName() + "' ,'"
                 + member.getLastName() + "' ,'" + member.getEmail() + "' ,"
                 + member.getStudentID() + " ,'" + member.getDegreeProgram() + "' ," + member.getAge() + ")";
-        this.dbManager.updateDB(entry);
+        updateDB(entry);
         System.out.println("Entry made!");
     }
 
     public List<Member> readAll() {
 
         List<Member> members = new ArrayList<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT * FROM ADMIN");
+        ResultSet rs = queryDB("SELECT * FROM ADMIN");
         try {
             while (rs.next()) {
                 String memberID = rs.getString("MEMBERID");
@@ -82,6 +79,7 @@ public class MemberManager {
         }
     }
 
+    @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();
         String num = seq.generateNextNumber("MEMBER", "MEMBERID");

@@ -18,11 +18,11 @@ import java.util.logging.Logger;
  * @author zalit
  */
 abstract class TableManager {
-    //private final DBManagerAlt dbManager;
+    //private final DBManager dbManager;
     private Connection connInstance;
     
     public TableManager(){
-        this.connInstance = DBManagerAlt.getConnection();
+        this.connInstance = DBManager.getConnection();
     }
     
     public ResultSet queryDB(String sql) {
@@ -65,7 +65,7 @@ abstract class TableManager {
             if(rs!=null) rs.close();
             if(stmt!= null) stmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DBManagerAlt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

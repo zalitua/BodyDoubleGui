@@ -18,19 +18,16 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class Sequencer {
-
-    private final DBManager dbManager;
+public class Sequencer extends TableManager{
 
     public Sequencer() {
-        this.dbManager = new DBManager();
     }
 
     public String generateNextNumber(String table, String column) {
         int number = 000;
         String nextNumber = "";
         SortedSet<String> idSet = new TreeSet<>();
-        ResultSet rs = this.dbManager.queryDB("SELECT " + column + " FROM " + table);
+        ResultSet rs = queryDB("SELECT " + column + " FROM " + table);
 
         try {
             while (rs.next()) {
@@ -59,5 +56,15 @@ public class Sequencer {
             nextNumber = String.format("%03d", number);
         }
         return nextNumber;
+    }
+    
+    @Override
+    public String generateNextID(){
+        return null;
+    }
+    
+    @Override
+    public void addEntry(){
+        
     }
 }
