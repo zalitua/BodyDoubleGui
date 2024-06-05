@@ -41,6 +41,7 @@ public class MainPage extends javax.swing.JFrame {
         selectLabel = new javax.swing.JLabel();
         adminRadioButton = new javax.swing.JRadioButton();
         memberRadioButton = new javax.swing.JRadioButton();
+        idErrorL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connection Maker");
@@ -113,6 +114,9 @@ public class MainPage extends javax.swing.JFrame {
         memberRadioButton.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         memberRadioButton.setText("Member");
 
+        idErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        idErrorL.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,20 +136,20 @@ public class MainPage extends javax.swing.JFrame {
                             .addComponent(selectLabel))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(LogInButton)
-                        .addGap(274, 274, 274))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(138, Short.MAX_VALUE)
                         .addComponent(IDLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(PwdLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PwdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149))))
+                        .addComponent(PwdLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(295, 295, 295)
+                        .addComponent(LogInButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PwdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(149, 149, 149))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -154,11 +158,15 @@ public class MainPage extends javax.swing.JFrame {
                                 .addGap(200, 200, 200)
                                 .addComponent(LogInLabel))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(177, 177, 177)
-                                .addComponent(registerLabel))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(142, 142, 142)
-                                .addComponent(welcomeLabel)))
+                                .addComponent(welcomeLabel))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(177, 177, 177)
+                                    .addComponent(registerLabel))))
                         .addGap(0, 141, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -192,7 +200,9 @@ public class MainPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(memberRadioButton))
                     .addComponent(registerButton))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         pack();
@@ -223,6 +233,15 @@ public class MainPage extends javax.swing.JFrame {
     private void LogInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInButtonMouseClicked
         String IDInput = IDTextField.getText();
         String PwdInput = PwdTextField.getText();
+        
+        if(IDInput.isEmpty()|| PwdInput.isEmpty())
+        {
+            idErrorL.setText("Invalid ID or password");
+        }
+        else
+        {
+            idErrorL.setText("");
+        }
         
     }//GEN-LAST:event_LogInButtonMouseClicked
 
@@ -269,6 +288,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel PwdLabel;
     private javax.swing.JTextField PwdTextField;
     private javax.swing.JRadioButton adminRadioButton;
+    private javax.swing.JLabel idErrorL;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea mainTextArea;
     private javax.swing.JRadioButton memberRadioButton;
