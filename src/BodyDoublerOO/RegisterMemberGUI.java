@@ -21,59 +21,53 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     public void createMember() {
         boolean isValid = true;
         String firstNameIn = firstName.getText();
+        String lastNameIn = lastName.getText();
+        String emailIn = email.getText();
+        String passwordIn = new String(password.getPassword());
+        int ageIn = 0;
+        int studentIDIn = 0;
         if (firstNameIn.isEmpty()) {
             fNameErrorL.setText("Invalid name!");
             isValid = false;
         } else {
             fNameErrorL.setText("");
-            isValid = true;
         }
-        String lastNameIn = lastName.getText();
+
         if (lastNameIn.isEmpty()) {
             lNameErrorL.setText("Invalid name!");
             isValid = false;
         } else {
             lNameErrorL.setText("");
-            isValid = true;
         }
 
-        String emailIn = email.getText();
         if (emailIn.isEmpty()) {
             emailErrorL.setText("Invalid email");
             isValid = false;
         } else {
             emailErrorL.setText("");
-            isValid = true;
         }
 
-        String passwordIn = password.getText();
-        if (passwordIn.isEmpty()) {
+        if (passwordIn.isEmpty()|| passwordIn.length()>8) {
             pwErrorL.setText("Invalid!");
             isValid = false;
         } else {
             pwErrorL.setText("");
-            isValid = true;
         }
-        //needs catch for non ints
-        int ageIn=0;
-        if (age.getText().isEmpty()) {
+
+        try {
+            ageIn = Integer.parseInt(age.getText());
+            ageErrorL.setText("");
+        } catch (NumberFormatException e) {
             ageErrorL.setText("Invalid age!");
             isValid = false;
-        } else {
-            ageErrorL.setText("");
-            isValid = true;
-            ageIn = Integer.parseInt(age.getText());
         }
-        
-        //not robust enough. will still enter DB if ID works but others still have errors
-        int studentIDIn = 0;
-        if (studentID.getText().isEmpty()) {
+
+        try {
+            studentIDIn = Integer.parseInt(studentID.getText());
+            idErrorL.setText("");
+        } catch (NumberFormatException e) {
             idErrorL.setText("Invalid ID!");
             isValid = false;
-        } else {
-            idErrorL.setText(" ");
-            isValid = true;
-            studentIDIn = Integer.parseInt(studentID.getText());
         }
 
         String degreeProgramIn = (String) degreeJComboBox.getSelectedItem();

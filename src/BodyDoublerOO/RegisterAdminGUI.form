@@ -57,7 +57,15 @@
                       <Component id="fNameJL" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="firstName" min="-2" pref="115" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="fErrorL" min="-2" pref="114" max="-2" attributes="0"/>
                   </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel2" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jLabel3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -95,16 +103,19 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="fNameJL" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="firstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fErrorL" alignment="3" min="-2" pref="12" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lNameJL" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="emailJL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -120,6 +131,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="pWJL" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="password" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="createAccountJButton" min="-2" max="-2" attributes="0"/>
@@ -459,5 +471,27 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="fErrorL">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Georgia" size="14" style="1"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel4"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
