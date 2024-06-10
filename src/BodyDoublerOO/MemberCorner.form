@@ -173,8 +173,8 @@
                     <Column editable="true" title="Date" type="java.lang.Object"/>
                     <Column editable="true" title="Time" type="java.lang.Object"/>
                     <Column editable="true" title="Location" type="java.lang.Object"/>
-                    <Column editable="true" title="Max people" type="java.lang.Object"/>
                     <Column editable="true" title="Current Number of People" type="java.lang.Object"/>
+                    <Column editable="true" title="Max People" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>

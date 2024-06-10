@@ -118,7 +118,7 @@ public class MemberCorner extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Session ID", "Date", "Time", "Location", "Max people", "Current Number of People"
+                "Session ID", "Date", "Time", "Location", "Current Number of People", "Max People"
             }
         ));
         jScrollPane2.setViewportView(sessionJTable);
