@@ -28,7 +28,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         populateRoomComboBox();
     }
     
-    private void createSession(){
+    void createSession(){
         
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
