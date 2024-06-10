@@ -7,6 +7,7 @@ package BodyDoublerOO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -290,7 +291,7 @@ public class MemberCorner extends javax.swing.JFrame {
             }
             else
             {
-                System.out.println("Error!");
+                JOptionPane.showMessageDialog(this, "This session is fully booked, please try another one", "Fully Booked", JOptionPane.WARNING_MESSAGE);
             }
 
         }
@@ -306,7 +307,7 @@ public class MemberCorner extends javax.swing.JFrame {
                 System.out.println("Executing query: " + updateSessionDB); // Debug print
                 sM.updateDB(updateSessionDB);
             } else {
-                System.out.println("Error!");
+                 JOptionPane.showMessageDialog(this, "This session is already empty", "Fully Booked", JOptionPane.WARNING_MESSAGE);
             }
 
         }
