@@ -65,7 +65,7 @@ public class SessionManager extends TableManager {
                 String room = rs.getString("ROOM");
                 int maxPeople = rs.getInt("MAXPEOPLE");
                 int actualPeople = rs.getInt("ACTUALPEOPLE");
-                Session session1 = new Session(sessionID, date, time, room, maxPeople, actualPeople);
+                Session session1 = new Session(sessionID, date, time, room, actualPeople, maxPeople);
                 sessions.add(session1);
             }
         } catch (SQLException ex) {
@@ -99,7 +99,7 @@ public class SessionManager extends TableManager {
                 int maxPeople = rs.getInt("MAXPEOPLE");
                 int actualPeople = rs.getInt("ACTUALPEOPLE");
 
-                session = new Session(sessionID, date, time, room, maxPeople, actualPeople);
+                session = new Session(sessionID, date, time, room, actualPeople, maxPeople);
             }
         } catch (SQLException ex) {
             Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);

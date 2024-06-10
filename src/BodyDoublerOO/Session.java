@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Session {
 
-    static final String DEFAULT_SESSIONBOOKING_PATH = "./nbproject/files/roombooking.txt";
+    //static final String DEFAULT_SESSIONBOOKING_PATH = "./nbproject/files/roombooking.txt";
 
     private String dateOfSession;
     private String timeOfSession;
