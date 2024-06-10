@@ -279,7 +279,7 @@ public class MemberCorner extends javax.swing.JFrame {
     private javax.swing.JLabel welcomeL;
     // End of variables declaration//GEN-END:variables
 
-    //needs work, adds to session 003 when another session has actually been selected 
+    
     private void joinSession() {
         String selectedSessionID = (String) sessionIDJComboB.getSelectedItem(); // Get selected session ID
         if (selectedSessionID != null) { // Check if a session is selected
@@ -288,9 +288,8 @@ public class MemberCorner extends javax.swing.JFrame {
                 String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE + 1 WHERE SESSIONID = '" + selectedSessionID + "'";
                 System.out.println("Executing query: " + updateSessionDB); // Debug print
                 sM.updateDB(updateSessionDB);
-            }
-            else
-            {
+                JOptionPane.showMessageDialog(this, "You've joined the session!", "Joined Session", JOptionPane.PLAIN_MESSAGE);
+            } else {
                 JOptionPane.showMessageDialog(this, "This session is fully booked, please try another one", "Fully Booked", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -302,12 +301,13 @@ public class MemberCorner extends javax.swing.JFrame {
         String selectedSessionID = (String) sessionIDJComboB.getSelectedItem(); // Get selected session ID
         if (selectedSessionID != null) { // Check if a session is selected
             Session session = sM.getSession(selectedSessionID);// grab session details
-            if (session != null && session.getNoOfPeople() > 0) {
+            if (session.getNoOfPeople() > 0) {
                 String updateSessionDB = "UPDATE SESSION SET ACTUALPEOPLE = ACTUALPEOPLE - 1 WHERE SESSIONID = '" + selectedSessionID + "'";
                 System.out.println("Executing query: " + updateSessionDB); // Debug print
                 sM.updateDB(updateSessionDB);
+                JOptionPane.showMessageDialog(this, "You have been withdrawn from the session", "Successfully Left Session", JOptionPane.PLAIN_MESSAGE);
             } else {
-                 JOptionPane.showMessageDialog(this, "This session is already empty", "Fully Booked", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "This session is already empty", "Session Empty", JOptionPane.WARNING_MESSAGE);
             }
 
         }
