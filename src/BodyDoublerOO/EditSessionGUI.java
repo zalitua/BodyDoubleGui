@@ -5,6 +5,7 @@
 package BodyDoublerOO;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,11 +38,13 @@ public class EditSessionGUI extends javax.swing.JFrame {
         String sessionID = sm.generateNextID();
         sm.session = new Session(sessionID, date, time, room, 0, maxP);
         sm.addEntry();
+        JOptionPane.showConfirmDialog(this, "Session successfully edited", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
     
     private void deleteSession(){
         String sessionID = (String) sessionComboBox.getSelectedItem();
         sm.deleteEntry("SESSION", "SESSIONID", sessionID);
+        JOptionPane.showConfirmDialog(this, "Session successfully deleted", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
     
     private void populateTable() {

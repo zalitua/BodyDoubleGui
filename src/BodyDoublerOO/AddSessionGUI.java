@@ -6,6 +6,7 @@ package BodyDoublerOO;
 
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -37,6 +38,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         String sessionID = sm.generateNextID();
         sm.session = new Session(sessionID, date, time, room, 0, maxP);
         sm.addEntry();
+        JOptionPane.showConfirmDialog(this, "Session successfully created", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
     
     private void populateTable() {
@@ -282,6 +284,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     private void confirmButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseClicked
         createSession();
         populateTable();
+        
     }//GEN-LAST:event_confirmButtonMouseClicked
 
     private void dayJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayJComboBActionPerformed

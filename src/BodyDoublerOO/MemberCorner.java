@@ -290,7 +290,7 @@ public class MemberCorner extends javax.swing.JFrame {
                 sM.updateDB(updateSessionDB);
                 JOptionPane.showMessageDialog(this, "You've joined the session!", "Joined Session", JOptionPane.PLAIN_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "This session is fully booked, please try another one", "Fully Booked", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "This session is fully booked, please try another one", "Fully Booked", JOptionPane.ERROR_MESSAGE);
             }
 
         }
