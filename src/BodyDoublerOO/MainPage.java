@@ -241,7 +241,7 @@ public class MainPage extends javax.swing.JFrame {
             new RegisterAdminGUI().setVisible(true);
         }
         else if (memberRadioButton.isSelected() == true){
-            new RegisterAdminGUI().setVisible(true);
+            new RegisterMemberGUI().setVisible(true);
         }
         
         
