@@ -6,6 +6,7 @@ package BodyDoublerOO;
 
 
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -451,4 +452,32 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> yearComboB;
     private javax.swing.JLabel yearJL;
     // End of variables declaration//GEN-END:variables
+
+
+ public JComboBox<String> getDayJComboB() {
+        return dayJComboB;
+    }
+
+    public JComboBox<String> getMonthJComboB() {
+        return monthJComboB;
+    }
+    
+    
+    public JComboBox<String> getTimeJComboB() {
+        return timeJComboB;
+    }
+
+    public JComboBox<String> getRoomJComboB() {
+        return roomJComboB;
+    }
+
+    public JComboBox<String> getMaxPartJComboB() {
+        return maxPartJComboB;
+    }
+    
+   
+
+
+
+
 }
