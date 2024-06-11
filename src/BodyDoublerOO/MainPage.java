@@ -15,6 +15,7 @@ public class MainPage extends javax.swing.JFrame {
      */
     public MainPage() {
         initComponents();
+        exitButton.setToolTipText("Exit the program");
     }
 
     /**
@@ -42,6 +43,7 @@ public class MainPage extends javax.swing.JFrame {
         adminRadioButton = new javax.swing.JRadioButton();
         memberRadioButton = new javax.swing.JRadioButton();
         idErrorL = new javax.swing.JLabel();
+        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Connection Maker");
@@ -117,6 +119,14 @@ public class MainPage extends javax.swing.JFrame {
         idErrorL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         idErrorL.setForeground(new java.awt.Color(255, 51, 51));
 
+        exitButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        exitButton.setText("Exit App");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,18 +169,21 @@ public class MainPage extends javax.swing.JFrame {
                                 .addComponent(LogInLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(142, 142, 142)
-                                .addComponent(welcomeLabel))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(177, 177, 177)
-                                    .addComponent(registerLabel))))
+                                .addComponent(welcomeLabel)))
                         .addGap(0, 141, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(177, 177, 177)
+                                .addComponent(registerLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,30 +192,36 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LogInLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PwdLabel)
-                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PwdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(LogInButton)
-                .addGap(18, 18, 18)
-                .addComponent(registerLabel)
-                .addGap(18, 18, 18)
-                .addComponent(selectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(adminRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(memberRadioButton))
-                    .addComponent(registerButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LogInLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(IDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PwdLabel)
+                            .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PwdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(LogInButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(registerLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(selectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(adminRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(memberRadioButton))
+                            .addComponent(registerButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitButton)
+                        .addContainerGap())))
         );
 
         pack();
@@ -244,6 +263,10 @@ public class MainPage extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_LogInButtonMouseClicked
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +311,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JLabel PwdLabel;
     private javax.swing.JTextField PwdTextField;
     private javax.swing.JRadioButton adminRadioButton;
+    private javax.swing.JButton exitButton;
     private javax.swing.JLabel idErrorL;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea mainTextArea;

@@ -257,7 +257,7 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                         .addComponent(newPW)
                         .addGap(28, 28, 28)
                         .addComponent(newPWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         passwordPanelLayout.setVerticalGroup(
             passwordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +271,7 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                     .addComponent(newPW))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(recordInfoJL)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         intErrorLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
@@ -424,7 +424,7 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                     .addComponent(doneButton))
                 .addGap(35, 35, 35)
                 .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
