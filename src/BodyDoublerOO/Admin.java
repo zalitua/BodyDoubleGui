@@ -18,8 +18,7 @@ public class Admin extends Person {
     private String role;
     private String department;
     
-//    public Admin(){
-//    }
+
 
     public Admin(String userID, String password, String firstName, String lastName,
             String email, String role, String department) {
