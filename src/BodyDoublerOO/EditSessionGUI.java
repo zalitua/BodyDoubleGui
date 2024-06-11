@@ -5,6 +5,7 @@
 package BodyDoublerOO;
 
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,11 +29,10 @@ public class EditSessionGUI extends javax.swing.JFrame {
         homeButton.setToolTipText("Return to Main Page");
         exitButton.setToolTipText("Exit the program");
         returnButton.setToolTipText("Return to Admin Corner");
-        
-    }
-    //doesn't actaully edit the entries when used in this class
 
-    private void createSession() {
+    }
+
+    public void createSession() {
 
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
@@ -44,7 +44,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
         JOptionPane.showConfirmDialog(this, "Session successfully edited", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
 
-    private void deleteSession() {
+    public void deleteSession() {
         String sessionID = (String) sessionComboBox.getSelectedItem();
         sm.deleteEntry("SESSION", "SESSIONID", sessionID);
         JOptionPane.showConfirmDialog(this, "Session successfully deleted", "Session Deleted", JOptionPane.PLAIN_MESSAGE);
@@ -478,4 +478,25 @@ public class EditSessionGUI extends javax.swing.JFrame {
     private javax.swing.JLabel timeJL;
     private javax.swing.JLabel welcomeEditJL;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getDayJComboB() {
+        return dayJComboB;
+    }
+
+    public JComboBox<String> getMonthJComboB() {
+        return monthJComboB;
+    }
+
+    public JComboBox<String> getTimeJComboB() {
+        return timeJComboB;
+    }
+
+    public JComboBox<String> getRoomJComboB() {
+        return roomJComboB;
+    }
+
+    public JComboBox<String> getMaxPartJComboB() {
+        return maxPartJComboB;
+    }
+
 }

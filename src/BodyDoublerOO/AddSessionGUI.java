@@ -4,12 +4,10 @@
  */
 package BodyDoublerOO;
 
-
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -17,24 +15,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public final class AddSessionGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EditSessionGUI
-     */
-    
     SessionManager sm = new SessionManager();
-    
+
     public AddSessionGUI() {
         initComponents();
-        
+
         populateTable();
         populateRoomComboBox();
         returnButton.setToolTipText("Reutn to Admin Corner");
         exitButton.setToolTipText("Exit the program");
         homeButton.setToolTipText("Return to Main Page");
     }
-    
-    void createSession(){
-        
+
+    public void createSession() {
+
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
         String room = (String) roomJComboB.getSelectedItem();
@@ -44,7 +38,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         sm.addEntry();
         JOptionPane.showConfirmDialog(this, "Session successfully created", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
-    
+
     private void populateTable() {
         List<Session> session = sm.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionTable.getModel();
@@ -63,7 +57,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
         List<String> roomNames = rm.IDList("ROOM", "ROOMNAME");
@@ -72,7 +66,6 @@ public final class AddSessionGUI extends javax.swing.JFrame {
             roomJComboB.addItem(name);
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -384,7 +377,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     private void confirmButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmButtonMouseClicked
         createSession();
         populateTable();
-        
+
     }//GEN-LAST:event_confirmButtonMouseClicked
 
     private void dayJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayJComboBActionPerformed
@@ -418,7 +411,6 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
-
 
     /**
      * @param args the command line arguments
@@ -482,16 +474,14 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     private javax.swing.JLabel yearJL;
     // End of variables declaration//GEN-END:variables
 
-
- public JComboBox<String> getDayJComboB() {
+    public JComboBox<String> getDayJComboB() {
         return dayJComboB;
     }
 
     public JComboBox<String> getMonthJComboB() {
         return monthJComboB;
     }
-    
-    
+
     public JComboBox<String> getTimeJComboB() {
         return timeJComboB;
     }
@@ -503,10 +493,5 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     public JComboBox<String> getMaxPartJComboB() {
         return maxPartJComboB;
     }
-    
-   
-
-
-
 
 }
