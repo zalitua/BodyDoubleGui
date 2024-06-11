@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-abstract class TableManager {
+abstract class TableManager implements TableInterface{
     //private final DBManager dbManager;
     private Connection connInstance;
     
@@ -69,13 +69,21 @@ abstract class TableManager {
         }
     }
     
-    public abstract void addEntry();
+    public boolean checkInput(String input) {
+        return !input.isEmpty();
+    }
+
+    public boolean checkLength(String input) {
+        return input.length() == 8;
+    }
     
+    @Override
     public void deleteEntry(String table, String column, String inputID) {
         String entry = "DELETE FROM " + table + " WHERE " + column + " = '" + inputID + "'";
         updateDB(entry);
     }
     
+    @Override
     public List<String> IDList(String table, String column) {
         List<String> list = new ArrayList<>();
         ResultSet rs = queryDB("SELECT " + column + " FROM " + table);
@@ -89,7 +97,4 @@ abstract class TableManager {
         }
         return list;
     }
-    
-    public abstract String generateNextID();
-    
 }

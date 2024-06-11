@@ -4,6 +4,8 @@
  */
 package BodyDoublerOO;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author GVE Rouse
@@ -16,18 +18,14 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     public RegisterMemberGUI() {
         initComponents();
         passwordPanel.setVisible(false);
-    }
-
-    public boolean checkInput(String input) {
-        return !input.isEmpty();
-    }
-
-    public boolean checkLength(String input) {
-        return input.length() == 8;
+        homeButton.setToolTipText("Return to Main Page");
+        exitButton.setToolTipText("Quit Program");
+        createMemberButton.setToolTipText("Create a new account");
     }
 
     public void createMember() {
-
+        
+        MemberManager mm = new MemberManager();
         boolean isValidInt = true;
         boolean allGood = false;
 
@@ -41,42 +39,32 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
         int intAge = 0;
         int intStudentID = 0;
 
-        if (!checkInput(firstNameIn) || !checkInput(lastNameIn) || !checkInput(emailIn)
-                || !checkInput(passwordIn) || !checkInput(ageIn) || !checkInput(studentIDIn)
-                || !checkInput(passwordIn)) {
-            errorLabel.setText("Please fill out all fields. If not applicable please enter 'n/a'.");
-        }
-        else{
-            errorLabel.setText("");
+        if (!mm.checkInput(firstNameIn) || !mm.checkInput(lastNameIn) || !mm.checkInput(emailIn)
+                || !mm.checkInput(passwordIn) || !mm.checkInput(ageIn) || !mm.checkInput(studentIDIn)
+                || !mm.checkInput(passwordIn)) {
+            //errorLabel.setText("Please fill out all fields. If not applicable please enter 'n/a'.");
+            JOptionPane.showMessageDialog(this, "Please fill out all fields. If not applicable please enter 'n/a'.", "Invalid Entry", JOptionPane.PLAIN_MESSAGE);
         }
 
         try {
             intAge = Integer.parseInt(ageIn);
             intStudentID = Integer.parseInt(studentIDIn);
-            intErrorLabel.setText("");
         } catch (NumberFormatException e) {
-            intErrorLabel.setText("Please enter a valid number.");
+            JOptionPane.showMessageDialog(this, "Please enter a vaild number.", "Invalid Number Entry", JOptionPane.PLAIN_MESSAGE);
             isValidInt = false;
         }
         
-        if (!checkLength(passwordIn)){
-            pwdErrorLabel.setText("Please enter an 8 character password");
-        }
-        else{
-            pwdErrorLabel.setText("");
+        if (!mm.checkLength(passwordIn)){
+            JOptionPane.showMessageDialog(this, "Please enter an 8 character password.", "Invalid Password Entry", JOptionPane.PLAIN_MESSAGE);
         }
 
-        if (checkInput(firstNameIn) && checkInput(lastNameIn) && checkInput(emailIn)
-                && checkInput(passwordIn) && checkInput(ageIn) && checkInput(studentIDIn)
-                && checkInput(passwordIn) && checkLength(passwordIn) && isValidInt) {
+        if (mm.checkInput(firstNameIn) && mm.checkInput(lastNameIn) && mm.checkInput(emailIn)
+                && mm.checkInput(passwordIn) && mm.checkInput(ageIn) && mm.checkInput(studentIDIn)
+                && mm.checkInput(passwordIn) && mm.checkLength(passwordIn) && isValidInt) {
             allGood = true;
-            intErrorLabel.setText("");
-            intErrorLabel.setText("");
-            pwdErrorLabel.setText("");
         }
 
         if (allGood) {
-            MemberManager mm = new MemberManager();
             String memberID = mm.generateNextID();
             mm.member = new Member(memberID, passwordIn, firstNameIn, lastNameIn, emailIn, intAge, intStudentID, degreeProgramIn);
             mm.addEntry();
@@ -128,11 +116,8 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
         departmentJComboBox1 = new javax.swing.JComboBox<>();
         createAccountJButton1 = new javax.swing.JButton();
         newPW = new javax.swing.JLabel();
-        intErrorLabel = new javax.swing.JLabel();
-        errorLabel = new javax.swing.JLabel();
-        pwdErrorLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
-        doneButton = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -274,12 +259,6 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        intErrorLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-
-        errorLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-
-        pwdErrorLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-
         exitButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         exitButton.setText("Exit App");
         exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -288,16 +267,16 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
             }
         });
 
-        doneButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        doneButton.setText("Home");
-        doneButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        homeButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        homeButton.setText("Home");
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                doneButtonMouseClicked(evt);
+                homeButtonMouseClicked(evt);
             }
         });
-        doneButton.addActionListener(new java.awt.event.ActionListener() {
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doneButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -346,21 +325,16 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                                 .addGap(185, 185, 185)
                                 .addComponent(createMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(errorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(intErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pwdErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(degreeJL, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(degreeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(enterPWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(password))))))
+                                .addGap(160, 160, 160)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(degreeJL, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(degreeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(enterPWJL, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(password)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -369,8 +343,8 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(instructJL, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(doneButton)
+                        .addGap(193, 193, 193)
+                        .addComponent(homeButton)
                         .addGap(18, 18, 18)
                         .addComponent(exitButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -413,18 +387,14 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(createMemberButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(intErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pwdErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton)
-                    .addComponent(doneButton))
-                .addGap(35, 35, 35)
-                .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+
+                    .addComponent(homeButton))
+                .addContainerGap(106, Short.MAX_VALUE))
+
         );
 
         pack();
@@ -451,14 +421,14 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_createMemberButtonMouseClicked
 
-    private void doneButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doneButtonMouseClicked
+    private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_doneButtonMouseClicked
+    }//GEN-LAST:event_homeButtonMouseClicked
 
-    private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_doneButtonActionPerformed
+    }//GEN-LAST:event_homeButtonActionPerformed
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
         System.exit(0);
@@ -509,15 +479,13 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     private javax.swing.JLabel degreeJL;
     private javax.swing.JComboBox<String> departmentJComboBox1;
     private javax.swing.JLabel departmentJL1;
-    private javax.swing.JButton doneButton;
     private javax.swing.JTextField email;
     private javax.swing.JLabel enterPWJL;
-    private javax.swing.JLabel errorLabel;
     private javax.swing.JButton exitButton;
     private javax.swing.JTextField firstName;
     private javax.swing.JLabel firstNameJL;
+    private javax.swing.JButton homeButton;
     private javax.swing.JLabel instructJL;
-    private javax.swing.JLabel intErrorLabel;
     private javax.swing.JLabel lNameJL;
     private javax.swing.JTextField lastName;
     private javax.swing.JLabel memberEmailJL;
@@ -527,7 +495,6 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     private javax.swing.JLabel newPWJL;
     private javax.swing.JPasswordField password;
     private javax.swing.JPanel passwordPanel;
-    private javax.swing.JLabel pwdErrorLabel;
     private javax.swing.JLabel recordInfoJL;
     private javax.swing.JComboBox<String> roleJComboBox1;
     private javax.swing.JLabel roleJL1;
