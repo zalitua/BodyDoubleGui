@@ -17,7 +17,9 @@ import static org.junit.Assert.*;
  */
 public class RegisterMemberGUITest {
     
+    private RegisterMemberGUI instance;
     public RegisterMemberGUITest() {
+        
     }
     
     @BeforeClass
@@ -30,6 +32,7 @@ public class RegisterMemberGUITest {
     
     @Before
     public void setUp() {
+        instance = new RegisterMemberGUI();
     }
     
     @After
@@ -43,33 +46,23 @@ public class RegisterMemberGUITest {
     public void testCreateMember() {
         System.out.println("createMember");
         RegisterMemberGUI instance = new RegisterMemberGUI();
+        
+        instance.getFirstName().setText("testerA");
+        instance.getLastName().setText("testerB");
+        instance.getEmail().setText("test@testing.com");
+        instance.getPassword().setText("test1234");
+        instance.getDegreeJComboBox().setSelectedItem("BCIS");
+        instance.getAge().setText("21");
+        instance.getStudentID().setText("12345678");
+        
+        
         instance.createMember();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
-    /**
-     * Test of showPasswordPanel method, of class RegisterMemberGUI.
-     */
-    @Test
-    public void testShowPasswordPanel() {
-        System.out.println("showPasswordPanel");
-        RegisterMemberGUI instance = new RegisterMemberGUI();
-        instance.showPasswordPanel();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+ 
 
-    /**
-     * Test of main method, of class RegisterMemberGUI.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        RegisterMemberGUI.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
+    
     
 }

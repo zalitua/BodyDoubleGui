@@ -4,7 +4,9 @@
  */
 package BodyDoublerOO;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -503,4 +505,32 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
     private javax.swing.JLabel yourIDJL;
     private javax.swing.JLabel yourPWJL;
     // End of variables declaration//GEN-END:variables
+
+    
+    // Public getter methods for the fields
+    public JTextField getFirstName() {
+        return firstName;
+    }
+
+    public JTextField getLastName() {
+        return lastName;
+    }
+
+    public JTextField getEmail() {
+        return email;
+    }
+
+    public JTextField getPassword() {
+        return password;
+    }
+     public JComboBox<String> getDegreeJComboBox() {
+        return degreeJComboBox;
+    }
+    public JTextField getAge() {
+        return age;
+    }
+    public JTextField getStudentID() {
+        return studentID;
+    }
 }
+
