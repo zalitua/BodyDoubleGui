@@ -270,7 +270,7 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
         });
 
         homeButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        homeButton.setText("Home");
+        homeButton.setText("Home Page");
         homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeButtonMouseClicked(evt);

@@ -96,6 +96,5 @@ public class TableCreator extends TableManager{
     
     @Override
     public void addEntry(){
-        
     }
 }

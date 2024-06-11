@@ -6,6 +6,7 @@
 package BodyDoublerOO;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,20 +25,21 @@ public class RoomCorner extends javax.swing.JFrame {
 
         populateTable();
         populateRoomComboBox();
+        returnButton.setToolTipText("Return to Admin Corner");
+        homeButton.setToolTipText("Go to Main Page");
+        exitButton.setToolTipText("Exit the program");
     }
 
     public void createRoom() {
-        //RoomManager rm = new RoomManager();
+        RoomManager rm = new RoomManager();
         String roomName = roomTF.getText();
 
-        if (roomName.isEmpty()) {
-            errorLabel.setText("Please enter a valid room");
+        if (!rm.checkInput(roomName)) {
+            JOptionPane.showMessageDialog(this, "Please enter a room name.", "Invalid Entry", JOptionPane.PLAIN_MESSAGE);
         } else {
-            errorLabel.setText(" ");
             String roomID = rm.generateNextID();
             rm.room = new Room(roomID, roomName);
             rm.addEntry();
-
         }
 
     }
@@ -85,14 +87,14 @@ public class RoomCorner extends javax.swing.JFrame {
         roomTF = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         roomLabel1 = new javax.swing.JLabel();
-        addButton1 = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         roomComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomsTable = new javax.swing.JTable();
         returnButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         returnLabel = new javax.swing.JLabel();
-        errorLabel = new javax.swing.JLabel();
+        homeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -119,11 +121,16 @@ public class RoomCorner extends javax.swing.JFrame {
         roomLabel1.setText("Choose room:");
         roomLabel1.setToolTipText("");
 
-        addButton1.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        addButton1.setText("Delete");
-        addButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        deleteButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        deleteButton.setText("Delete");
+        deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addButton1MouseClicked(evt);
+                deleteButtonMouseClicked(evt);
+            }
+        });
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
             }
         });
 
@@ -187,45 +194,56 @@ public class RoomCorner extends javax.swing.JFrame {
         returnLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         returnLabel.setText("Return to Admin Corner:");
 
-        errorLabel.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        homeButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        homeButton.setText("Home Page");
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeButtonMouseClicked(evt);
+            }
+        });
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(exitButton)
-                        .addGap(197, 197, 197))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(returnLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(returnButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(welcomeLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(12, 12, 12)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(roomLabel)
-                                    .addComponent(roomLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(roomComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(addButton1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(roomTF, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(addButton))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(welcomeLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(87, 87, 87))))
+                                    .addGap(20, 20, 20)
+                                    .addComponent(roomTF, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(addButton))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(returnLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(returnButton))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(roomLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(roomComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(deleteButton)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(homeButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(exitButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,20 +257,20 @@ public class RoomCorner extends javax.swing.JFrame {
                     .addComponent(roomLabel)
                     .addComponent(roomTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomLabel1)
-                    .addComponent(addButton1)
+                    .addComponent(deleteButton)
                     .addComponent(roomComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(returnLabel)
                     .addComponent(returnButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(exitButton)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exitButton)
+                    .addComponent(homeButton))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,11 +286,11 @@ public class RoomCorner extends javax.swing.JFrame {
         populateRoomComboBox();
     }//GEN-LAST:event_addButtonMouseClicked
 
-    private void addButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButton1MouseClicked
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
         deleteRoom();
         populateTable();
         populateRoomComboBox();
-    }//GEN-LAST:event_addButton1MouseClicked
+    }//GEN-LAST:event_deleteButtonMouseClicked
 
     private void returnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnButtonMouseClicked
         dispose();
@@ -287,9 +305,22 @@ public class RoomCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
-        AdminCorner goBack = new AdminCorner();
-        goBack.setVisible(true);
+        dispose();
     }//GEN-LAST:event_returnButtonActionPerformed
+
+    private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
+        dispose();
+    }//GEN-LAST:event_homeButtonMouseClicked
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        MainPage home = new MainPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,9 +359,9 @@ public class RoomCorner extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JButton addButton1;
-    private javax.swing.JLabel errorLabel;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton exitButton;
+    private javax.swing.JButton homeButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton returnButton;
     private javax.swing.JLabel returnLabel;
