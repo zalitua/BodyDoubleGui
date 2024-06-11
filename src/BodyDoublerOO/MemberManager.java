@@ -72,13 +72,6 @@ public class MemberManager extends TableManager {
         return members;
     }
 
-    public void displayAll() {
-        List<Member> members = readAll();
-        for (Member member : members) {
-            System.out.println(member.toString());
-        }
-    }
-
     @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();
