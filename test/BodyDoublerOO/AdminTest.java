@@ -42,8 +42,8 @@ public class AdminTest {
     @Test
     public void testAdminRegistration() {
         Admin admin = new Admin("robbanks", "adminpass", "Rob", "Banks", "banks@example.com", "Test", "Test");
-        //boolean isRegistered = admin.register(); // Assuming register() returns a boolean
-        //assertTrue(isRegistered);
+        
+        
 
        
         // Verify that each field is set correctly
