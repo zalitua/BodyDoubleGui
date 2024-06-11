@@ -23,12 +23,6 @@ public class MemberManager extends TableManager {
         this.member = new Member("", "", "", "", "", 0, 0, "");
     }
 
-    public static void main(String[] args) {
-        MemberManager mm = new MemberManager();
-        mm.member = new Member("MEM000", "password", "John", "Candy", "john@candy.com", 25, 24342534, "BCIS");
-        mm.addEntry();
-    }
-
     @Override
     public void addEntry() {
 
@@ -37,11 +31,9 @@ public class MemberManager extends TableManager {
                 + member.getLastName() + "' ,'" + member.getEmail() + "' ,"
                 + member.getStudentID() + " ,'" + member.getDegreeProgram() + "' ," + member.getAge() + ")";
         updateDB(entry);
-        System.out.println("Entry made!");
     }
 
     public List<Member> readAll() {
-
         List<Member> members = new ArrayList<>();
         ResultSet rs = queryDB("SELECT * FROM MEMBER");
         try {
@@ -59,15 +51,8 @@ public class MemberManager extends TableManager {
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            // Close resources
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        } finally{
+            closeResources(null, rs);
         }
         return members;
     }

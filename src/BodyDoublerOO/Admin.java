@@ -42,10 +42,4 @@ public class Admin extends Person {
     public void setDepartment(String department) {
         this.department = department;
     }
-    
-    @Override
-    public String toString() {
-        return "User ID: " + this.getUserID() + "\nFirst name: " + this.getFirstName() + "\nLast name: " + this.getLastName()
-                + "\nEmail: " + this.getEmail() + "\nRole: " + this.getRole() + "\nDepartment: " + this.getDepartment();
-    }
 }

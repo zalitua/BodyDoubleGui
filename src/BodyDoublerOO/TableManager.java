@@ -4,96 +4,53 @@
  */
 package BodyDoublerOO;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
+/**Defines specific methods that are generically used by any manager class that extends
+ * TableManager
  * @author zalit
  */
-abstract class TableManager implements TableInterface{
-    //private final DBManager dbManager;
-    private Connection connInstance;
+abstract class TableManager extends DBManager implements Table{
     
-    public TableManager(){
-        this.connInstance = DBManager.getConnection();
-    }
-    
-    public ResultSet queryDB(String sql) {
-
-        //Connection connection = this.connInstance;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        try {
-            statement = connInstance.createStatement();
-            resultSet = statement.executeQuery(sql);
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return resultSet;
-    }
-
-    public void updateDB(String sql) {
-
-        //Connection connection = this.connInstance;
-        Statement statement = null;
-        try {
-            statement = connInstance.createStatement();
-            statement.executeUpdate(sql);
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            //return 0;
-        }
-        
-        finally{
-            closeResources(statement, null);
-        }
-    }
-    
-    void closeResources(Statement stmt, ResultSet rs) {
-        try
-        {
-            if(rs!=null) rs.close();
-            if(stmt!= null) stmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
+    //validates input from text fields in GUIs
+    @Override
     public boolean checkInput(String input) {
         return !input.isEmpty();
     }
-
+    
+    //validates input length of a password in GUIs
+    @Override
     public boolean checkLength(String input) {
         return input.length() == 8;
     }
     
+    //remove an entry from a table
     @Override
     public void deleteEntry(String table, String column, String inputID) {
         String entry = "DELETE FROM " + table + " WHERE " + column + " = '" + inputID + "'";
         updateDB(entry);
     }
     
+    //get a list of IDs from a id column of a table
+    //this is used to populate combo boxes with IDs
     @Override
     public List<String> IDList(String table, String column) {
         List<String> list = new ArrayList<>();
         ResultSet rs = queryDB("SELECT " + column + " FROM " + table);
-
         try {
             while (rs.next()) {
                 list.add(rs.getString(column));
             }
         } catch (SQLException ex) {
             Logger.getLogger(RoomManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            closeResources(null, rs);
         }
         return list;
     }

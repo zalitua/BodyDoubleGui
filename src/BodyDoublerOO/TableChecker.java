@@ -11,73 +11,76 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
+/**code to check what tables are in database, what columns are in tables
+ * and print out table data
  * @author zalit
  */
 public class TableChecker {
     
-    private Connection connInstance;
+    Connection connInstance;
     
     public TableChecker(){
-        this.connInstance = DBManager.getConnection();
+        this.connInstance = SingletonConnection.getConnection();
     }
-    //code to check tables and data
+    
     public void showTables() {
-        Connection connection = this.connInstance;
-
+         
+        ResultSet rs = null;
         try {
+            DatabaseMetaData metaDataForDatabaseConnection = connInstance.getMetaData();
+            rs = metaDataForDatabaseConnection.getTables(null, null, null, new String[]{"TABLE"});
 
-            //Establish Connection Through Embedded Or Local Install
-            DatabaseMetaData metaDataForDatabaseConnection = connection.getMetaData();
-            ResultSet resultSetForTableNames = metaDataForDatabaseConnection.getTables(null, null, null, new String[]{"TABLE"});
-
-            while (resultSetForTableNames.next()) {
-                System.out.println(resultSetForTableNames.getString(3));
+            while (rs.next()) {
+                System.out.println(rs.getString(3));
             }
-
-            //Close Resources As Necessary
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+            }
         }
     }
 
     public void showColumns(String table) {
-        Connection connection = this.connInstance;
-
+        ResultSet rs = null;
         try {
-
-            //Establish Connection Through Embedded Or Local Install
-            DatabaseMetaData metaDataForDatabaseConnection = connection.getMetaData();
-            ResultSet columns = metaDataForDatabaseConnection.getColumns(null, null, table, null);
-
-            while (columns.next()) {
-                String columnName = columns.getString("COLUMN_NAME");
-                String columnSize = columns.getString("COLUMN_SIZE");
-                String datatype = columns.getString("DATA_TYPE");
-                String isNullable = columns.getString("IS_NULLABLE");
-                String isAutoIncrement = columns.getString("IS_AUTOINCREMENT");
+            DatabaseMetaData metaDataForDatabaseConnection = connInstance.getMetaData();
+            rs = metaDataForDatabaseConnection.getColumns(null, null, table, null);
+while (rs.next()) {
+                String columnName = rs.getString("COLUMN_NAME");
+                String columnSize = rs.getString("COLUMN_SIZE");
+                String datatype = rs.getString("DATA_TYPE");
+                String isNullable = rs.getString("IS_NULLABLE");
+                String isAutoIncrement = rs.getString("IS_AUTOINCREMENT");
                 System.out.println(columnName + "\n" + columnSize + "\n" + datatype + "\n" + isNullable + "\n" + isAutoIncrement + "\n");
             }
-
-            //Close Resources As Necessary
         } catch (SQLException e) {
+        }finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+            }
         }
     }
     
     public void printSqlTable(String selectQuery) {
         Statement statement = null;
-        ResultSet resultSet = null;
+        ResultSet rs = null;
         try {
             statement = connInstance.createStatement();
-            resultSet = statement.executeQuery(selectQuery);
-            ResultSetMetaData metaData = resultSet.getMetaData();
+            rs = statement.executeQuery(selectQuery);
+            ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
 
             // Print rows
-            while (resultSet.next()) {
+            while (rs.next()) {
                 for (int i = 1; i <= columnCount; i++) {
-                    System.out.print(resultSet.getString(i));
+                    System.out.print(rs.getString(i));
                     if (i < columnCount) {
                         System.out.print(" ");
                     }
@@ -85,14 +88,6 @@ public class TableChecker {
                 System.out.println();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        } 
     }
 }

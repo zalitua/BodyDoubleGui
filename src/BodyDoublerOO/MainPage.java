@@ -35,7 +35,6 @@ public class MainPage extends javax.swing.JFrame {
         if (!pm.checkInput(IDIn) || !pm.checkInput(pwdIn)){
             JOptionPane.showMessageDialog(this, "All fields must be filled in", "Invalid Entry", JOptionPane.PLAIN_MESSAGE);
         }
-        System.out.println(IDIn + " "+ pwdIn + " " + IDIn.substring(0, 3));
         if (pm.validatePassword(IDIn, pwdIn)){
             if (IDIn.substring(0, 3).equalsIgnoreCase("adm")){
                 new AdminCorner().setVisible(true);

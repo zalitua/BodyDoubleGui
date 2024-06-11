@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,20 +15,11 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class TableCreator extends TableManager{
+public class TableCreator extends DBManager{
 
-    private final Connection conn;
-    private Statement statement;
-    
-   
-
+    Connection connInstance;
     public TableCreator() {
-        conn = DBManager.getConnection();
-        try {
-            statement = conn.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(TableCreator.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.connInstance = SingletonConnection.getConnection();
     }
 
     public void createAdminTable() {
@@ -67,17 +57,16 @@ public class TableCreator extends TableManager{
     }
 
     public void checkExists(String table) {
-        if (this.conn != null) {
+        if (connInstance != null) {
             try {
-                DatabaseMetaData dbmd = this.conn.getMetaData();
+                DatabaseMetaData dbmd = connInstance.getMetaData();
                 String[] types = {"TABLE"};
-                statement = this.conn.createStatement();
                 try (ResultSet rs = dbmd.getTables(null, null, null, types)) {
                     while (rs.next()) {
                         String tableName = rs.getString("TABLE_NAME");
                         System.out.println(tableName);
                         if (tableName.equalsIgnoreCase(table)) {
-                            statement.executeUpdate("DROP TABLE " + table);
+                            updateDB("DROP TABLE " + table);
                             System.out.println("Table " + table + " has been deleted. ");
                             break;
                         }
@@ -87,14 +76,5 @@ public class TableCreator extends TableManager{
                 Logger.getLogger(TableCreator.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-    
-    @Override
-    public String generateNextID(){
-        return null;
-    }
-    
-    @Override
-    public void addEntry(){
     }
 }
