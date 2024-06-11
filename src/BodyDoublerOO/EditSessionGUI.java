@@ -410,8 +410,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_returnButtonMouseClicked
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
-        AdminCorner goBack = new AdminCorner();
-        goBack.setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_returnButtonActionPerformed
 

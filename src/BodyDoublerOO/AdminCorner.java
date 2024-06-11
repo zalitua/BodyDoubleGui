@@ -69,7 +69,6 @@ public class AdminCorner extends javax.swing.JFrame {
         manageLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
-        returnLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(780, 440));
@@ -141,7 +140,7 @@ public class AdminCorner extends javax.swing.JFrame {
         });
 
         returnButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        returnButton.setText("Return");
+        returnButton.setText("Home Page");
         returnButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnButtonMouseClicked(evt);
@@ -152,9 +151,6 @@ public class AdminCorner extends javax.swing.JFrame {
                 returnButtonActionPerformed(evt);
             }
         });
-
-        returnLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        returnLabel.setText("Return to Main Page:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,21 +174,20 @@ public class AdminCorner extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(returnLabel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(201, 201, 201))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(manageLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(returnButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(exitButton))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(201, 201, 201))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(manageLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(manageRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(200, 200, 200)))))
+                        .addComponent(manageRoomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 200, 200))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(280, 280, 280)
+                .addComponent(returnButton)
+                .addGap(18, 18, 18)
+                .addComponent(exitButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +209,6 @@ public class AdminCorner extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(returnButton)
-                    .addComponent(returnLabel)
                     .addComponent(exitButton))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -250,8 +244,6 @@ public class AdminCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_returnButtonMouseClicked
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
-        MainPage home = new MainPage();
-        home.setVisible(true);
         dispose();
     }//GEN-LAST:event_returnButtonActionPerformed
 
@@ -305,7 +297,6 @@ public class AdminCorner extends javax.swing.JFrame {
     private javax.swing.JLabel manageLabel;
     private javax.swing.JButton manageRoomsButton;
     private javax.swing.JButton returnButton;
-    private javax.swing.JLabel returnLabel;
     private javax.swing.JTable sessionJTable;
     private javax.swing.JLabel welcomeL;
     // End of variables declaration//GEN-END:variables
