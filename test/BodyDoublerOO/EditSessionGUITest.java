@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
  * @author GVE Rouse
  */
 public class EditSessionGUITest {
+    private EditSessionGUI instance;
     
     public EditSessionGUITest() {
     }
@@ -30,6 +31,7 @@ public class EditSessionGUITest {
     
     @Before
     public void setUp() {
+        instance = new EditSessionGUI();
     }
     
     @After
@@ -40,12 +42,29 @@ public class EditSessionGUITest {
      * Test of main method, of class EditSessionGUI.
      */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        EditSessionGUI.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testDeleteSession() {
+        System.out.println("deleteSession");
+        // Assuming there's at least one session available
+        
+        instance.deleteSession();
     }
+    
+    
+    @Test
+    public void testCreateSession() {
+        System.out.println("createSession");
+        EditSessionGUI instance = new EditSessionGUI();
+        
+        instance.getDayJComboB().setSelectedItem("01");
+        instance.getMonthJComboB().setSelectedItem("01");
+        instance.getTimeJComboB().setSelectedItem("00:00");
+        instance.getRoomJComboB().setSelectedItem("WZ404");
+        instance.getMaxPartJComboB().setSelectedItem("6");
+        
+        instance.createSession();
+        
+    }
+    
+    
     
 }
