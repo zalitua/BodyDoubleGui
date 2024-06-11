@@ -53,7 +53,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="returnButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="exitButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="exitButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
@@ -94,7 +94,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="returnButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="returnLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="exitButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="exitButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
@@ -204,13 +204,16 @@
         <Property name="text" type="java.lang.String" value="View and manage room:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="exitButton1">
+    <Component class="javax.swing.JButton" name="exitButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Georgia" size="16" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Exit App"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="returnButton">
       <Properties>
@@ -221,6 +224,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="returnButtonMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="returnLabel">

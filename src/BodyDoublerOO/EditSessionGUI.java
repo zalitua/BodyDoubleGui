@@ -17,20 +17,23 @@ public class EditSessionGUI extends javax.swing.JFrame {
     /**
      * Creates new form EditSessionGUI
      */
-    
     SessionManager sm = new SessionManager();
-    
+
     public EditSessionGUI() {
         initComponents();
-        
+
         populateTable();
         populateRoomComboBox();
         populateSessionComboBox();
+        homeButton.setToolTipText("Return to Main Page");
+        exitButton.setToolTipText("Exit the program");
+        returnButton.setToolTipText("Return to Admin Corner");
+        
     }
     //doesn't actaully edit the entries when used in this class
-    
-    private void createSession(){
-        
+
+    private void createSession() {
+
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
         String time = (String) timeJComboB.getSelectedItem();
         String room = (String) roomJComboB.getSelectedItem();
@@ -40,13 +43,13 @@ public class EditSessionGUI extends javax.swing.JFrame {
         sm.addEntry();
         JOptionPane.showConfirmDialog(this, "Session successfully edited", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
-    
-    private void deleteSession(){
+
+    private void deleteSession() {
         String sessionID = (String) sessionComboBox.getSelectedItem();
         sm.deleteEntry("SESSION", "SESSIONID", sessionID);
         JOptionPane.showConfirmDialog(this, "Session successfully deleted", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
-    
+
     private void populateTable() {
         List<Session> session = sm.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionTable.getModel();
@@ -65,7 +68,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
         List<String> roomNames = rm.IDList("ROOM", "ROOMNAME");
@@ -74,7 +77,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
             roomJComboB.addItem(name);
         }
     }
-    
+
     private void populateSessionComboBox() {
         List<String> sessionIDs = sm.IDList("SESSION", "SESSIONID");
         sessionComboBox.removeAllItems(); //to prevent duplicates
@@ -111,9 +114,12 @@ public class EditSessionGUI extends javax.swing.JFrame {
         confirmButton = new javax.swing.JButton();
         sessionIDJL1 = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
+        returnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(780, 420));
+        setPreferredSize(new java.awt.Dimension(789, 420));
 
         welcomeEditJL.setFont(new java.awt.Font("Georgia", 1, 22)); // NOI18N
         welcomeEditJL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -214,71 +220,112 @@ public class EditSessionGUI extends javax.swing.JFrame {
             }
         });
 
+        exitButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        exitButton.setText("Exit App");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+
+        homeButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        homeButton.setText("Home Page");
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeButtonMouseClicked(evt);
+            }
+        });
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+
+        returnButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        returnButton.setText("Return");
+        returnButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                returnButtonMouseClicked(evt);
+            }
+        });
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(editIDJL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sessionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(dayJL)
+                                .addGap(26, 26, 26)
+                                .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dateJL, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(monthJL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(monthJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(maxPartJL, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(maxPartJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(timeJL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(timeJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(roomJL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(roomJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(sessionIDJL1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(167, 167, 167)))
+                .addGap(175, 175, 175))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(returnButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(homeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(exitButton)
+                .addGap(37, 37, 37))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(152, 152, 152)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(editIDJL)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(sessionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(deleteButton))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(139, 139, 139)
-                                        .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(dayJL)
-                                                .addGap(26, 26, 26)
-                                                .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(dateJL, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(monthJL)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(monthJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(74, 74, 74)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(maxPartJL, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(maxPartJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(timeJL)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(timeJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(roomJL)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(roomJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(67, 67, 67)
-                                        .addComponent(sessionIDJL1)))
-                                .addGap(154, 154, 154))
-                            .addComponent(sessionJScrollP, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(sessionJScrollP, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(311, 311, 311)
                         .addComponent(welcomeEditJL)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(welcomeEditJL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(sessionJScrollP, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editIDJL)
                     .addComponent(sessionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,7 +355,12 @@ public class EditSessionGUI extends javax.swing.JFrame {
                         .addComponent(roomJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(confirmButton)
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(homeButton)
+                    .addComponent(exitButton)
+                    .addComponent(returnButton))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -330,6 +382,30 @@ public class EditSessionGUI extends javax.swing.JFrame {
         populateTable();
         populateSessionComboBox();
     }//GEN-LAST:event_deleteButtonMouseClicked
+
+    private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeButtonMouseClicked
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        MainPage home = new MainPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void returnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnButtonMouseClicked
+        dispose();
+    }//GEN-LAST:event_returnButtonMouseClicked
+
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        AdminCorner goBack = new AdminCorner();
+        goBack.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_returnButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,10 +449,13 @@ public class EditSessionGUI extends javax.swing.JFrame {
     private javax.swing.JLabel dayJL;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel editIDJL;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JButton homeButton;
     private javax.swing.JComboBox<String> maxPartJComboB;
     private javax.swing.JLabel maxPartJL;
     private javax.swing.JComboBox<String> monthJComboB;
     private javax.swing.JLabel monthJL;
+    private javax.swing.JButton returnButton;
     private javax.swing.JComboBox<String> roomJComboB;
     private javax.swing.JLabel roomJL;
     private javax.swing.JComboBox<String> sessionComboBox;

@@ -27,6 +27,9 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         
         populateTable();
         populateRoomComboBox();
+        returnButton.setToolTipText("Reutn to Admin Corner");
+        exitButton.setToolTipText("Exit the program");
+        homeButton.setToolTipText("Return to Main Page");
     }
     
     void createSession(){
@@ -96,6 +99,10 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         maxPartJComboB = new javax.swing.JComboBox<>();
         confirmButton = new javax.swing.JButton();
         dayJComboB = new javax.swing.JComboBox<>();
+        exitButton = new javax.swing.JButton();
+        returnLabel = new javax.swing.JLabel();
+        returnButton = new javax.swing.JButton();
+        homeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -194,6 +201,48 @@ public final class AddSessionGUI extends javax.swing.JFrame {
             }
         });
 
+        exitButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        exitButton.setText("Exit App");
+        exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitButtonMouseClicked(evt);
+            }
+        });
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+
+        returnLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        returnLabel.setText("Return to Admin Corner:");
+
+        returnButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        returnButton.setText("Return");
+        returnButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                returnButtonMouseClicked(evt);
+            }
+        });
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
+            }
+        });
+
+        homeButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        homeButton.setText("Home Page");
+        homeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeButtonMouseClicked(evt);
+            }
+        });
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -217,7 +266,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
                                     .addComponent(maxPartJL, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(maxPartJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(timeJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(dayJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(7, 7, 7)
@@ -228,11 +277,23 @@ public final class AddSessionGUI extends javax.swing.JFrame {
                                         .addComponent(yearJL, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(yearComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(timeJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(roomJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(111, 111, 111)
-                                        .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(maxPartJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(67, 67, 67)
+                                                .addComponent(returnLabel)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(returnButton)
+                                                .addGap(38, 38, 38)
+                                                .addComponent(exitButton))
+                                            .addComponent(homeButton))))))
                         .addGap(0, 31, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -263,10 +324,20 @@ public final class AddSessionGUI extends javax.swing.JFrame {
                         .addComponent(roomJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(confirmButton))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(maxPartJL)
-                    .addComponent(maxPartJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(maxPartJL)
+                            .addComponent(maxPartJComboB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(returnLabel)
+                            .addComponent(returnButton)
+                            .addComponent(exitButton))))
+                .addComponent(homeButton)
+                .addContainerGap())
         );
 
         pack();
@@ -290,6 +361,34 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     private void dayJComboBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayJComboBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dayJComboBActionPerformed
+
+    private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
+        //System.exit(0);
+    }//GEN-LAST:event_exitButtonMouseClicked
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void returnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnButtonMouseClicked
+        dispose();
+    }//GEN-LAST:event_returnButtonMouseClicked
+
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        AdminCorner goBack = new AdminCorner();
+        goBack.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_returnButtonActionPerformed
+
+    private void homeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeButtonMouseClicked
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        MainPage home = new MainPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_homeButtonActionPerformed
 
 
     /**
@@ -334,10 +433,14 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     private javax.swing.JLabel dateJL;
     private javax.swing.JComboBox<String> dayJComboB;
     private javax.swing.JLabel dayJL;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JButton homeButton;
     private javax.swing.JComboBox<String> maxPartJComboB;
     private javax.swing.JLabel maxPartJL;
     private javax.swing.JComboBox<String> monthJComboB;
     private javax.swing.JLabel monthJL;
+    private javax.swing.JButton returnButton;
+    private javax.swing.JLabel returnLabel;
     private javax.swing.JComboBox<String> roomJComboB;
     private javax.swing.JLabel roomJL;
     private javax.swing.JScrollPane sessionJScrollP;

@@ -20,8 +20,12 @@ public class AdminCorner extends javax.swing.JFrame {
 
     public AdminCorner() {
         initComponents();
-
         populateTable();
+        returnButton.setToolTipText("Return to Main Page");
+        exitButton.setToolTipText("Exit the program");
+        addButton.setToolTipText("Create a new session");
+        editButton.setToolTipText("Edit a current session");
+        manageRoomsButton.setToolTipText("Add or delete rooms");
     }
 
     private void populateTable() {
@@ -63,7 +67,7 @@ public class AdminCorner extends javax.swing.JFrame {
         addButton = new javax.swing.JButton();
         editLabel = new javax.swing.JLabel();
         manageLabel = new javax.swing.JLabel();
-        exitButton1 = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
         returnLabel = new javax.swing.JLabel();
 
@@ -128,14 +132,24 @@ public class AdminCorner extends javax.swing.JFrame {
         manageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         manageLabel.setText("View and manage room:");
 
-        exitButton1.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        exitButton1.setText("Exit App");
+        exitButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
+        exitButton.setText("Exit App");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
 
         returnButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         returnButton.setText("Return");
         returnButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 returnButtonMouseClicked(evt);
+            }
+        });
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
             }
         });
 
@@ -169,7 +183,7 @@ public class AdminCorner extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(returnButton)
                         .addGap(18, 18, 18)
-                        .addComponent(exitButton1))
+                        .addComponent(exitButton))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(welcomeL, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,7 +215,7 @@ public class AdminCorner extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(returnButton)
                     .addComponent(returnLabel)
-                    .addComponent(exitButton1))
+                    .addComponent(exitButton))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -234,6 +248,16 @@ public class AdminCorner extends javax.swing.JFrame {
     private void returnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnButtonMouseClicked
         dispose();
     }//GEN-LAST:event_returnButtonMouseClicked
+
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        MainPage home = new MainPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_returnButtonActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,7 +300,7 @@ public class AdminCorner extends javax.swing.JFrame {
     private javax.swing.JScrollPane adminSessionJScroll;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel editLabel;
-    private javax.swing.JButton exitButton1;
+    private javax.swing.JButton exitButton;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel manageLabel;
     private javax.swing.JButton manageRoomsButton;

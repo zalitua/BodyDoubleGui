@@ -95,7 +95,6 @@ public class RoomCorner extends javax.swing.JFrame {
         errorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(504, 406));
 
         roomLabel.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         roomLabel.setText("Room name:");
@@ -166,12 +165,22 @@ public class RoomCorner extends javax.swing.JFrame {
                 returnButtonMouseClicked(evt);
             }
         });
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnButtonActionPerformed(evt);
+            }
+        });
 
         exitButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
         exitButton.setText("Exit App");
         exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 exitButtonMouseClicked(evt);
+            }
+        });
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
             }
         });
 
@@ -270,8 +279,17 @@ public class RoomCorner extends javax.swing.JFrame {
     }//GEN-LAST:event_returnButtonMouseClicked
 
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
-        System.exit(0);
+        //System.exit(0);
     }//GEN-LAST:event_exitButtonMouseClicked
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+        AdminCorner goBack = new AdminCorner();
+        goBack.setVisible(true);
+    }//GEN-LAST:event_returnButtonActionPerformed
 
     /**
      * @param args the command line arguments
