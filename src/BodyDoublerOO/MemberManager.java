@@ -43,7 +43,7 @@ public class MemberManager extends TableManager {
     public List<Member> readAll() {
 
         List<Member> members = new ArrayList<>();
-        ResultSet rs = queryDB("SELECT * FROM ADMIN");
+        ResultSet rs = queryDB("SELECT * FROM MEMBER");
         try {
             while (rs.next()) {
                 String memberID = rs.getString("MEMBERID");

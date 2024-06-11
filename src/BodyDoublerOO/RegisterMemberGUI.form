@@ -497,7 +497,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Georgia" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Home"/>
+        <Property name="text" type="java.lang.String" value="Home Page"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="homeButtonMouseClicked"/>
