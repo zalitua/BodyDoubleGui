@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class MemberManager extends TableManager implements Table{
+public class MemberManager extends TableManager {
 
     public Member member;
 

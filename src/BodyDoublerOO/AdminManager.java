@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author zalit
  */
-public class AdminManager extends TableManager implements Table{
+public class AdminManager extends TableManager {
 
     public Admin admin;
 

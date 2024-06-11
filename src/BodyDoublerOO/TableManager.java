@@ -15,19 +15,22 @@ import java.util.logging.Logger;
  * TableManager
  * @author zalit
  */
-public class TableManager extends DBManager{
+abstract class TableManager extends DBManager implements Table{
     
     //validates input from text fields in GUIs
+    @Override
     public boolean checkInput(String input) {
         return !input.isEmpty();
     }
     
     //validates input length of a password in GUIs
+    @Override
     public boolean checkLength(String input) {
         return input.length() == 8;
     }
     
     //remove an entry from a table
+    @Override
     public void deleteEntry(String table, String column, String inputID) {
         String entry = "DELETE FROM " + table + " WHERE " + column + " = '" + inputID + "'";
         updateDB(entry);
@@ -35,6 +38,7 @@ public class TableManager extends DBManager{
     
     //get a list of IDs from a id column of a table
     //this is used to populate combo boxes with IDs
+    @Override
     public List<String> IDList(String table, String column) {
         List<String> list = new ArrayList<>();
         ResultSet rs = queryDB("SELECT " + column + " FROM " + table);

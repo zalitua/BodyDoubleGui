@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class SessionManager extends TableManager implements Table{
+public class SessionManager extends TableManager {
 
     public Session session;
 

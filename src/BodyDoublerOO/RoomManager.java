@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class RoomManager extends TableManager implements Table{
+public class RoomManager extends TableManager {
 
     public Room room;
 

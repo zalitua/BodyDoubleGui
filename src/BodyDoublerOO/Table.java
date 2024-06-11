@@ -12,5 +12,9 @@ import java.util.List;
  */
 public interface Table {
     void addEntry();
+    boolean checkInput(String input);
+    boolean checkLength(String input);
     String generateNextID();
+    void deleteEntry(String table, String column, String inputID);
+    List<String> IDList(String table, String column);
 }
