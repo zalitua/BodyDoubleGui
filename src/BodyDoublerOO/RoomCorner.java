@@ -31,7 +31,6 @@ public class RoomCorner extends javax.swing.JFrame {
     }
 
     public void createRoom() {
-        RoomManager rm = new RoomManager();
         String roomName = roomTF.getText();
 
         if (!rm.checkInput(roomName)) {
@@ -45,7 +44,6 @@ public class RoomCorner extends javax.swing.JFrame {
     }
 
     public void deleteRoom() {
-        //RoomManager rm = new RoomManager();
         String roomID = (String) roomComboBox.getSelectedItem();
         rm.deleteEntry("ROOM", "ROOMID", roomID);
     }

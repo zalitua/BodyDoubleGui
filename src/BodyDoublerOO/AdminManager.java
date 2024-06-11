@@ -4,11 +4,7 @@
  */
 package BodyDoublerOO;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
@@ -19,7 +15,7 @@ import java.util.List;
  *
  * @author zalit
  */
-public class AdminManager extends TableManager {
+public class AdminManager extends TableManager implements Table{
 
     public Admin admin;
 
@@ -29,17 +25,14 @@ public class AdminManager extends TableManager {
 
     @Override
     public void addEntry() {
-
         String entry = "INSERT INTO ADMIN VALUES ('" + admin.getUserID() + "' ,'"
                 + admin.getPassword() + "' ,'" + admin.getFirstName() + "' ,'"
                 + admin.getLastName() + "' ,'" + admin.getEmail() + "' ,'"
                 + admin.getRole() + "' ,'" + admin.getDepartment() + "')";
         updateDB(entry);
-        System.out.println("Entry made!");
     }
 
     public List<Admin> readAll() {
-
         List<Admin> admins = new ArrayList<>();
         ResultSet rs = queryDB("SELECT * FROM ADMIN");
         try {
@@ -56,24 +49,10 @@ public class AdminManager extends TableManager {
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminManager.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            // Close resources
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        } finally{
+            closeResources(null, rs);
         }
         return admins;
-    }
-
-    public void displayAll() {
-        List<Admin> admins = readAll();
-        for (Admin admin : admins) {
-            System.out.println(admin.toString());
-        }
     }
 
     @Override

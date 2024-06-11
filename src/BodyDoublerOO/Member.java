@@ -4,12 +4,9 @@
  */
 package BodyDoublerOO;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 /**
- * test
+ * 
  *
  * @author zalit
  */
@@ -49,12 +46,5 @@ public class Member extends Person {
 
     public void setDegreeProgram(String degreeProgram) {
         this.degreeProgram = degreeProgram;
-    }
-    
-    @Override
-    //for testing
-    public String toString(){
-        return "User ID: " + this.getUserID() + "\nFirst name: " + this.getFirstName() + "\nLast name: " + this.getLastName() 
-                + "\nEmail: " + this.getEmail() + "\nAge: " + this.getAge() + "\nStudentID: " + this.getStudentID() + "\nDegre Program: " + this.getDegreeProgram();
     }
 }

@@ -42,10 +42,4 @@ public class Room {
     public void setRoomName(String roomName) {
         this.roomName = roomName;
     }
-   
-
-    @Override
-    public String toString() {
-        return this.roomID + "," + this.getRoomName();
-    }
 }

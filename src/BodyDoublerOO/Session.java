@@ -14,8 +14,6 @@ import java.io.IOException;
  */
 public class Session {
 
-    //static final String DEFAULT_SESSIONBOOKING_PATH = "./nbproject/files/roombooking.txt";
-
     private String dateOfSession;
     private String timeOfSession;
     private String locationOfSession;
@@ -79,16 +77,6 @@ public class Session {
 
     public void setNoOfPeople(int noOfPeople) {
         this.noOfPeople = noOfPeople;
-    }
-
-    @Override
-    public String toString() {
-        return "Location: " + getLocationOfSession() + "   "
-                + "Time: " + timeOfSession + "   "
-                + "Date: " + this.getDateOfSession() + "   "+ "   " 
-                + "Session ID: " + this.getSessionID() + "   "
-                + "Number of people in this sesssion: " + this.getNoOfPeople() + "   " 
-                + "Maximum number of people: " + this.getMaxNoOfPeople();
     }
 }
 

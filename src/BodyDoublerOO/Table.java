@@ -6,13 +6,11 @@ package BodyDoublerOO;
 
 import java.util.List;
 
-/**
- *
+/**defines methods that must be included in manager classes that implement this
+ * interface
  * @author zalit
  */
-public interface TableInterface {
+public interface Table {
     void addEntry();
     String generateNextID();
-    List<String> IDList(String table, String column);
-    void deleteEntry(String table, String column, String inputID);
 }

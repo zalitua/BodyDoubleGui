@@ -4,9 +4,6 @@
  */
 package BodyDoublerOO;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.SortedSet;
@@ -18,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author zalit
  */
-public class Sequencer extends TableManager{
+public class Sequencer extends DBManager {
 
     public Sequencer() {
     }
@@ -28,7 +25,6 @@ public class Sequencer extends TableManager{
         String nextNumber = "";
         SortedSet<String> idSet = new TreeSet<>();
         ResultSet rs = queryDB("SELECT " + column + " FROM " + table);
-
         try {
             while (rs.next()) {
                 String entry = rs.getString(column);
@@ -36,16 +32,8 @@ public class Sequencer extends TableManager{
             }
         } catch (SQLException ex) {
             Logger.getLogger(Sequencer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (rs != null) {
-
-            try {
-                rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Sequencer.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+        } finally {
+            closeResources(null, rs);
         }
 
         if (idSet.isEmpty()) {
@@ -56,15 +44,5 @@ public class Sequencer extends TableManager{
             nextNumber = String.format("%03d", number);
         }
         return nextNumber;
-    }
-    
-    @Override
-    public String generateNextID(){
-        return null;
-    }
-    
-    @Override
-    public void addEntry(){
-        
     }
 }
