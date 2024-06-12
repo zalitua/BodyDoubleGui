@@ -5,6 +5,7 @@
 package BodyDoublerOO;
 
 import com.sun.jdi.connect.spi.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,33 +19,32 @@ import static org.junit.Assert.*;
  * @author GVE Rouse
  */
 public class SessionManagerTest {
+
     private Connection connection;
     private SessionManager sessionManager;
-    
+
     public SessionManagerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
-        
-        
+
         sessionManager = new SessionManager();
-        
+
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    
     /**
      * Test of getSession method, of class SessionManager.
      */
@@ -61,5 +61,25 @@ public class SessionManagerTest {
         assertEquals(2, result.getMaxNoOfPeople());
         assertEquals(1, result.getNoOfPeople());
     }
-    
+
+    @Test
+    public void testDeleteEntry() {
+        
+        System.out.println("deleteEntry");
+        String table = "SESSION";
+        String column = "SESSIONID";
+        String inputID = "SES019"; //does delete a real session, so new / currrent ID from DB 
+        SessionManager instance = new SessionManager();
+        instance.deleteEntry(table, column, inputID);
+        
+
+       //check that session has been deleted
+       
+       
+       List<String> list = instance.IDList(table, column);
+       boolean isIDPresent = list.contains(inputID);
+       
+       assertFalse("Deleted session still exists", isIDPresent);
+    }
 }
+
