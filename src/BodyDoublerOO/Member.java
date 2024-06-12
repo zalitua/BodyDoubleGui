@@ -4,8 +4,7 @@
  */
 package BodyDoublerOO;
 
-
-/**
+/**Defines and creates a Member object
  * 
  *
  * @author zalit
@@ -16,6 +15,7 @@ public class Member extends Person {
     private int age;
     private String degreeProgram;
 
+    //constructor incorporates fields from abstract class Person
     public Member(String userID, String password, String firstName,
             String lastName, String email, int age, int studentID, String degreeProgram) {
         super(userID,  password, firstName, lastName, email);

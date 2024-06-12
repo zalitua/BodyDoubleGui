@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
+/**manages methods relating to the ROOM table
  *
  * @author zalit
  */
@@ -23,12 +23,15 @@ public class RoomManager extends TableManager {
         this.room = new Room("", "");
     }
 
+    //add an entry to ROOM table based on a Room object
     @Override
     public void addEntry() {
         String entry = "INSERT INTO ROOM VALUES ('" + room.getRoomID() + "' ,'" + room.getRoomName() + "')";
         updateDB(entry);
     }
 
+    //get all entries from ROOM table, create an Room object from each entry, 
+    //create a list of those Room objects and return the list.
     public List<Room> readAll() {
         List<Room> rooms = new ArrayList<>();
         ResultSet rs = queryDB("SELECT * FROM ROOM");
@@ -47,6 +50,7 @@ public class RoomManager extends TableManager {
         return rooms;
     }
 
+    //generates and returns the next sequencial room ID
     @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();

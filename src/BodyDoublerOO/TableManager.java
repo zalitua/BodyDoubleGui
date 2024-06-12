@@ -29,7 +29,7 @@ abstract class TableManager extends DBManager implements Table{
         return input.length() == 8;
     }
     
-    //remove an entry from a table
+    //removes an entry from a table based on the inputID paramater
     @Override
     public void deleteEntry(String table, String column, String inputID) {
         String entry = "DELETE FROM " + table + " WHERE " + column + " = '" + inputID + "'";
@@ -37,7 +37,7 @@ abstract class TableManager extends DBManager implements Table{
     }
     
     //get a list of IDs from a id column of a table
-    //this is used to populate combo boxes with IDs
+    //this is used to populate combo boxes with IDs is SessionManager and RoomManager
     @Override
     public List<String> IDList(String table, String column) {
         List<String> list = new ArrayList<>();

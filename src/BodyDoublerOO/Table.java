@@ -6,8 +6,8 @@ package BodyDoublerOO;
 
 import java.util.List;
 
-/**defines methods that must be included in manager classes that implement this
- * interface
+/**defines methods that must be included in manager classes that implements this
+ * interface, such as AdimnManager or SessionManager
  * @author zalit
  */
 public interface Table {

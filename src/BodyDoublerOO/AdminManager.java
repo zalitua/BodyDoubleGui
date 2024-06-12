@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**manages methods relating to the ADMIN table 
  *
  * @author zalit
  */
@@ -23,6 +23,7 @@ public class AdminManager extends TableManager {
         admin = new Admin("", "", "", "", "", "", "");
     }
 
+    //add an entry to ADMIN table based on an Admin object
     @Override
     public void addEntry() {
         String entry = "INSERT INTO ADMIN VALUES ('" + admin.getUserID() + "' ,'"
@@ -31,7 +32,9 @@ public class AdminManager extends TableManager {
                 + admin.getRole() + "' ,'" + admin.getDepartment() + "')";
         updateDB(entry);
     }
-
+    
+    //get all entries from ADMIN table, create an Admin object from each entry, 
+    //create a list of those Admin objects and return the list.
     public List<Admin> readAll() {
         List<Admin> admins = new ArrayList<>();
         ResultSet rs = queryDB("SELECT * FROM ADMIN");
@@ -54,7 +57,8 @@ public class AdminManager extends TableManager {
         }
         return admins;
     }
-
+    
+    //generates and returns the next sequencial admin ID
     @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();

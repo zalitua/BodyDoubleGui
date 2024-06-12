@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
+/**manages methods relating to the MEMBER table
  *
  * @author zalit
  */
@@ -23,9 +23,9 @@ public class MemberManager extends TableManager {
         this.member = new Member("", "", "", "", "", 0, 0, "");
     }
 
+    //add an entry to MEMBER table based on an Member object
     @Override
     public void addEntry() {
-
         String entry = "INSERT INTO MEMBER VALUES ('" + member.getUserID() + "' ,'"
                 + member.getPassword() + "' ,'" + member.getFirstName() + "' ,'"
                 + member.getLastName() + "' ,'" + member.getEmail() + "' ,"
@@ -33,6 +33,8 @@ public class MemberManager extends TableManager {
         updateDB(entry);
     }
 
+    //get all entries from MEMBER table, create an Member object from each entry, 
+    //create a list of those Member objects and returns the list.
     public List<Member> readAll() {
         List<Member> members = new ArrayList<>();
         ResultSet rs = queryDB("SELECT * FROM MEMBER");
@@ -57,6 +59,7 @@ public class MemberManager extends TableManager {
         return members;
     }
 
+    //generates and returns the next sequencial member ID
     @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();

@@ -43,13 +43,13 @@ public class PasswordManager extends DBManager {
     //takes the result from passwordList and checks if the input parameters
     //match an existing user ID and password and reurn the boolean result
     public boolean validatePassword(String userID, String password) {
-        
         HashMap<String, String> passwords = passwordList();
         userID = userID.toUpperCase();
         String pwd = passwords.get(userID);
         return password.equalsIgnoreCase(pwd);
     }
     
+    //makes sure an input field is not empty
     public boolean checkInput(String input) {
         return !input.isEmpty();
     }

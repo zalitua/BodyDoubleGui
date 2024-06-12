@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
+/**manages methods relating to the SESSION table 
  *
  * @author zalit
  */
@@ -23,6 +23,7 @@ public class SessionManager extends TableManager {
         this.session = new Session("", "", "", "", 0, 0);
     }
 
+    //add an entry to SESSION table based on an Session object
     @Override
     public void addEntry() {
         String entry = "INSERT INTO SESSION VALUES ('" + session.getSessionID() + "' ,'"
@@ -32,6 +33,8 @@ public class SessionManager extends TableManager {
         updateDB(entry);
     }
 
+    //get all entries from SESSION table, create an Session object from each entry, 
+    //create a list of those Session objects and return the list.
     public List<Session> readAll() {
 
         List<Session> sessions = new ArrayList<>();
@@ -56,6 +59,7 @@ public class SessionManager extends TableManager {
         return sessions;
     }
 
+    //generates and returns the next sequencial session ID
     @Override
     public String generateNextID() {
         Sequencer seq = new Sequencer();
@@ -63,8 +67,10 @@ public class SessionManager extends TableManager {
         return "SES" + num;
     }
 
+    //create and return a Session object based on a query of the SESSION table based on 
+    // the input parameter of a session ID
     public Session getSession(String sessionID) {
-        Session session = null;
+        Session newSession = null;
         ResultSet rs = queryDB("SELECT * FROM SESSION WHERE SESSIONID = '" + sessionID + "'");
         try {
             if (rs.next()) {
@@ -73,13 +79,13 @@ public class SessionManager extends TableManager {
                 String room = rs.getString("ROOM");
                 int maxPeople = rs.getInt("MAXPEOPLE");
                 int actualPeople = rs.getInt("ACTUALPEOPLE");
-                session = new Session(sessionID, date, time, room, actualPeople, maxPeople);
+                newSession = new Session(sessionID, date, time, room, actualPeople, maxPeople);
             }
         } catch (SQLException ex) {
             Logger.getLogger(SessionManager.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             closeResources(null, rs);
         }
-        return session;
+        return newSession;
     }
 }

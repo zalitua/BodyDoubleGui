@@ -6,7 +6,6 @@ package BodyDoublerOO;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -21,9 +20,12 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     public RegisterAdminGUI() {
         initComponents();
 
-        passwordPanel.setVisible(false);
+        passwordPanel.setVisible(false);//hide panel that displays a users ID and password
     }
 
+    //takes the user input, creates a Admin object and adds that object to the ADMIN table
+    //error checking is done to make sure no fields are blank and a password is 8 characters
+    //once the entry is made the password panel is made visible and diplays the users ID and password
     public void createAdmin() {
 
         AdminManager am = new AdminManager();
@@ -478,33 +480,6 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
     private javax.swing.JLabel yourIDJL;
     private javax.swing.JLabel yourPWJL;
     // End of variables declaration//GEN-END:variables
-
-    
-    
-    // Public getter methods for the fields
-    public JTextField getFirstName() {
-        return firstName;
-    }
-
-    public JTextField getLastName() {
-        return lastName;
-    }
-
-    public JTextField getEmail() {
-        return email;
-    }
-
-    public JTextField getPassword() {
-        return password;
-    }
-
-    public JComboBox<String> getRoleJComboBox() {
-        return roleJComboBox;
-    }
-
-    public JComboBox<String> getDepartmentJComboBox() {
-        return departmentJComboBox;
-    }
 
 }
 

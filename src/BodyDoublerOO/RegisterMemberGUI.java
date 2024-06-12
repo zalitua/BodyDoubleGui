@@ -19,12 +19,15 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
      */
     public RegisterMemberGUI() {
         initComponents();
-        passwordPanel.setVisible(false);
-        homeButton.setToolTipText("Return to Main Page");
+        passwordPanel.setVisible(false);//hide panel that displays a users ID and password
+        homeButton.setToolTipText("Return to Main Page");//hover text for buttons
         exitButton.setToolTipText("Quit Program");
         createMemberButton.setToolTipText("Create a new account");
     }
 
+    //takes the user input, creates a Memmber object and adds that object to the MEMBER table
+    //error checking is done to make sure no fields are blank and a password is 8 characters
+    //once the entry is made the password panel is made visible and diplays the users ID and password
     public void createMember() {
         
         MemberManager mm = new MemberManager();

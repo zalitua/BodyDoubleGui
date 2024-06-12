@@ -20,13 +20,14 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     public AddSessionGUI() {
         initComponents();
 
-        populateTable();
-        populateRoomComboBox();
-        returnButton.setToolTipText("Reutn to Admin Corner");
+        populateTable();//display table data
+        populateRoomComboBox();//input room IDs to combo box
+        returnButton.setToolTipText("Reutn to Admin Corner");//hover text for buttons
         exitButton.setToolTipText("Exit the program");
         homeButton.setToolTipText("Return to Main Page");
     }
-
+    
+    //takes the user input, creates a Session object and adds that object to the SESSION table
     public void createSession() {
 
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
@@ -39,6 +40,8 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         JOptionPane.showConfirmDialog(this, "Session successfully created", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
 
+    //gets all the Session objects from the SESSION table in the database 
+    //and display them in a JTable in the GUI
     private void populateTable() {
         List<Session> session = sm.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionTable.getModel();
@@ -58,6 +61,8 @@ public final class AddSessionGUI extends javax.swing.JFrame {
         }
     }
 
+    //gets a list of room IDs from the ROOM table and uses the elements of that 
+    //list as the elements of the combo box
     private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
         List<String> roomNames = rm.IDList("ROOM", "ROOMNAME");
@@ -358,8 +363,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homeButton)
-                    .addComponent(exitButton))
-                .addGap(24, 24, 24))
+                    .addComponent(exitButton)))
         );
 
         pack();
@@ -471,25 +475,5 @@ public final class AddSessionGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> yearComboB;
     private javax.swing.JLabel yearJL;
     // End of variables declaration//GEN-END:variables
-
-    public JComboBox<String> getDayJComboB() {
-        return dayJComboB;
-    }
-
-    public JComboBox<String> getMonthJComboB() {
-        return monthJComboB;
-    }
-
-    public JComboBox<String> getTimeJComboB() {
-        return timeJComboB;
-    }
-
-    public JComboBox<String> getRoomJComboB() {
-        return roomJComboB;
-    }
-
-    public JComboBox<String> getMaxPartJComboB() {
-        return maxPartJComboB;
-    }
 
 }

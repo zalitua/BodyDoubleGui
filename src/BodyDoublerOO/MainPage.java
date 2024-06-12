@@ -6,7 +6,7 @@ package BodyDoublerOO;
 
 import javax.swing.JOptionPane;
 
-/**
+/**login and navigation for the app
  *
  * @author zalit
  */
@@ -17,7 +17,7 @@ public class MainPage extends javax.swing.JFrame {
      */
     public MainPage() {
         initComponents();
-        exitButton.setToolTipText("Exit the program");
+        exitButton.setToolTipText("Exit the program");//hover text for buttons
     }
 
     /**
@@ -27,6 +27,8 @@ public class MainPage extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+    //takes the user input and validates against the id and pasword fields from the 
+    //MEMBER and ADMIN tables
     public void logIn(){
         PasswordManager pm = new PasswordManager();
         String IDIn = IDTextField.getText();
@@ -66,7 +68,6 @@ public class MainPage extends javax.swing.JFrame {
         selectLabel = new javax.swing.JLabel();
         adminRadioButton = new javax.swing.JRadioButton();
         memberRadioButton = new javax.swing.JRadioButton();
-
         exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -147,9 +148,6 @@ public class MainPage extends javax.swing.JFrame {
                 exitButtonMouseClicked(evt);
             }
         });
-
-        exitButton.setFont(new java.awt.Font("Georgia", 1, 16)); // NOI18N
-        exitButton.setText("Exit App");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
@@ -176,35 +174,22 @@ public class MainPage extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 30, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(142, 142, 142)
-
                                 .addComponent(welcomeLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(177, 177, 177)
-                                .addComponent(registerLabel)))
-
-                        .addGap(0, 141, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(registerLabel))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(idErrorL, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(177, 177, 177)
-                                .addComponent(registerLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitButton)))
+                                .addGap(262, 262, 262)
+                                .addComponent(exitButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(267, 267, 267)
-                .addComponent(exitButton)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,17 +218,30 @@ public class MainPage extends javax.swing.JFrame {
                 .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LogInLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PwdLabel)
+                    .addComponent(IDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PwdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(LogInButton)
+                .addGap(18, 18, 18)
+                .addComponent(registerLabel)
+                .addGap(18, 18, 18)
+                .addComponent(selectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-
                         .addComponent(adminRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(memberRadioButton))
                     .addComponent(registerButton))
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exitButton)
-                .addContainerGap(71, Short.MAX_VALUE))
-
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
@@ -257,6 +255,7 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LogInButtonActionPerformed
 
+    //open the correct GUI to register as an admin or member
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
         // TODO add your handling code here:
         if (adminRadioButton.isSelected() == true){
@@ -279,6 +278,10 @@ public class MainPage extends javax.swing.JFrame {
     private void exitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitButtonMouseClicked
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitButtonActionPerformed
 
 
     /**
@@ -325,7 +328,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField PwdTextField;
     private javax.swing.JRadioButton adminRadioButton;
     private javax.swing.JButton exitButton;
-
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea mainTextArea;
     private javax.swing.JRadioButton memberRadioButton;

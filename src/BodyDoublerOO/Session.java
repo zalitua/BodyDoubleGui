@@ -4,11 +4,7 @@
  */
 package BodyDoublerOO;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-/**
+/**defines and creates an Session object
  *
  * @author GVE Rouse
  */

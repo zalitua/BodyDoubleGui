@@ -5,8 +5,8 @@
 package BodyDoublerOO;
 
 
-/**
- *
+/**Person is an abstract class incorporates fields that are common to any subclasses
+ * user class such as Admin or Member
  * @author zalit
  */
 abstract class Person {
