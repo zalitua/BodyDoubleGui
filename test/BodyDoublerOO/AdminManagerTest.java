@@ -4,6 +4,7 @@
  */
 package BodyDoublerOO;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,10 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author GVE Rouse
  */
-public class AddSessionGUITest {
-    private AddSessionGUI instance;
+public class AdminManagerTest {
     
-    public AddSessionGUITest() {
+    public AdminManagerTest() {
     }
     
     @BeforeClass
@@ -31,7 +31,6 @@ public class AddSessionGUITest {
     
     @Before
     public void setUp() {
-        instance = new AddSessionGUI();
     }
     
     @After
@@ -39,23 +38,29 @@ public class AddSessionGUITest {
     }
 
     /**
-     * Test of createSession method, of class AddSessionGUI.
+     * Test of addEntry method, of class AdminManager.
      */
     @Test
-    public void testCreateSession() {
-        System.out.println("createSession");
-        AddSessionGUI instance = new AddSessionGUI();
-        
-        instance.getDayJComboB().setSelectedItem("01");
-        instance.getMonthJComboB().setSelectedItem("01");
-        instance.getTimeJComboB().setSelectedItem("00:00");
-        instance.getRoomJComboB().setSelectedItem("WZ404");
-        instance.getMaxPartJComboB().setSelectedItem("6");
-        
-        instance.createSession();
+    public void testAddEntry() {
+        System.out.println("addEntry");
+        AdminManager instance = new AdminManager();
+        instance.addEntry();
         
     }
 
+    
 
+    /**
+     * Test of generateNextID method, of class AdminManager.
+     */
+    @Test
+    public void testGenerateNextID() {
+        System.out.println("generateNextID");
+        AdminManager instance = new AdminManager();
+        String expResult = "ADM017";
+        String result = instance.generateNextID();
+        assertEquals(expResult, result);
+        
+    }
     
 }
