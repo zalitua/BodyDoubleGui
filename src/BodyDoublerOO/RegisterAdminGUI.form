@@ -61,7 +61,7 @@
                           </Group>
                           <Component id="departmentJL" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="pWJL" min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="pWJL" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="password" min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
@@ -86,10 +86,10 @@
                       <Component id="createAccountJButton" min="-2" pref="192" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="133" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
               <Component id="homeButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="exitButton" min="-2" max="-2" attributes="0"/>
