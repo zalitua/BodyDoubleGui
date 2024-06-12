@@ -154,7 +154,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
         });
 
         pWJL.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        pWJL.setText("Please enter a password:");
+        pWJL.setText("Password(8 characters):");
 
         password.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
 
