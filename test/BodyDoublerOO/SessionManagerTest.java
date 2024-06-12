@@ -62,13 +62,16 @@ public class SessionManagerTest {
         assertEquals(1, result.getNoOfPeople());
     }
 
+    /**
+     * Test of deleteEntry method, of class SessionManager.
+     */
     @Test
     public void testDeleteEntry() {
         
         System.out.println("deleteEntry");
         String table = "SESSION";
         String column = "SESSIONID";
-        String inputID = "SES019"; //does delete a real session, so new / currrent ID from DB 
+        String inputID = "SES019"; //does delete a real session, so new / currrent ID from DB !!DO NOT USE SES015 as it is used to test check get session
         SessionManager instance = new SessionManager();
         instance.deleteEntry(table, column, inputID);
         
