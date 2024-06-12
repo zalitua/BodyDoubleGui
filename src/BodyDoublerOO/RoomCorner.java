@@ -22,7 +22,7 @@ public class RoomCorner extends javax.swing.JFrame {
 
     public RoomCorner() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         populateTable();//display table data
         populateRoomComboBox();//input room IDs to combo box
         returnButton.setToolTipText("Return to Admin Corner");//hover text for buttons

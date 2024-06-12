@@ -19,6 +19,7 @@ public class RegisterMemberGUI extends javax.swing.JFrame {
      */
     public RegisterMemberGUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
         passwordPanel.setVisible(false);//hide panel that displays a users ID and password
         homeButton.setToolTipText("Return to Main Page");//hover text for buttons
         exitButton.setToolTipText("Quit Program");

@@ -17,6 +17,7 @@ public class MainPage extends javax.swing.JFrame {
      */
     public MainPage() {
         initComponents();
+        this.setLocationRelativeTo(null);
         exitButton.setToolTipText("Exit the program");//hover text for buttons
     }
 

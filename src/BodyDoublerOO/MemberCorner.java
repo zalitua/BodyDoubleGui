@@ -21,6 +21,7 @@ public class MemberCorner extends javax.swing.JFrame {
 
     public MemberCorner() {
         initComponents();
+        this.setLocationRelativeTo(null);
         populateTable();
         populateSessionComboBox();
         //joinSession();

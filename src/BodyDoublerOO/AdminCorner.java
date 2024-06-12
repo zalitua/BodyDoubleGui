@@ -20,6 +20,7 @@ public class AdminCorner extends javax.swing.JFrame {
 
     public AdminCorner() {
         initComponents();
+        this.setLocationRelativeTo(null);
         populateTable();//display table data
         returnButton.setToolTipText("Return to Main Page");//hover text for buttons
         exitButton.setToolTipText("Exit the program");

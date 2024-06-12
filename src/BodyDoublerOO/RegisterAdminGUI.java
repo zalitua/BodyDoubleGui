@@ -19,7 +19,7 @@ public class RegisterAdminGUI extends javax.swing.JFrame {
      */
     public RegisterAdminGUI() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         passwordPanel.setVisible(false);//hide panel that displays a users ID and password
     }
 

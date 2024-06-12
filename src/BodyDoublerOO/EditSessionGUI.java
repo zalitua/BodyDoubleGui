@@ -22,7 +22,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
 
     public EditSessionGUI() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         populateTable();
         populateRoomComboBox();
         populateSessionComboBox();

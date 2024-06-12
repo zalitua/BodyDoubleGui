@@ -19,7 +19,7 @@ public final class AddSessionGUI extends javax.swing.JFrame {
 
     public AddSessionGUI() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         populateTable();//display table data
         populateRoomComboBox();//input room IDs to combo box
         returnButton.setToolTipText("Reutn to Admin Corner");//hover text for buttons
