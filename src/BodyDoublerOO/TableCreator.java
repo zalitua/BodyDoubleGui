@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
+/**used to create the tables in the database. can be used to clear the data from a table
  *
  * @author zalit
  */
@@ -21,7 +21,8 @@ public class TableCreator extends DBManager{
     public TableCreator() {
         this.connInstance = SingletonConnection.getConnection();
     }
-
+    
+    //creates a table based on the sql query string
     public void createAdminTable() {
 
         this.checkExists("ADMIN");
@@ -31,6 +32,7 @@ public class TableCreator extends DBManager{
         System.out.println("Admin table created!");
     }
 
+    //creates a table based on the sql query string
     public void createMemberTable() {
 
         this.checkExists("MEMBER");
@@ -40,6 +42,7 @@ public class TableCreator extends DBManager{
         System.out.println("Memeber table created");
     }
 
+    //creates a table based on the sql query string
     public void createSessionTable() {
 
         this.checkExists("SESSION");
@@ -49,6 +52,7 @@ public class TableCreator extends DBManager{
         System.out.println("Session table created");
     }
 
+    //creates a table based on the sql query string
     public void createRoomTable() {
 
         this.checkExists("ROOM");
@@ -56,6 +60,8 @@ public class TableCreator extends DBManager{
         System.out.println("Room table created");
     }
 
+    //checks if a table already exists. if it does the table is deleted from the database
+    //so that it can be safely created in any of the CreateTable methods
     public void checkExists(String table) {
         if (connInstance != null) {
             try {

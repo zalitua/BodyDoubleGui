@@ -4,22 +4,15 @@
  */
 package BodyDoublerOO;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-
-/**
- *test again again
+/**defines and creates an Admin object
+ *
  * @author zalit
  */
 public class Admin extends Person {
 
     private String role;
     private String department;
-    
-
-
+    //constructor incorporates fields from abstract class Person
     public Admin(String userID, String password, String firstName, String lastName,
             String email, String role, String department) {
         super(userID, password, firstName, lastName, email);

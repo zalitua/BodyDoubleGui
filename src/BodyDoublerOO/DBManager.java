@@ -11,12 +11,13 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**creates a connection that will be used by classes that extend this class
+/**creates a connection that will be used by subclasses
  * and methods for querying and updating the database 
  * @author zalit
  */
 abstract class DBManager {
     
+    //creates a single connection that will be shared with subclasses
     private final Connection connInstance;
     public DBManager(){
         this.connInstance = SingletonConnection.getConnection();

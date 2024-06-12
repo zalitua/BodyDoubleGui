@@ -23,13 +23,14 @@ public class RoomCorner extends javax.swing.JFrame {
     public RoomCorner() {
         initComponents();
 
-        populateTable();
-        populateRoomComboBox();
-        returnButton.setToolTipText("Return to Admin Corner");
+        populateTable();//display table data
+        populateRoomComboBox();//input room IDs to combo box
+        returnButton.setToolTipText("Return to Admin Corner");//hover text for buttons
         homeButton.setToolTipText("Go to Main Page");
         exitButton.setToolTipText("Exit the program");
     }
 
+    //takes the user input, creates a Room object and adds that object to the ROOM table
     public void createRoom() {
         String roomName = roomTF.getText();
 
@@ -43,11 +44,14 @@ public class RoomCorner extends javax.swing.JFrame {
 
     }
 
+    //deletes a ROOM table entry based on the input from the roomComboBox
     public void deleteRoom() {
         String roomID = (String) roomComboBox.getSelectedItem();
         rm.deleteEntry("ROOM", "ROOMID", roomID);
     }
 
+    //gets all the Room objects from the ROOM table in the database 
+    //and display them in a JTable in the GUI
     private void populateTable() {
         List<Room> rooms = rm.readAll();
         DefaultTableModel model = (DefaultTableModel) roomsTable.getModel();
@@ -63,6 +67,8 @@ public class RoomCorner extends javax.swing.JFrame {
         }
     }
 
+    //gets a list of room IDs from the ROOM table and uses the elements of that 
+    //list as the elements of the combo box
     public void populateRoomComboBox() {
         List<String> roomIDs = rm.IDList("ROOM", "ROOMID");
         roomComboBox.removeAllItems(); //to prevent duplicates

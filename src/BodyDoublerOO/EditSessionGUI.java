@@ -32,6 +32,7 @@ public class EditSessionGUI extends javax.swing.JFrame {
 
     }
 
+    //takes the user input, creates a Session object and adds that object to the SESSION table
     public void createSession() {
 
         String date = (String) dayJComboB.getSelectedItem() + "/" + monthJComboB.getSelectedItem() + "/2024";
@@ -44,12 +45,15 @@ public class EditSessionGUI extends javax.swing.JFrame {
         JOptionPane.showConfirmDialog(this, "Session successfully edited", "Session Created", JOptionPane.PLAIN_MESSAGE);
     }
 
+    //deletes a SESSION table entry based on the input from the sessionComboBox
     public void deleteSession() {
         String sessionID = (String) sessionComboBox.getSelectedItem();
         sm.deleteEntry("SESSION", "SESSIONID", sessionID);
         JOptionPane.showConfirmDialog(this, "Session successfully deleted", "Session Deleted", JOptionPane.PLAIN_MESSAGE);
     }
 
+    //gets all the Session objects from the SESSION table in the database 
+    //and display them in a JTable in the GUI
     private void populateTable() {
         List<Session> session = sm.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionTable.getModel();
@@ -69,6 +73,8 @@ public class EditSessionGUI extends javax.swing.JFrame {
         }
     }
 
+    //gets a list of room IDs from the ROOM table and uses the elements of that 
+    //list as the elements of the combo box
     private void populateRoomComboBox() {
         RoomManager rm = new RoomManager();
         List<String> roomNames = rm.IDList("ROOM", "ROOMNAME");
@@ -78,6 +84,8 @@ public class EditSessionGUI extends javax.swing.JFrame {
         }
     }
 
+    //gets a list of session IDs from the SESSION table and uses the elements of that 
+    //list as the elements of the combo box
     private void populateSessionComboBox() {
         List<String> sessionIDs = sm.IDList("SESSION", "SESSIONID");
         sessionComboBox.removeAllItems(); //to prevent duplicates
@@ -478,25 +486,5 @@ public class EditSessionGUI extends javax.swing.JFrame {
     private javax.swing.JLabel timeJL;
     private javax.swing.JLabel welcomeEditJL;
     // End of variables declaration//GEN-END:variables
-
-    public JComboBox<String> getDayJComboB() {
-        return dayJComboB;
-    }
-
-    public JComboBox<String> getMonthJComboB() {
-        return monthJComboB;
-    }
-
-    public JComboBox<String> getTimeJComboB() {
-        return timeJComboB;
-    }
-
-    public JComboBox<String> getRoomJComboB() {
-        return roomJComboB;
-    }
-
-    public JComboBox<String> getMaxPartJComboB() {
-        return maxPartJComboB;
-    }
 
 }

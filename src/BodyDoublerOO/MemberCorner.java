@@ -4,9 +4,7 @@
  */
 package BodyDoublerOO;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +26,8 @@ public class MemberCorner extends javax.swing.JFrame {
         //joinSession();
     }
 
+    //gets all the Session objects from the SESSION table in the database 
+    //and display them in a JTable in the GUI
     private void populateTable() {
         List<Session> session = sM.readAll();
         DefaultTableModel model = (DefaultTableModel) sessionJTable.getModel();
@@ -47,7 +47,8 @@ public class MemberCorner extends javax.swing.JFrame {
         }
     }
 
-    //to populate the session ID drop down box
+    //gets a list of session IDs from the SESSION table and uses the elements of that 
+    //list as the elements of the combo box
     private void populateSessionComboBox() {
         List<String> sessionIDs = sM.IDList("SESSION", "SESSIONID");
         sessionIDJComboB.removeAllItems(); //to prevent duplicates
@@ -279,7 +280,8 @@ public class MemberCorner extends javax.swing.JFrame {
     private javax.swing.JLabel welcomeL;
     // End of variables declaration//GEN-END:variables
 
-    
+    //join a Session and increment the number people in the Session if the max number of 
+    //people has not been reached. edit the entry in SESSION table
     private void joinSession() {
         String selectedSessionID = (String) sessionIDJComboB.getSelectedItem(); // Get selected session ID
         if (selectedSessionID != null) { // Check if a session is selected
@@ -296,7 +298,9 @@ public class MemberCorner extends javax.swing.JFrame {
         }
 
     }
-
+    
+    //decrease by one the number of people in a Session if there is more than one person in the Session
+    //and update the SESSION table
     private void leaveSession() {
         String selectedSessionID = (String) sessionIDJComboB.getSelectedItem(); // Get selected session ID
         if (selectedSessionID != null) { // Check if a session is selected

@@ -26,6 +26,8 @@ public final class SingletonConnection {
         // Prevent instantiation
     }
     
+    //creates a connection the method is sychronized to prevent more that one connection 
+    //being opened
     public static synchronized Connection getConnection() {
         if (connInstance == null) {
             try {
@@ -38,7 +40,8 @@ public final class SingletonConnection {
         }
         return connInstance;
     }
-
+    
+    //used to close a connection
     public void closeConnections() {
         if (connInstance != null) {
             try {

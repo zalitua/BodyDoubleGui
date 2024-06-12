@@ -20,14 +20,16 @@ public class AdminCorner extends javax.swing.JFrame {
 
     public AdminCorner() {
         initComponents();
-        populateTable();
-        returnButton.setToolTipText("Return to Main Page");
+        populateTable();//display table data
+        returnButton.setToolTipText("Return to Main Page");//hover text for buttons
         exitButton.setToolTipText("Exit the program");
         addButton.setToolTipText("Create a new session");
         editButton.setToolTipText("Edit a current session");
         manageRoomsButton.setToolTipText("Add or delete rooms");
     }
 
+    //gets all the Session objects from the SESSION table in the database 
+    //and display them in a JTable in the GUI
     private void populateTable() {
         SessionManager sM = new SessionManager();
         List<Session> session = sM.readAll();

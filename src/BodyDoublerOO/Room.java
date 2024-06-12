@@ -5,22 +5,14 @@
  */
 package BodyDoublerOO;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-/**
+/**defines and creates a Room object
  *
  * @author zalit
  */
 public class Room {
 
-    Scanner scan = new Scanner(System.in);
     String roomID;
     String roomName;
-    String path = "./nbproject/files/rooms.txt";
 
     public Room(String roomID, String roomName) {
         this.roomID = roomID;

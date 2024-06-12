@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**code to check what tables are in database, what columns are in tables
- * and print out table data
+ * and print out table data. only used for debugging.
  * @author zalit
  */
 public class TableChecker {
